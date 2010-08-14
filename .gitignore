@@ -1,0 +1,8 @@
+doc
+test
+tmp
+log
+config/environments/local.rb
+.DS_Store
+._*
+
