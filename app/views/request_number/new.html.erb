@@ -1,0 +1,13 @@
+<%form_for :user_phone do |f|-%>
+<label for="user_phone_number">Phone Number</label>
+<%=f.text_field :number, maxlength: 20%>
+<br>
+<label for="user_phone_state">State</label>
+<%=f.select :state,[['Maryland','md']],{:size=>100}%>
+<br>
+<label for="user_phone_city">City</label>
+<%=f.select :city,['Annapolis','Baltimore'],{:size=>100}%>
+<br>
+<br>
+<input type="submit" value="Request Number">
+<%end-%>
