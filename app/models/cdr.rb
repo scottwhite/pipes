@@ -1,4 +1,4 @@
 class Cdr < ActiveRecord::Base
-  set_table 'cdr'
+  set_table_name 'cdr'
   
 end

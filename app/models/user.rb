@@ -6,8 +6,14 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
   include Authorization::AasmRoles
 
-  has_many :user_phones, dependent: :destroy
-
+  has_many :did_request_holders
+  has_many :phones, class_name: 'UserPhone', dependent: :destroy
+  has_many :dids_user_phones, through: :phones
+  has_many :active_dids, class_name: 'Did', finder_sql: %q{select dids.* from dids 
+                                        inner join dids_user_phones dup on dup.did_id = dids.id
+                                        inner join user_phones up on up.user_id = #{id}
+                                        and up.id = dup.user_phone_id
+                                        and dids.usage_state = #{Did::ACTIVE}}
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -53,10 +59,10 @@ class User < ActiveRecord::Base
 
   protected
     
-    def make_activation_code
-        self.deleted_at = nil
-        self.activation_code = self.class.make_token
-    end
-
+  def make_activation_code
+      self.deleted_at = nil
+      self.activation_code = self.class.make_token
+  end
+      
 
 end

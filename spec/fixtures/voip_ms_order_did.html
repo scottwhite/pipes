@@ -1,0 +1,1969 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><!-- InstanceBegin template="/Templates/portal.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Voip.ms :: Customer Portal - Order DIDs</title>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/jquery.tooltip.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+   $('.tt').tooltip({
+        track: true, delay: 0, showURL: false, fade: 250,
+        bodyHandler: function(){return $($(this).attr("id")).html();}
+    });
+});
+</script>
+<script type="text/javascript">
+function validate(theform){
+    with (theform){
+        /*Get Valid Characters*/
+        query.value = getValid(query.value)
+        
+        /* Check if Query is Empty */
+        if (query.value==''){
+            alert('Please introduce valid characters in the search textbox');
+            return false;
+        }
+        
+        /* Check if State is Empty */
+        if (state.value==''){
+            alert('Please select a state');
+            return false;
+        }
+    }
+    return true;
+}
+
+function getValid(input){
+    regex = /[^0-9a-z]/gi;
+    return input.replace(regex,'')
+}
+</script>
+<!-- InstanceEndEditable -->
+<link rel="stylesheet" type="text/css" href="/css/tabcontent.css" />
+<script type="text/javascript" src="/js/tabcontent.js">
+
+/***********************************************
+* Tab Content script v2.0- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="/css/styleportal.css" rel="stylesheet" type="text/css">
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<script type="text/javascript" src="/js/include_new2.js"></script>
+<!-- InstanceBeginEditable name="head" -->
+<link href="../css/styleportal.css" rel="stylesheet" type="text/css">
+<!-- InstanceEndEditable -->
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('/images/leftmenuanim.gif')">
+<!-- InstanceBeginEditable name="afterbody" --><!-- InstanceEndEditable -->
+
+<table width="962" height="99" border="0" align="center" cellpadding="0" cellspacing="0" class="toptableborders" id="Table_01">
+  <tr>
+    <td colspan="3" bgcolor="#636C6B"><div align="right"><img src="../images/portal3_01.png" width="775" height="33" alt=""></div></td>
+  </tr>
+  <tr>
+    <td bgcolor="#FFFFFF"><img src="../images/voipms-newlogo.jpg" width="222" height="66"></td>
+    <td bgcolor="#FFFFFF">&nbsp;</td>
+      <td align="right" valign="bottom"><table border="0" cellpadding="6" cellspacing="0">
+      <tr>
+        <th align="right" valign="bottom" scope="col"><div align="right" class="normaltext">
+          <table border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <th width="58%" align="right" scope="col"><div align="right">
+            <!-- BoldChat Live Chat Button HTML v1.20 (Type=Web,ChatButton=Customer Portal Button,ChatWindow=Customer Portal Window,Website=- None -,Department=- None -) -->
+<div style="text-align: center; white-space: nowrap;">
+<div><a href="https://livechat.boldchat.com/aid/2947277729005480016/bc.chat?cwdid=60236691424546376&amp;vr=115470&amp;vn=William+McCracken&amp;vi=LIVE&amp;ve=will@pipes.io&amp;vp=443-837-5730&amp;iq=&amp;curl=" target="_blank" onClick="window.open('https://livechat.boldchat.com/aid/2947277729005480016/bc.chat?cwdid=60236691424546376&amp;vr=115470&amp;vn=William+McCracken&amp;vi=LIVE&amp;ve=will%40pipes.io&amp;vp=443-837-5730&amp;iq=&amp;curl=&amp;url=' + escape(document.location.href), 'Chat2896049344937764376', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=640,height=480');return false;"><img alt="Live chat by BoldChat" src="https://cbi.boldchat.com/aid/2947277729005480016/bc.cbi?cbdid=2628378324914789838" border="0" /></a></div>
+</div>
+<!-- /BoldChat Live Chat Button HTML v1.20 -->
+
+</div></th>
+</div></th>
+              <th width="42%" scope="col"><div align="left"><a href="/m/hp/tickets.php"><img src="../images/1_toptickets.gif" border="0"></a></div></th>
+              <th width="42%" scope="col"><div align="left"><a href="/m/logout.php"><img src="../images/1_toplogout.gif" border="0"></a></div></th>
+            </tr>
+          </table>
+
+
+</div></th>
+      </tr>
+      
+    </table></td>
+  </tr>
+</table>
+<table width="960" border="0" align="center" cellpadding="0" cellspacing="0" class="toptableborders">
+  <tr>
+    <th scope="col"><table width="100%" border="0" align="center" cellpadding="6" cellspacing="0">
+      <tr>
+        <td class="leftmenubottomtdlineonfull" onClick="return clickreturnvalue();" onMouseover="dropdownmenu(this, event, menu1, '215px')" onMouseout="delayhidemenu();"><div align="center" class="portallink2">Main Menu</div></td>
+        <td class="leftmenubottomtdlineonfull" onClick="return clickreturnvalue();" onMouseover="dropdownmenu(this, event, menu2, '215px')" onMouseout="delayhidemenu();"><div align="center" class="portallink2">DID Numbers</div></td>
+        <td class="leftmenubottomtdlineonfull" nClick="return clickreturnvalue();" onMouseover="dropdownmenu(this, event, menu3, '215px')" onMouseout="delayhidemenu();"><div align="center" class="portallink2">Sub Accounts</div></td>
+        <td class="leftmenubottomtdlineonfull" onClick="return clickreturnvalue();" onMouseover="dropdownmenu(this, event, menu4, '215px')" onMouseout="delayhidemenu();"><div align="center" class="portallink2">CDR and Reports</div></td>
+        <td class="leftmenubottomtdlineonfull" onClick="return clickreturnvalue();" onMouseover="dropdownmenu(this, event, menu6, '215px')" onMouseout="delayhidemenu();"><div align="center" class="portallink2">Finances </div></td>
+        <td class="leftmenubottomtdlineonfull" onClick="return clickreturnvalue();" onMouseover="dropdownmenu(this, event, menu7, '215px')" onMouseout="delayhidemenu();"><div align="center" class="portallink2">Support </div></td>
+        <td class="leftmenubottomtdlineonfull" onClick="return clickreturnvalue();" onMouseover="dropdownmenu(this, event, menu8, '215px')" onMouseout="delayhidemenu();"><div align="center" class="portallink2">Rates </div></td>
+        <td class="leftmenubottomtdlineonrightfull" onClick="return clickreturnvalue();" onMouseover="dropdownmenu(this, event, menu9, '215px')" onMouseout="delayhidemenu();"><div align="center" class="portallink2">Reseller </div></td>
+      </tr>
+    </table></th>
+  </tr>
+  <tr>
+    <td height=70><!-- InstanceBeginEditable name="header" --><img src="../images/portalheaders-wide/orderdid.jpg" width="960" height="70"><!-- InstanceEndEditable --></td>
+  </tr>
+</table>
+
+
+  
+ 
+
+
+  
+  <table width="962" border="0" align="center" cellpadding="0" cellspacing="0" class="maintableborders">
+  <tr>
+   
+    <th valign="top" bgcolor="#FFFFFF" scope="col"><div align="left">
+      <table width="100%" border="0" cellpadding="5">
+        <tr>
+          <td align="left" valign="top" bgcolor="#FFFFFF"><!-- InstanceBeginEditable name="main" -->
+
+
+
+                <!-- SEARCH OPTIONS -->
+                <table width="100%" border="0" cellpadding="6" cellspacing="0">
+                    <tr>
+                        <td class="leftmenubottomtdlineon" align="center">
+                            <span class="normaltexthitebold">Browse DIDs by State</span>
+                        </td>
+                        <td class="leftmenubottomtdlineonright" align="center">
+                            <span class="normaltexthitebold">Browse DIDs by Search Criteria</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="35%" class="leftmenubottomtdlinefull" align="center">
+                            <div align="center" class="normaltext">
+                                <form name="form1" method="get" action="">
+                                    By State
+                                    <select name='state' class="textfield" onChange="submit();">
+                                        <option>-----------------------------------</option>
+                                                                                    <option value='AL'>ALABAMA</option>
+                                                                                        <option value='AR'>ARKANSAS</option>
+                                                                                        <option value='AZ'>ARIZONA</option>
+                                                                                        <option value='CA'>CALIFORNIA</option>
+                                                                                        <option value='CO'>COLORADO</option>
+                                                                                        <option value='CT'>CONNECTICUT</option>
+                                                                                        <option value='DC'>DISTRICT OF COLUMBIA</option>
+                                                                                        <option value='DE'>DELAWARE</option>
+                                                                                        <option value='FL'>FLORIDA</option>
+                                                                                        <option value='GA'>GEORGIA</option>
+                                                                                        <option value='HI'>HAWAII</option>
+                                                                                        <option value='IA'>IOWA</option>
+                                                                                        <option value='ID'>IDAHO</option>
+                                                                                        <option value='IL'>ILLINOIS</option>
+                                                                                        <option value='IN'>INDIANA</option>
+                                                                                        <option value='KS'>KANSAS</option>
+                                                                                        <option value='KY'>KENTUCKY</option>
+                                                                                        <option value='LA'>LOUISIANA</option>
+                                                                                        <option value='MA'>MASSACHUSETTS</option>
+                                                                                        <option value='MD'>MARYLAND</option>
+                                                                                        <option value='ME'>MAINE</option>
+                                                                                        <option value='MI'>MICHIGAN</option>
+                                                                                        <option value='MN'>MINNESOTA</option>
+                                                                                        <option value='MO'>MISSOURI</option>
+                                                                                        <option value='MS'>MISSISSIPPI</option>
+                                                                                        <option value='MT'>MONTANA</option>
+                                                                                        <option value='NC'>NORTH CAROLINA</option>
+                                                                                        <option value='ND'>NORTH DAKOTA</option>
+                                                                                        <option value='NE'>NEBRASKA</option>
+                                                                                        <option value='NH'>NEW HAMPSHIRE</option>
+                                                                                        <option value='NJ'>NEW JERSEY</option>
+                                                                                        <option value='NM'>NEW MEXICO</option>
+                                                                                        <option value='NV'>NEVADA</option>
+                                                                                        <option value='NY'>NEW YORK</option>
+                                                                                        <option value='OH'>OHIO</option>
+                                                                                        <option value='OK'>OKLAHOMA</option>
+                                                                                        <option value='OR'>OREGON</option>
+                                                                                        <option value='PA'>PENNSYLVANIA</option>
+                                                                                        <option value='PR'>PUERTO RICO</option>
+                                                                                        <option value='RI'>RHODE ISLAND</option>
+                                                                                        <option value='SC'>SOUTH CAROLINA</option>
+                                                                                        <option value='SD'>SOUTH DAKOTA</option>
+                                                                                        <option value='TN'>TENNESSEE</option>
+                                                                                        <option value='TX'>TEXAS</option>
+                                                                                        <option value='UT'>UTAH</option>
+                                                                                        <option value='VA'>VIRGINIA</option>
+                                                                                        <option value='VT'>VERMONT</option>
+                                                                                        <option value='WA'>WASHINGTON</option>
+                                                                                        <option value='WI'>WISCONSIN</option>
+                                                                                        <option value='WV'>WEST VIRGINIA</option>
+                                                                                        <option value='WY'>WYOMING</option>
+                                                                                </select>
+                                    <input name='action' type="hidden" id="action" value="statesearch">
+                                </form>
+                            </div>
+                        </td>
+                        <td width="65%" class="leftmenubottomtdlinerightfull" align="center">
+                            <form name="form1" method="get" action="" onsubmit="return validate(this);">
+                                <select name='type' class="textfield">
+                                    <option value="contains">CONTAINS</option>
+                                    <option value="starts">STARTS WITH</option>
+                                    <option value="ends">ENDS WITH</option>
+                                </select>&nbsp;
+                                
+                                <input type="" name='query' value="" class="textfield" maxlength="10">&nbsp;
+                                
+                                
+                                <select name='state' class="textfield">
+                                    <option value="">---- SELECT STATE ----</option>
+                                                                            <option value='AL'>ALABAMA</option>
+                                                                                <option value='AR'>ARKANSAS</option>
+                                                                                <option value='AZ'>ARIZONA</option>
+                                                                                <option value='CA'>CALIFORNIA</option>
+                                                                                <option value='CO'>COLORADO</option>
+                                                                                <option value='CT'>CONNECTICUT</option>
+                                                                                <option value='DC'>DISTRICT OF COLUMBIA</option>
+                                                                                <option value='DE'>DELAWARE</option>
+                                                                                <option value='FL'>FLORIDA</option>
+                                                                                <option value='GA'>GEORGIA</option>
+                                                                                <option value='HI'>HAWAII</option>
+                                                                                <option value='IA'>IOWA</option>
+                                                                                <option value='ID'>IDAHO</option>
+                                                                                <option value='IL'>ILLINOIS</option>
+                                                                                <option value='IN'>INDIANA</option>
+                                                                                <option value='KS'>KANSAS</option>
+                                                                                <option value='KY'>KENTUCKY</option>
+                                                                                <option value='LA'>LOUISIANA</option>
+                                                                                <option value='MA'>MASSACHUSETTS</option>
+                                                                                <option value='MD'>MARYLAND</option>
+                                                                                <option value='ME'>MAINE</option>
+                                                                                <option value='MI'>MICHIGAN</option>
+                                                                                <option value='MN'>MINNESOTA</option>
+                                                                                <option value='MO'>MISSOURI</option>
+                                                                                <option value='MS'>MISSISSIPPI</option>
+                                                                                <option value='MT'>MONTANA</option>
+                                                                                <option value='NC'>NORTH CAROLINA</option>
+                                                                                <option value='ND'>NORTH DAKOTA</option>
+                                                                                <option value='NE'>NEBRASKA</option>
+                                                                                <option value='NH'>NEW HAMPSHIRE</option>
+                                                                                <option value='NJ'>NEW JERSEY</option>
+                                                                                <option value='NM'>NEW MEXICO</option>
+                                                                                <option value='NV'>NEVADA</option>
+                                                                                <option value='NY'>NEW YORK</option>
+                                                                                <option value='OH'>OHIO</option>
+                                                                                <option value='OK'>OKLAHOMA</option>
+                                                                                <option value='OR'>OREGON</option>
+                                                                                <option value='PA'>PENNSYLVANIA</option>
+                                                                                <option value='PR'>PUERTO RICO</option>
+                                                                                <option value='RI'>RHODE ISLAND</option>
+                                                                                <option value='SC'>SOUTH CAROLINA</option>
+                                                                                <option value='SD'>SOUTH DAKOTA</option>
+                                                                                <option value='TN'>TENNESSEE</option>
+                                                                                <option value='TX'>TEXAS</option>
+                                                                                <option value='UT'>UTAH</option>
+                                                                                <option value='VA'>VIRGINIA</option>
+                                                                                <option value='VT'>VERMONT</option>
+                                                                                <option value='WA'>WASHINGTON</option>
+                                                                                <option value='WI'>WISCONSIN</option>
+                                                                                <option value='WV'>WEST VIRGINIA</option>
+                                                                                <option value='WY'>WYOMING</option>
+                                                                            <option value="ALL">ALL STATES</option>
+                                </select>&nbsp;
+                                
+                                <input type="submit" value="Search" class="textfield">
+                                <input name="action" type="hidden" value="didsearch">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+
+
+
+                                                <form name="form2" method="post" action="orderdidconfirm.php">
+                                    <br>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="6">
+                                        <tr>
+                                            <td colspan="3" class="leftmenubottomtdlineonrightfull"><span class="normaltexthitebold"> 1. Select your number(s) for BALTIMORE (MD)</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="19%" class="leftmenubottomtdlinefull"><div class="normaltextbold">Did Number</div></td>
+                                            <td width="31%" class="leftmenubottomtdlinefull"><div class="normaltextbold">Per Minute Plan<br>
+                                                <span class="normaltext">(Residential or Commercial use)</span></div></td>
+                                            <td width="44%" class="leftmenubottomtdlinerightfull"><div class="normaltextbold">Monthly Flat Rate Plan<br>
+                                                <span class="normaltext">(Intended for residential use)</span> </div></td>
+                                      </tr>
+                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434513858:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.3858</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434513859:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.3859</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434513962:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.3962</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434513968:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.3968</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434514932:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.4932</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434514966:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.4966</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518958:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8958</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518960:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8960</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518961:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8961</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518962:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8962</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518964:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8964</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518965:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8965</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518966:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8966</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518967:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8967</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518968:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8968</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518970:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8970</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518971:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8971</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518972:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8972</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518974:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8974</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518975:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8975</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518983:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8983</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4434518984:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.451.8984</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                <td class="leftmenubottomtdline"><span class="normaltext">
+                                                <label>  <input name="did[]" type="checkbox" value="4435249779:BALTIMORE:MD:1.49:0.0149:0.50:6.95:1.00" />
+                                                443.524.9779</label></span></td>
+                                                <td class="leftmenubottomtdline"><span class="normaltext">$1.49 per Month / $0.0149 per minute </span></td>
+                                                <td class="leftmenubottomtdlineright"><span class="normaltext">$6.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4435735182:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.573.5182</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4435735184:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.573.5184</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4435735185:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.573.5185</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4435735188:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.573.5188</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4435735189:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.573.5189</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4435735192:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.573.5192</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4435735193:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.573.5193</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4435735194:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.573.5194</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4435735197:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.573.5197</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4435735198:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.573.5198</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157101:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7101</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157102:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7102</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157104:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7104</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157105:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7105</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157108:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7108</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157113:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7113</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157116:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7116</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157119:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7119</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157132:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7132</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157134:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7134</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157136:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7136</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157138:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7138</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157139:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7139</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157142:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7142</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157143:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7143</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157144:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7144</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157147:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7147</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157149:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7149</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157152:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7152</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157153:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7153</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157159:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7159</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157162:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7162</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157164:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7164</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157165:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7165</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157167:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7167</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157173:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7173</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157176:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7176</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157179:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7179</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157181:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7181</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157182:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7182</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157185:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7185</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157186:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7186</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157187:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7187</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157191:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7191</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157192:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7192</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157193:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7193</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157925:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7925</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157926:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7926</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157927:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7927</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157934:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7934</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157935:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7935</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157938:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7938</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157941:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7941</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157943:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7943</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157947:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7947</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436157948:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.615.7948</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929357:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9357</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929358:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9358</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929359:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9359</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929361:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9361</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929362:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9362</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929364:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9364</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929365:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9365</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929366:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9366</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929367:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9367</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929368:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9368</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929369:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9369</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929371:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9371</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929372:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9372</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929373:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9373</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929374:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9374</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929378:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9378</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929379:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9379</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929381:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9381</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929382:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9382</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929383:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9383</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929384:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9384</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929385:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9385</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929386:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9386</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929387:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9387</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929388:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9388</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929389:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9389</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929390:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9390</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929391:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9391</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929394:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9394</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929395:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9395</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929397:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9397</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929398:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9398</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929402:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9402</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929403:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9403</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929404:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9404</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929406:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9406</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929407:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9407</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929410:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9410</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929412:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9412</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#FFFFFF">
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">
+                                                     <label> <input name="did[]" type="checkbox" value="4436929414:BALTIMORE:MD:0.99:0.01:0.50:4.95:1.00" />
+                                                     443.692.9414</label></span></td>
+                                                    <td class="leftmenubottomtdline"><span class="normaltext">$0.99 per Month / $0.01 per minute </span></td>
+                                                  <td class="leftmenubottomtdlineright"><span class="normaltext">$4.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                                                                        <tr bgcolor="#EFEFEF">
+                                                <td class="leftmenubottomtdline"><span class="normaltext">
+                                                <label>  <input name="did[]" type="checkbox" value="4439271725:BALTIMORE:MD:1.49:0.0149:0.50:6.95:1.00" />
+                                                443.927.1725</label></span></td>
+                                                <td class="leftmenubottomtdline"><span class="normaltext">$1.49 per Month / $0.0149 per minute </span></td>
+                                                <td class="leftmenubottomtdlineright"><span class="normaltext">$6.95 per Month / $0.00 per minute / 2 Channels </span></td>
+                                            </tr>
+                                            
+            </table>
+            <span class="normaltext">Count: 120</span>
+            
+            <br>
+            <table width="100%" border="0" cellpadding="6" cellspacing="0">
+              <tr>
+                <td colspan="3" class="leftmenubottomtdlineon"><div align="left" class="normaltexthitebold">2. Select the plan to apply for the incoming calls to your number(s)</div></td>
+              </tr>
+              <tr>
+                <td width="32%" class="leftmenubottomtdline">
+                    
+            <table cellspacing="0" cellpadding="0" width='100%'>
+                <tr>
+                    <td class="normaltext" width='99%'>
+                        <div align="left" class="normaltextbold">Select Plan</div>
+                    </td>
+                    <td id='#didplan' class="tt" style='cursor:pointer;'><img src='/images/help_grey.png'></td>
+                </tr>                            
+            </table>
+            <div id='didplan' style='display:none'>
+                <div class='normaltext' style='width:350px'>
+                    Incoming Calls and Montly Fee for the DID will be charged according to the Plan selected                </div>
+            </div>
+
+                        </td>
+                <td width="31%" valign="top" bgcolor="#FFFFFF" class="leftmenubottomtdlinefull"><div align="left" class="normaltextbold">
+                   
+                      <label>
+                      <input name="billingtype" type="radio" value="1" checked>
+                     
+                      Per minute </label>
+                      (Inbound)<br>
+                      <br>
+                      <span class="normaltextbold">Setup Fee:</span><span class="normaltext"> $0.50<br>
+                        </span><span class="normaltextbold">Billing Increment:</span><span class="normaltext"> 6 seconds<br>
+                          </span><span class="normaltextbold">Channels:</span><span class="normaltext"> Unlimited<br>
+                            </span><span class="normaltextbold">Intended Use:</span><span class="normaltext"> Any </span><br>
+                      <label></label>
+                   
+                </div></td>
+                <td width="37%" valign="top" class="leftmenubottomtdlinerightfull"><div align="left" class="normaltextbold">
+                    <label>
+                    <input type="radio" name="billingtype" value="2">
+                      Flat rate</label>
+                    (Inbound)
+                    <br>
+                    <br>
+                  Setup Fee:<span class="normaltext"> $1.00<br>
+                    </span>Billing Increment:<span class="normaltext"> not applicable <br>
+                      </span>Channels: <span class="normaltext">2</span> <span class="normaltext"><br>
+                        </span>Intended Use:<span class="normaltext"> Residential, up to 3500 INCOMING minutes per month<br>
+                        </span>
+                </div></td>
+              </tr>
+            </table>
+            
+            <br>
+            <table width="100%" border="0" cellpadding="6" cellspacing="0">
+              <tr>
+                <td colspan="3" class="leftmenubottomtdlineon"><div align="left" class="normaltexthitebold">3. Select options (Can be changed at anytime) </div></td>
+              </tr>
+              <tr>
+                <td width="32%" class="leftmenubottomtdline">
+                    
+            <table cellspacing="0" cellpadding="0" width='100%'>
+                <tr>
+                    <td class="normaltext" width='99%'>
+                        <div align="left" class="normaltextbold">CallerID Name Lookup</div>
+                    </td>
+                    <td id='#cnam' class="tt" style='cursor:pointer;'><img src='/images/help_grey.png'></td>
+                </tr>                            
+            </table>
+            <div id='cnam' style='display:none'>
+                <div class='normaltext' style='width:350px'>
+                    For Callers with a US/Canadian CallerID number, perform a lookup 
+                            in the LIBD/CNAM database to find the name matching the number. <br><br>
+                            When activated, the system will display the result of this query 
+                            in the CallerID name portion of the CallerID, leading to a 
+                            &quot;CallerID name&quot; &lt;5551231234&gt; format when people call your number.<br><br>
+                            Please note that we will not charge for queries coming from a number 
+                            matching an entry in your phone book.
+                                           </div>
+            </div>
+
+                        </td>
+                <td width="31%" valign="top" bgcolor="#FFFFFF" class="leftmenubottomtdlinefull"><div align="left" class="normaltextbold">
+                    
+                      <label>
+                      <input name="cnam" type="radio" value="1" >
+                    
+                      Yes, <span class="normaltext">0.8 cent per query (8/10 of a cent) </span>  </label>
+                    
+                    
+                </div></td>
+                <td width="37%" valign="top" class="leftmenubottomtdlinerightfull"><div align="left" class="normaltextbold">
+                    <label>
+                    <input type="radio" name="cnam" value="0" checked>
+                      No thanks </label>
+                    
+                </div></td>
+              </tr>
+              <tr>
+                <td class="leftmenubottomtdline">
+                    
+            <table cellspacing="0" cellpadding="0" width='100%'>
+                <tr>
+                    <td class="normaltext" width='99%'>
+                        <div align="left" class="normaltextbold">DID POP</div>
+                    </td>
+                    <td id='#pop' class="tt" style='cursor:pointer;'><img src='/images/help_grey.png'></td>
+                </tr>                            
+            </table>
+            <div id='pop' style='display:none'>
+                <div class='normaltext' style='width:350px'>
+                    Set this to the server your software/device is registered to
+                            or receiving the call from. You can change this at any time.
+                                           </div>
+            </div>
+
+                        </td>
+                <td colspan="2" valign="top" bgcolor="#FFFFFF" class="leftmenubottomtdlineright">
+                  
+                    <div align="left" class="normaltextbold">                <label>
+                    <input type="radio" name="pop" value="15"  />
+                    Atlanta, GA<span class="normaltext"> (atlanta.voip.ms)</span>
+                </label><br>
+                            <label>
+                    <input type="radio" name="pop" value="14"  />
+                    Chicago, IL<span class="normaltext"> (chicago.voip.ms)</span>
+                </label><br>
+                            <label>
+                    <input type="radio" name="pop" value="9"  />
+                    Dallas, TX<span class="normaltext"> (dallas.voip.ms)</span>
+                </label><br>
+                            <label>
+                    <input type="radio" name="pop" value="1"  />
+                    Houston, TX<span class="normaltext"> (houston.voip.ms)</span>
+                </label><br>
+                            <label>
+                    <input type="radio" name="pop" value="11"  />
+                    Los Angeles, CA<span class="normaltext"> (losangeles.voip.ms)</span>
+                </label><br>
+                            <label>
+                    <input type="radio" name="pop" value="8" checked />
+                    New York, NY<span class="normaltext"> (newyork.voip.ms)</span>
+                </label><br>
+                            <label>
+                    <input type="radio" name="pop" value="12"  />
+                    Seattle, WA<span class="normaltext"> (seattle.voip.ms)</span>
+                </label><br>
+                            <label>
+                    <input type="radio" name="pop" value="16"  />
+                    Tampa, FL<span class="normaltext"> (tampa.voip.ms)</span>
+                </label><br>
+                            <label>
+                    <input type="radio" name="pop" value="3"  />
+                    Montreal,QC<span class="normaltext"> (montreal.voip.ms)</span>
+                </label><br>
+                            <label>
+                    <input type="radio" name="pop" value="10"  />
+                    Toronto, ON<span class="normaltext"> (toronto.voip.ms)</span>
+                </label><br>
+                            <label>
+                    <input type="radio" name="pop" value="2"  />
+                    London, UK<span class="normaltext"> (london.voip.ms)</span>
+                </label><br>
+            </div>                 
+                </td>
+              </tr>
+              
+              
+                <!-- CASCADING STYLE SHIT FOR: HIDDEN / HIDDENTR -->
+    <style>.hidden{display:none; height:330px;} .hiddentr{display:none;}</style>
+    
+
+    
+              <!--  R O U T I N G  -->            
+              <tr>                 <td class="leftmenubottomtdlinefull" >
+                    
+            <table cellspacing="0" cellpadding="0" width='100%'>
+                <tr>
+                    <td class="normaltext" width='99%'>
+                        <div align="left" class="normaltextbold">Routing</div>
+                    </td>
+                    <td id='#routingtt' class="routingtt" style='cursor:pointer;'><img src='/images/help_grey.png'></td>
+                </tr>                            
+            </table>
+            <div id='routingtt' style='display:none'>
+                <div class='normaltext' style='width:350px'>
+                    Where to route the call for this DID.                </div>
+            </div>
+
+                        </td>
+                <td colspan="2" class="leftmenubottomtdlinerightfull" ><div align="left" class="normaltext">
+                  <table width="100%" border="0" align="left" cellpadding="2" cellspacing="0">
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="account"  checked >
+                          SIP/IAX</label>
+                      </div>
+                        <div align="left" class="normaltext"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="account1" class="textfieldlong" id="routing"><option class="on" value="115470" selected>[main account] SIP/115470</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="ivr"  disabled  >
+                          IVR</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="ivr1" class="textfieldlong" id="routing"><option value="">No IVR found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="queue"  disabled  >
+                          Calling Queue</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="queue1" class="textfieldlong" id="routing"><option value="">No Calling Queues found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="tc"  disabled  >
+                          Time Conditions </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="tc1" class="textfieldlong" id="routing"><option value="">No Condition entries found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="fwd"  disabled  >
+                          Call Forwarding</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="fwd1" class="textfieldlong" id="routing"><option value="">No forwarding entries found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="sip"  disabled  >
+                          SIP URI </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="sip1" class="textfieldlong" id="routing"><option value="">No SIP URI found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="grp"  disabled  >
+                          Ring Group </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="grp1" class="textfieldlong" id="routing"><option value="">No group found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="recording"  disabled  >
+                          Play Recording </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="recording1" class="textfieldlong" id="routing"><option value="">No recordings found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td  class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="cb"  disabled  >
+                          Callback </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="cb1" class="textfieldlong" id="routing"><option value="">No Callback found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td  class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="disa"  disabled  >
+                          DISA </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="disa1" class="textfieldlong" id="routing"><option value="">No DISA found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td  class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="vm"  disabled  >
+                          Voicemail </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="vm1" class="textfieldlong" id="routing"><option value="">No Voicemail found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing1" type="radio" value="sys" >
+                          System </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td scope="col"><div align="left" class="normaltext"><select name="sys1" class="textfieldlong" id="routing"><option value="hangup" xxselhangupxx>Hangup</option><option value="busy" xxselbusyxx>Busy</option><option value="noservice" xxselnoservicexx>System Recording: Number not in service</option><option value="disconnected" xxseldisconnectedxx>System Recording: Number has been disconnected</option><option value="dtmf" xxseldtmfxx>DTMF Test</option><option value="echo" xxselechoxx>ECHO Test</option></select></div></td>
+                    </tr>
+                  </table>
+                </div></td>
+              </tr>
+
+              
+              
+              <tr>
+                <td colspan="3" class="leftmenubottomtdlinerightfull">
+                    <div align="left" class="normaltextbold">
+                        <span class="normaltextbold">Optional Failover Options</span>&nbsp;
+                        <a href='#' id='Optional' class="standardlink">Click here to display</a>
+                    </div>
+                </td>
+              </tr>
+              
+
+              
+              <!--  F A I L O V E R - B U S Y  -->            
+              <tr class='hiddentr'>                 <td class="leftmenubottomtdlinefull">
+                    <div align="left" class="normaltextbold hidden">
+                        <br><br><br><br><br><br><br><br><br>
+                        
+            <table cellspacing="0" cellpadding="0" width='100%'>
+                <tr>
+                    <td class="normaltext" width='99%'>
+                        <div align="left" class="normaltextbold">Routing if Destination Busy</div>
+                    </td>
+                    <td id='#busytt' class="routingtt" style='cursor:pointer;'><img src='/images/help_grey.png'></td>
+                </tr>                            
+            </table>
+            <div id='busytt' style='display:none'>
+                <div class='normaltext' style='width:350px'>
+                    Optionally, if the destination is busy, you can route calls to a specific destination.                </div>
+            </div>
+
+                            </div>
+                </td>
+                <td class="leftmenubottomtdlinerightfull" colspan="2"><div align="left" class="normaltext hidden">
+                  <table width="100%" border="0" align="left" cellpadding="2" cellspacing="0">
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="account" >
+                          SIP/IAX</label>
+                      </div>
+                        <div align="left" class="normaltext"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="account2" class="textfieldlong" id="routing"><option class="on" value="115470" xxsel115470xx>[main account] SIP/115470</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="ivr"  disabled  >
+                          IVR</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="ivr2" class="textfieldlong" id="routing"><option value="">No IVR found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="queue"  disabled  >
+                          Calling Queue</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="queue2" class="textfieldlong" id="routing"><option value="">No Calling Queues found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="tc"  disabled  >
+                          Time Conditions </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="tc2" class="textfieldlong" id="routing"><option value="">No Condition entries found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="fwd"  disabled  >
+                          Call Forwarding</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="fwd2" class="textfieldlong" id="routing"><option value="">No forwarding entries found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="sip"  disabled  >
+                          SIP URI </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="sip2" class="textfieldlong" id="routing"><option value="">No SIP URI found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="grp"  disabled  >
+                          Ring Group </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="grp2" class="textfieldlong" id="routing"><option value="">No group found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="recording"  disabled  >
+                          Play Recording </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="recording2" class="textfieldlong" id="routing"><option value="">No recordings found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td  class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="disa"  disabled  >
+                          DISA </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="disa2" class="textfieldlong" id="routing"><option value="">No DISA found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td  class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="vm"  disabled  >
+                          Voicemail </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="vm2" class="textfieldlong" id="routing"><option value="">No Voicemail found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="sys" >
+                          System </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="sys2" class="textfieldlong" id="routing"><option value="hangup" xxselhangupxx>Hangup</option><option value="busy" xxselbusyxx>Busy</option><option value="noservice" xxselnoservicexx>System Recording: Number not in service</option><option value="disconnected" xxseldisconnectedxx>System Recording: Number has been disconnected</option><option value="dtmf" xxseldtmfxx>DTMF Test</option><option value="echo" xxselechoxx>ECHO Test</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing2" type="radio" value="none"  checked >
+                          None</label>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div></td>
+              </tr>
+              
+              
+              
+              <!--  F A I L O V E R - U N R E A C H A B L E  -->              
+              <tr class='hiddentr'>                 <td class="leftmenubottomtdlinefull">
+                    <div align="left" class="normaltextbold hidden">
+                        <br><br><br><br><br><br><br><br><br>
+                        
+            <table cellspacing="0" cellpadding="0" width='100%'>
+                <tr>
+                    <td class="normaltext" width='99%'>
+                        <div align="left" class="normaltextbold">Routing if Destination Unreachable</div>
+                    </td>
+                    <td id='#unreachablett' class="routingtt" style='cursor:pointer;'><img src='/images/help_grey.png'></td>
+                </tr>                            
+            </table>
+            <div id='unreachablett' style='display:none'>
+                <div class='normaltext' style='width:350px'>
+                    Optionally, if the destination is unreachable (Not registered, Network Issue, Power Outage etc.), you can route calls to a specific destination.                </div>
+            </div>
+
+                            </div>
+                </td>
+                <td class="leftmenubottomtdlinerightfull" colspan="2"><div align="left" class="normaltext hidden">
+                  <table width="100%" border="0" align="left" cellpadding="2" cellspacing="0">
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="account" >
+                          SIP/IAX</label>
+                      </div>
+                        <div align="left" class="normaltext"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="account3" class="textfieldlong" id="routing"><option class="on" value="115470" xxsel115470xx>[main account] SIP/115470</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="ivr"  disabled  >
+                          IVR</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="ivr3" class="textfieldlong" id="routing"><option value="">No IVR found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="queue"  disabled  >
+                          Calling Queue</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="queue3" class="textfieldlong" id="routing"><option value="">No Calling Queues found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="tc"  disabled  >
+                          Time Conditions </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="tc3" class="textfieldlong" id="routing"><option value="">No Condition entries found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="fwd"  disabled  >
+                          Call Forwarding</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="fwd3" class="textfieldlong" id="routing"><option value="">No forwarding entries found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="sip"  disabled  >
+                          SIP URI </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="sip3" class="textfieldlong" id="routing"><option value="">No SIP URI found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="grp"  disabled  >
+                          Ring Group </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="grp3" class="textfieldlong" id="routing"><option value="">No group found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="recording"  disabled  >
+                          Play Recording </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="recording3" class="textfieldlong" id="routing"><option value="">No recordings found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td  class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="disa"  disabled  >
+                          DISA </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="disa3" class="textfieldlong" id="routing"><option value="">No DISA found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td  class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="vm"  disabled  >
+                          Voicemail </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="vm3" class="textfieldlong" id="routing"><option value="">No Voicemail found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="sys" >
+                          System </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="sys3" class="textfieldlong" id="routing"><option value="hangup" xxselhangupxx>Hangup</option><option value="busy" xxselbusyxx>Busy</option><option value="noservice" xxselnoservicexx>System Recording: Number not in service</option><option value="disconnected" xxseldisconnectedxx>System Recording: Number has been disconnected</option><option value="dtmf" xxseldtmfxx>DTMF Test</option><option value="echo" xxselechoxx>ECHO Test</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing3" type="radio" value="none"  checked >
+                          None</label>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div></td>
+              </tr>
+              
+              
+              
+              <!--  F A I L O V E R - N O A N S W E R  -->            
+              <tr class='hiddentr'>                 <td class="leftmenubottomtdlinefull">
+                    <div align="left" class="normaltextbold hidden">
+                        <br><br><br><br><br><br><br><br><br>
+                        
+            <table cellspacing="0" cellpadding="0" width='100%'>
+                <tr>
+                    <td class="normaltext" width='99%'>
+                        <div align="left" class="normaltextbold">Routing if Destination No Answer</div>
+                    </td>
+                    <td id='#noanswertt' class="routingtt" style='cursor:pointer;'><img src='/images/help_grey.png'></td>
+                </tr>                            
+            </table>
+            <div id='noanswertt' style='display:none'>
+                <div class='normaltext' style='width:350px'>
+                    Optionally, if the destination does not answer the call, you can route calls to a specific destination.                </div>
+            </div>
+
+                            </div>
+                </td>
+                <td class="leftmenubottomtdlinerightfull" colspan="2"><div align="left" class="normaltext hidden">
+                  <table width="100%" border="0" align="left" cellpadding="2" cellspacing="0">
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="account" >
+                          SIP/IAX</label>
+                      </div>
+                        <div align="left" class="normaltext"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="account4" class="textfieldlong" id="routing"><option class="on" value="115470" xxsel115470xx>[main account] SIP/115470</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="ivr"  disabled  >
+                          IVR</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="ivr4" class="textfieldlong" id="routing"><option value="">No IVR found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="queue"  disabled  >
+                          Calling Queue</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="queue4" class="textfieldlong" id="routing"><option value="">No Calling Queues found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="tc"  disabled  >
+                          Time Conditions </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="tc4" class="textfieldlong" id="routing"><option value="">No Condition entries found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="fwd"  disabled  >
+                          Call Forwarding</label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="fwd4" class="textfieldlong" id="routing"><option value="">No forwarding entries found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="sip"  disabled  >
+                          SIP URI </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="sip4" class="textfieldlong" id="routing"><option value="">No SIP URI found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="grp"  disabled  >
+                          Ring Group </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="grp4" class="textfieldlong" id="routing"><option value="">No group found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="recording"  disabled  >
+                          Play Recording </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="recording4" class="textfieldlong" id="routing"><option value="">No recordings found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td  class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="disa"  disabled  >
+                          DISA </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="disa4" class="textfieldlong" id="routing"><option value="">No DISA found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td  class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="vm"  disabled  >
+                          Voicemail </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="vm4" class="textfieldlong" id="routing"><option value="">No Voicemail found</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="sys" >
+                          System </label>
+                      </div>
+                        <div align="left"></div></td>
+                      <td class="linebottom" scope="col"><div align="left" class="normaltext"><select name="sys4" class="textfieldlong" id="routing"><option value="hangup" xxselhangupxx>Hangup</option><option value="busy" xxselbusyxx>Busy</option><option value="noservice" xxselnoservicexx>System Recording: Number not in service</option><option value="disconnected" xxseldisconnectedxx>System Recording: Number has been disconnected</option><option value="dtmf" xxseldtmfxx>DTMF Test</option><option value="echo" xxselechoxx>ECHO Test</option></select></div></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2" scope="col"><div align="left" class="normaltext">
+                        <label>
+                          <input name="routing4" type="radio" value="none"  checked >
+                          None</label>
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                </div></td>
+              </tr>
+
+
+
+    <!-- JAVASCRIPT: HIDE / SHOW -->
+    <script>
+        /* Show-Hide Advanced Options */
+        $('#Optional').click(function (e){
+            e.preventDefault();
+            
+            if ($(".hidden:first").is(":hidden")) {
+                if($.browser.msie){$('.hiddentr').css('display','block');}
+                else{$('.hiddentr').css('display','table-row');}
+                $('#Optional').html('Click here to hide');
+                $(".hidden").slideDown(500);
+            } else {
+                $('#Optional').html('Click here to display');
+                $(".hidden").slideUp(500,function(){
+                    $('.hiddentr').css('display','none');
+                });
+                
+            }
+        });
+        
+        $(document).ready(function(){
+           $('.routingtt').tooltip({
+                track: true, delay: 0, showURL: false, fade: 250,
+                bodyHandler: function(){return $($(this).attr("id")).html();}
+            });
+        });
+    </script>
+              
+              
+              <tr>
+                <td colspan="3" class="leftmenubottomtdlineright"><span class="normaltext"><strong>Note: <br />
+                  </strong></span><span class="normaltext"><strong>Listed numbers</strong></span><span class="normaltext"> are processed in real time and effective immediatly after your order. <strong><br />
+                    'Carrier Order':  </strong>we do not currently have any DIDs for that ratecenter in our pool. However it can be ordered directly with our carriers. If carrier has the rate center in stock, your number will be provisioned within 1 business day. If the DID is backorder, orders usually take 2-5 business days, but may take up to 30 business days to be completed depending on the ratecenter. </span></td>
+              </tr>
+              <tr>
+                <td colspan="3" class="leftmenubottomtdlineright"><div align="center">
+                  <span class="leftmenubottomtdlinerightfull">
+                  <input name="ratecenter" type="hidden" id="ratecenter" value="BALTIMORE">
+                  <input name="state" type="hidden" id="state" value="MD">
+                  <input name="action" type="hidden" id="action3" value="orderdid">
+                  </span>
+                  <input name="button" type="submit" class="textfield" id="button" value="  Order DID  ">
+                </div></td>
+              </tr>
+            </table>
+          </form>
+              
+              
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+              
+        
+              
+
+          <!-- InstanceEndEditable --></td>
+        </tr>
+      </table>
+      </div></th>
+  </tr>
+  <tr>
+    <th colspan="2" valign="top" bgcolor="#666F6E" scope="col"><br>
+      <div align="center"><br>
+          <span class="smallwhitelink">VoIP.ms - Copyright &copy; 2010</span><br>
+          <span class="smallwhitelink"><a href="/tos.php" class="smallwhitelink">Terms of service</a> - <a href="/privacy.php" class="smallwhitelink">Privacy policy</a><br> 
+          All currencies on this website are in USD (US Dollars)</span><br>
+          <br>
+      </div></th>
+    </tr>
+</table>
+<div align=center>
+<!-- Bold Software Visitor Monitor HTML v2.00 (Website=- None -,ChatWindow=Customer Portal Window,ChatInvitation=- None -) -->
+<script language="JavaScript" type="text/javascript">
+document.write(unescape('%3Cscript language="JavaScript" type="text/javascript" src="https://vms.boldchat.com/aid/2947277729005480016/bc.vms2/vms.js"%3E%3C/script%3E'));
+</script>
+<script language="JavaScript" type="text/javascript">
+try {
+  var pageViewer = _bcvm.getPageViewer("2947277729005480016");
+  pageViewer.setParameter("ChatWindowDefID", "2457138716095309589");
+  pageViewer.setParameter("ChatWidth", "640");
+  pageViewer.setParameter("ChatHeight", "480");
+  pageViewer.setParameter("WindowScheme", "https");
+  pageViewer.setParameter("VisitName", "William McCracken");
+  pageViewer.setParameter("VisitPhone", "443-837-5730");
+  pageViewer.setParameter("VisitEmail", "will@pipes.io");
+  pageViewer.setParameter("VisitRef", "115470");
+  pageViewer.setParameter("VisitInfo", "LIVE");
+  pageViewer.setParameter("CustomUrl", "");
+  pageViewer.pageViewed();
+} catch(error) {}
+</script>
+<noscript>
+<a href="http://www.boldsoft.com" title="Live Chat Software" target="_blank"><img alt="Live Chat Software"
+src="https://vms.boldchat.com/aid/2947277729005480016/bc.vmi?vr=115470&amp;curl=" border="0" width="1" height="1" /></a>
+</noscript>
+<!-- /Bold Software Visitor Monitor HTML v2.00 -->
+
+</div>
+</body>
+<!-- InstanceEnd --></html>

@@ -3,6 +3,7 @@ test
 tmp
 log
 config/environments/local.rb
+config/current_provider_login
 .DS_Store
 ._*
 
