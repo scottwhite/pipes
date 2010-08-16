@@ -6,7 +6,7 @@ set :branch, "master"
 
 set :deploy_via, :copy
 set :copy_strategy, :export
-set :copy_exclude, ["config/deploy.rb","lib/tasks/rspec.rake" "doc", "spec"]
+set :copy_exclude, ["config/deploy.rb","lib/tasks/rspec.rake", "doc", "spec"]
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
