@@ -4,7 +4,7 @@ class Did < ActiveRecord::Base
   IN_USE = 2
 
 
-  has_many :dids_user_phones
+  has_one :dids_user_phone
   
   named_scope :available_by_region, lambda{|city,state|
     {conditions: {usage_state: ACTIVE, state: state.downcase, city: city.downcase}}
@@ -23,6 +23,12 @@ class Did < ActiveRecord::Base
       did = cp.order(options[:city],options[:state])
     end
    did
+  end
+  
+  def friendly_phone_number
+    return if phone_number.blank?
+    m= phone_number.match(/(\d{3})(\d{3})(\d{4})/)
+    "#{m[1]} #{m[2]} #{m[3]}"
   end
   
 end

@@ -14,6 +14,11 @@ class User < ActiveRecord::Base
                                         inner join user_phones up on up.user_id = #{id}
                                         and up.id = dup.user_phone_id
                                         and dids.usage_state = #{Did::ACTIVE}}
+  has_many :currently_using_dids, class_name: 'Did', finder_sql: %q{select dids.* from dids 
+                                        inner join dids_user_phones dup on dup.did_id = dids.id
+                                        inner join user_phones up on up.user_id = #{id}
+                                        and up.id = dup.user_phone_id
+                                        and dids.usage_state = #{Did::IN_USE}}
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -57,12 +62,18 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def request_number(options={})
+    phone = UserPhone.convert_number(options[:number])
+    up = UserPhone.find_or_create_by_user_id_and_number(self.id, phone)
+    up.order_and_assign(options)
+  end
+
   protected
     
   def make_activation_code
       self.deleted_at = nil
       self.activation_code = self.class.make_token
   end
-      
+  
 
 end

@@ -7,12 +7,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, {:member=>{:suspend=>:put, :unsuspend=>:put, :purge=>:delete}}
 
   map.resource :session
-  map.resource :request_number
+  map.resources :request_number, {:member=>{:success=>:get}}
   
   map.login '/login', :controller => :session, :action => :new, :conditions => {:method => :get}
   map.logout '/logout', :controller => :session, :action => :destroy, :conditions => {:method => :get}
 
 
-  map.root controller: :request_number, action: :index
+  map.root controller: :request_number, action: :new
   
 end
