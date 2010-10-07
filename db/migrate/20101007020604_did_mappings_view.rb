@@ -3,7 +3,6 @@ class DidMappingsView < ActiveRecord::Migration
     connection.execute(%Q{CREATE VIEW `did_mappings` AS 
         select `d`.`phone_number` AS `phone_number`,
         `up`.`number` AS `number`,
-        `d`.`usage_state` AS `usage_state`,
         `dup`.`current_usage` AS `current_usage`,
         (1200 - current_usage) as 'time_left'
         from `dids` `d` 
