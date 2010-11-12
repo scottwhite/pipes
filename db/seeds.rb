@@ -8,6 +8,12 @@
 
 dids = [
   {
+    phone_number: '4434589920',
+    state: 'md',
+    city: 'annapolis',
+    usage_state: Did::ACTIVE
+  },
+  {
     phone_number: '4434825307',
     state: 'md',
     city: 'annapolis',
@@ -16,7 +22,7 @@ dids = [
   {
     phone_number: '4434513858',
     state: 'md',
-    city: 'annapolis',
+    city: 'baltimore',
     usage_state: Did::ACTIVE
   },
   {

@@ -10,6 +10,9 @@ class Did < ActiveRecord::Base
     {conditions: {usage_state: ACTIVE, state: state.downcase, city: city.downcase}}
     }
   
+  named_scope :active, {conditions: {usage_state: ACTIVE}}
+  named_scope :in_use, {conditions: {usage_state: IN_USE}}
+  
   def self.current_provider
     @current_provider ||= Voipms
   end
@@ -24,6 +27,7 @@ class Did < ActiveRecord::Base
     end
    did
   end
+  
   
   def friendly_phone_number
     return if phone_number.blank?
