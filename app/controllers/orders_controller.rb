@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
 
   private
   def verify
-    id = params[:id] || params[:order]
+    id = params[:id] || params[:invoice]
     @order = Order.verify(id.to_i)
   end
 end
