@@ -4,6 +4,7 @@ class RequestNumberController < ApplicationController
     # new request for did
     respond_to do |wants|
       if @did = check_for_existing
+        @order = Order.create_for(current_user)
         flash[:notice] = "Currently have a temporary number #{@did.friendly_phone_number}"
         wants.html { render }
         wants.json  { render json: @dids.first }
