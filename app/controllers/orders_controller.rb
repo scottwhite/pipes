@@ -1,10 +1,12 @@
 class OrdersController < ApplicationController
+  skip_before_filter :require_user, :verify_authenticity_token
   before_filter :verify, only: [:finialize]
 
   def finialize
     did = @order.process({raw_status: params[:payment_status], gateway_trans_id: params[:txn_id]})
+    Mailer.send_order_completed(did,@order) if did
     respond_to do |wants|
-      wants.html{ redirect_to '/'}
+      wants.html{ render text: did.phone_number}
       wants.json{ render json: did.phone_number}
     end
   end

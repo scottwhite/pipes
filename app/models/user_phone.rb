@@ -10,7 +10,7 @@ class UserPhone < ActiveRecord::Base
   def order_and_assign(options={})
     options.merge(user_phone: self)
     options[:city] = 'Baltimore'   #TEMP!!!!!!
-    options[:state] = self.user.state || 'md'
+    options[:state] = 'md' #self.user.state_code || 'md'
     did = Did.order(options)
     did.usage_state = Did::IN_USE
     did.save!
