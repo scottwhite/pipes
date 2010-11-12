@@ -8,7 +8,8 @@ class RequestNumberController < ApplicationController
         wants.html { render }
         wants.json  { render json: @dids.first }
       else
-        wants.html {}
+        @order = Order.create_for(current_user)
+        wants.html { render }
       end
     end
   end

@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
                                         inner join user_phones up on up.user_id = #{id}
                                         and up.id = dup.user_phone_id
                                         and dids.usage_state = #{Did::IN_USE}}
+  has_many :orders
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
@@ -63,8 +64,12 @@ class User < ActiveRecord::Base
   end
 
   def request_number(options={})
-    phone = UserPhone.convert_number(options[:number])
-    up = UserPhone.find_or_create_by_user_id_and_number(self.id, phone)
+    if(options[:number])
+      phone = UserPhone.convert_number(options[:number])
+      up = UserPhone.find_or_create_by_user_id_and_number(self.id, phone)
+    else
+      up = self.phones.first
+    end
     up.order_and_assign(options)
   end
 
