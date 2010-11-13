@@ -9,5 +9,11 @@ describe Order, "doing it" do
     o.user_id.should == @user.id
     o.id.should_not be_blank
   end
+  
+  it "should process an order" do
+    o = Order.create_for(@user)
+    did = o.process({gateway_trans_id: 'blah', raw_status: 'Completed'})
+    did.should_not be_nil
+  end
     
 end

@@ -4,7 +4,7 @@ class CreateOrders < ActiveRecord::Migration
       t.integer :user_id, null: false
       t.integer :status, null: false
       t.decimal :amount, precision: 8, scale: 2, null: false
-      t.integer :gateway_trans_id, null: true
+      t.string :gateway_trans_id, null: true
       t.timestamps
     end
     

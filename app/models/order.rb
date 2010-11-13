@@ -14,9 +14,9 @@ class Order < ActiveRecord::Base
   
   def translate_status(status)
     case status
-    when 'Completed'
+    when 'Completed' then
       COMPLETED
-    when 'Failed'
+    when 'Failed' then
       FAILED
     else
       UNKNOWN
@@ -24,7 +24,7 @@ class Order < ActiveRecord::Base
   end
   
   def process(gateway={})
-    self.raw_status = gateway[:raw_status]
+    self.status = self.translate_status(gateway[:raw_status])
     self.gateway_trans_id = gateway[:gateway_trans_id]
     self.save!
     self.user.request_number if (self.status == COMPLETED)
