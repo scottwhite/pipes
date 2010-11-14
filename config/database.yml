@@ -17,7 +17,7 @@ test:
 
 staging:
   adapter: mysql
-  database: pipes
+  database: pipes_staging
   pool: 5
   timeout: 5000
   user: root

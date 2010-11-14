@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
 
   def finialize
     did = @order.process({raw_status: params[:payment_status], gateway_trans_id: params[:txn_id]})
-    Mailer.send_order_completed(did,@order) if did && @order.user.email?
+    Mailer.deliver_order_completed(did,@order) if did && @order.user.email?
     respond_to do |wants|
       wants.html{ render text: did.phone_number}
       wants.json{ render json: did.phone_number}
@@ -20,6 +20,7 @@ class OrdersController < ApplicationController
   end
   
   def show
+    Order.find(params[:id])
   end
 
   private

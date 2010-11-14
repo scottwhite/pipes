@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :request_number, {:member=>{:success=>:get}}
   map.resources :orders, {:collection=>{:finialize=>:post}}
   
-  map.success '/success', :controller=> :request_number, :action=>:show, :conditions => {:method => :get}
+  map.success '/success/:id', :controller=> :order, :action=>:show, :conditions => {:method => :get}
   
   
   map.login '/login', :controller => :session, :action => :new, :conditions => {:method => :get}
