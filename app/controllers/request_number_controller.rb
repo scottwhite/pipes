@@ -46,10 +46,22 @@ class RequestNumberController < ApplicationController
   end
   
   def success
-    @did = Did.find(params[:id])
+    id = params[:id] || params[:invoice]
+    @order= Order.find(id)
+    if params[:payment_status]=="Completed"
+      respond_to do |wants|
+        wants.html {}
+        wants.json  { render json: @dids.first }
+      end
+    else
+      render action: 'fail'
+    end
+  end
+  
+  def fail
     respond_to do |wants|
       wants.html {}
-      wants.json  { render json: @dids.first }
+      wants.json  { render json: {message: 'Did not get a successful response from Paypal'} }
     end
   end
   
