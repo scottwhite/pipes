@@ -16,11 +16,12 @@ class RequestNumberController < ApplicationController
   end
   
   def mail_existing
+    flash.discard
     did = check_for_existing
     if did.blank?
       flash[:status] = "There is a problem, you requested to email your existing Pipes number but you don't have one"
     else
-      Mailer.existing_did(did,current_user)
+      Mailer.deliver_existing_did(did,current_user)
       flash[:status] = "Your Pipes number has been sent to your email address"
     end
   end

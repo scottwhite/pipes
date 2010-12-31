@@ -1,6 +1,6 @@
 <div class="info">
 <%-if flash[:notice]-%>
-<%=link_to mail_exisitng_request_number_url, 'Send Pipes Number'%>
+<%=link_to 'Send Pipes Number', mail_existing_request_number_path%>
 <%- else -%>
 <p> Your REAL phone number : <%=@user_order[:phone]%><br>
 Requesting a Pipes number;<br>
@@ -21,6 +21,7 @@ For State: <%=@user_order[:state].upcase%> and City: <%=@user_order[:city]%>
 <%-end-%>
 
 <%-else-%>
+<%-if @did.blank? -%>
 TEST
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -29,6 +30,6 @@ TEST
 <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-
+<%-end-%>
 <%-end-%>
 </div>

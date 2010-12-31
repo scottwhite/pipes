@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, {:member=>{:suspend=>:put, :unsuspend=>:put, :purge=>:delete}}
 
   map.resource :sessions
-  map.resources :request_number, {:member=>{:success=>:get, :mail_existing=>:get}}
+  map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get}}
   map.resources :orders, {:collection=>{:finialize=>:post}}
   
   map.success '/success/:id', :controller=> :orders, :action=>:show, :conditions => {:method => :get}
