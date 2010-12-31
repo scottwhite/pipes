@@ -27,12 +27,12 @@ class Order < ActiveRecord::Base
     self.status = self.translate_status(gateway[:raw_status])
     self.gateway_trans_id = gateway[:gateway_trans_id]
     self.save!
-    self.user.request_number(state: order.state, city: order.city) if (self.status == COMPLETED)
+    self.user.request_number(state: self.state, city: self.city) if (self.status == COMPLETED)
   rescue => e
     logger.error("process: #{gateway.inspect}")
     logger.error("process: #{e.message}")
-    o.status = ERROR
-    o.save
+    self.status = ERROR
+    self.save
   end
   
   def self.create_for(user, user_order)
