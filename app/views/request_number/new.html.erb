@@ -1,22 +1,19 @@
-<%form_for :user_phone, url: { action: 'create'} do |f|-%>
-<label for="user_phone_number">Your Phone Number</label>
-<%=f.text_field :number, maxlength: 20, disabled: flash[:notice] ? true : false%>
-<br>
-<label for="user_phone_state">State</label>
-<%=f.select :state,[['Maryland','md']],{},{disabled: flash[:notice] ? true : false}%>
-<br>
-<label for="user_phone_city">City</label>
-<%=f.select :city,['Annapolis','Baltimore'],{},{ disabled: flash[:notice] ? true : false}%>
-<br>
-<br>
-<%=f.submit "Request Number", disabled: flash[:notice] ? true : false%>
-<%end-%>
-
+<div class="info">
+<%-if flash[:notice]-%>
+<%=link_to mail_exisitng_request_number_url, 'Send Pipes Number'%>
+<%- else -%>
+<p> Your REAL phone number : <%=@user_order[:phone]%><br>
+Requesting a Pipes number;<br>
+For State: <%=@user_order[:state].upcase%> and City: <%=@user_order[:city]%>
+</p>
+<p>If this is correct please click Pay Now button, if not <%=link_to 'go back', entry_path%></p>
+<%-end-%>
 <%if RAILS_ENV=='production'-%>
 
 <%-if @did.blank? -%>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="invoice" value="<%=@order.id%>">
 <input type="hidden" name="hosted_button_id" value="P79LWMD6PLV58">
 <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
@@ -34,3 +31,4 @@ TEST
 </form>
 
 <%-end-%>
+</div>

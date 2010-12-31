@@ -8,21 +8,23 @@ class SessionsController < ApplicationController
 
   def create
     logout_keeping_session!
-    user = User.authenticate(params[:login], params[:password])
-    if user
-      # Protects against session fixation attacks, causes request forgery
-      # protection if user resubmits an earlier form using back
-      # button. Uncomment if you understand the tradeoffs.
-      # reset_session
-      self.current_user = user
-      new_cookie_flag = (params[:remember_me] == "1")
-      handle_remember_cookie! new_cookie_flag
+    phone =params[:user_phone]
+    @user = User.find_or_initialize_by_email(params[:email])
+    @user.phones.build(number: phone) unless @user.phones.exists?(number: phone)
+    if @user.save
+      reset_session
+      session[:current_order] = {phone: phone, state: params[:state], city: params[:city]}
+      self.current_user = @user
       flash.discard
       redirect_back_or_default("/")
     else
-      note_failed_signin
-      @login       = params[:login]
+      flash[:error] = @user.errors.full_messages.join('<br>')
+      # note_failed_signin
+      @email       = params[:email]
+      @user_phone = params[:user_phone]
       @remember_me = params[:remember_me]
+      @city = params[:city]
+      @state = params[:state]
       render :action => 'new'
     end
   end

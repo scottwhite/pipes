@@ -1,8 +1,11 @@
-body { 
+body, p, div, h1, h2, h3, span{
   font-family:"VAG Rundschrift Light"; 
   font-size-adjust:0.504; 
   font-weight:200; 
   font-style:normal;
+
+}
+body { 
   font-size: 1.5em;
   color: black;
 }
@@ -52,4 +55,25 @@ div.footer{
 }
 .footer .copyright{
   font-size: 0.7em;
+}
+.errorExplanation{
+	color:  red;
+}
+.info{
+	font-size: 0.8em;
+	position: relative;
+	text-align: justify;
+}
+div.error{
+	color: #ff1713;
+	text-align: left;
+	list-style-type: square;
+	font-size: .8em;
+	list-style-position: inside;
+}
+#email{
+	width: 20em;
+}
+#user_phone{
+	width: 15em;
 }

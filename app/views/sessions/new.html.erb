@@ -1,12 +1,15 @@
-<% form_tag session_path do -%>
-<p><%= label_tag 'login' %><br />
-<%= text_field_tag 'login', @login %></p>
+<% form_tag sessions_path do -%>
+<p><%= label_tag 'email' %><br />
+<%= text_field_tag 'email', @email, maxlength: 100, length: 200 %></p>
 
-<p><%= label_tag 'password' %><br/>
-<%= password_field_tag 'password', nil %></p>
+<p><%= label_tag 'Your Phone Number' %><br />
+<%= text_field_tag 'user_phone', @user_phone,  maxlength: 20, length: 30 %></p>
+<label for="user_phone_state">State</label>
+<%=select_tag :state,options_for_select([['Maryland','md']])%>
+<br>
+<label for="user_phone_city">City</label>
+<%=select_tag :city,options_for_select(['Annapolis','Baltimore'])%>
 
-<p><%= label_tag 'remember_me', 'Remember me' %>
-<%= check_box_tag 'remember_me', '1', @remember_me %></p>
+<p><%= submit_tag 'Request Number' %></p>
 
-<p><%= submit_tag 'Log in' %></p>
 <% end -%>

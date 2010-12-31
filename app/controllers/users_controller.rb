@@ -1,11 +1,11 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_users, :only => [:suspend, :unsuspend, :destroy, :purge]
-  
+  skip_before_filter :require_user, :except=>[:suspend, :unsuspend, :destroy, :purge]
 
   # render new.html.erb
   def new
@@ -14,11 +14,12 @@ class UserController < ApplicationController
  
   def create
     logout_keeping_session!
-    @user = User.new(params[:users])
+    @user = User.new(params[:user])
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?
-      redirect_back_or_default('/')
+      @user.save!
+      redirect_to('/')
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else
       flash[:error] = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."

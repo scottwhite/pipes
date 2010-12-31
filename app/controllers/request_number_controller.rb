@@ -3,24 +3,34 @@ class RequestNumberController < ApplicationController
   def new
     # new request for did
     respond_to do |wants|
+      @user_order = session[:current_order]
       if @did = check_for_existing
-        @order = Order.create_for(current_user)
-        flash[:notice] = "Currently have a temporary number #{@did.friendly_phone_number}"
-        wants.html { render }
+        flash[:notice] = "Currently have a temporary number, would you like it re-sent?"
+        wants.html { render action: "new" }
         wants.json  { render json: @dids.first }
       else
-        @order = Order.create_for(current_user)
+        @order= Order.create_for(current_user, session[:current_order])
         wants.html { render }
       end
     end
   end
   
+  def mail_existing
+    did = check_for_existing
+    if did.blank?
+      flash[:status] = "There is a problem, you requested to email your existing Pipes number but you don't have one"
+    else
+      Mailer.existing_did(did,current_user)
+      flash[:status] = "Your Pipes number has been sent to your email address"
+    end
+  end
+  
   def create
-    phone = params[:user_phone]
-    raise "must have phone" if phone.blank?
+    phone =  session[:current_phone]
+    
     respond_to do |wants|
       if @did = check_for_existing
-        flash[:notice] = "Currently have a temporary number #{@did.friendly_phone_number}"
+        flash[:notice] = "Currently have a temporary number, would you like it re-sent?"
         wants.html { render action: "new" }
         wants.json  { render json: @dids.first }
       elsif @did = current_user.request_number(phone)
@@ -52,5 +62,5 @@ class RequestNumberController < ApplicationController
   def check_for_existing
     dids = current_user.currently_using_dids
     dids.first unless dids.blank?
-  end
+  end  
 end

@@ -6,15 +6,17 @@ ActionController::Routing::Routes.draw do |map|
   map.signup '/signup', :controller => 'users', :action => 'new'
   map.resources :users, {:member=>{:suspend=>:put, :unsuspend=>:put, :purge=>:delete}}
 
-  map.resource :session
-  map.resources :request_number, {:member=>{:success=>:get}}
+  map.resource :sessions
+  map.resources :request_number, {:member=>{:success=>:get, :mail_existing=>:get}}
   map.resources :orders, {:collection=>{:finialize=>:post}}
   
   map.success '/success/:id', :controller=> :orders, :action=>:show, :conditions => {:method => :get}
   
   
-  map.login '/login', :controller => :session, :action => :new, :conditions => {:method => :get}
-  map.logout '/logout', :controller => :session, :action => :destroy, :conditions => {:method => :get}
+  # map.login '/login', :controller => :session, :action => :new, :conditions => {:method => :get}
+  # map.logout '/logout', :controller => :session, :action => :destroy, :conditions => {:method => :get}
+  
+  map.entry '/entry', :controller => :sessions, :action => :new, :conditions => {:method => :get}
 
 
   map.root controller: :request_number, action: :new
