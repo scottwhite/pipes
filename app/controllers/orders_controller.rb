@@ -20,7 +20,14 @@ class OrdersController < ApplicationController
   end
   
   def show
-    Order.find(params[:id])
+    if params[:payment_status]=="Completed"
+      Order.find(params[:id] || params[:invoice])
+    else
+      render action: 'fail'
+    end
+  end
+  
+  def fail
   end
 
   private
