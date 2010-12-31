@@ -1,14 +1,6 @@
 class Mailer < ActionMailer::Base
   PIPES = 'support@pipes.io'
-  ActionMailer::Base.smtp_settings = {
-    :address => "smtp.gmail.com",
-    :port => 587,
-    :domain => "pipes.io",
-    :authentication => :plain,
-    :user_name => "scott",
-    :password => "dPgZAqArDNjS3VRxl6s",
-    :enable_starttls_auto => true
-   }
+  ActionMailer::Base.delivery_method = :sendmail
   
   def order_completed(did,order)
     user = order.user
