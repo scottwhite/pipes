@@ -6,6 +6,7 @@ class RequestNumberController < ApplicationController
       @user_order = session[:current_order]
       if @did = check_for_existing
         flash[:notice] = "Currently have a temporary number, would you like it re-sent?"
+        flash.discard
         wants.html { render action: "new" }
         wants.json  { render json: @dids.first }
       else
@@ -16,7 +17,6 @@ class RequestNumberController < ApplicationController
   end
   
   def mail_existing
-    flash.discard
     did = check_for_existing
     if did.blank?
       flash[:status] = "There is a problem, you requested to email your existing Pipes number but you don't have one"
