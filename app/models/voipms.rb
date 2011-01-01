@@ -173,7 +173,7 @@ class Voipms
   
   def order(ratecenter, state,did=nil)
     if ratecenter.blank?
-      ratecenter = first_available_ratecenter(state)
+      ratecenter = first_available_ratecenter(state).ratecenter
     end
     first_did = did.blank? ? available_dids(ratecenter,state).first : did
     raise "Unable to get DIDs" if first_did.blank?

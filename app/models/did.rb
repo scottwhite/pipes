@@ -20,7 +20,8 @@ class Did < ActiveRecord::Base
   def self.order(options={})
     raise "Need state" if options[:state].blank?
     did = Did.available_by_region(options[:state]).first
-    if did.blank?
+    if did.blank?      
+      cp = current_provider.new
       did = cp.order(options[:city],options[:state])
     end
    did
