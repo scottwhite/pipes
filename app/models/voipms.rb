@@ -13,7 +13,12 @@ class Voipms
     @password = opts[:password]
     login_info_from_file if opts[:username].blank?
     @cookie = opts[:cookie]
-    @client = Savon::Client.new('https://voip.ms/api/v1/server.php')
+    # this is retarded
+    @client = Savon::Client.new do
+      wsdl.endpoint = 'https://voip.ms/api/v1/server.php'
+      wsdl.namespace = 'https://voip.ms/api/wsdl'
+    end
+    logger.debug(@client.wsdl.namespace)
     @login_params = {'api_username'=>@username, 'api_password'=>@password}
   end
     
@@ -46,7 +51,7 @@ class Voipms
   end
   
   def balance
-    response = @client.get_balance! do |soap| 
+    response = @client.request :get_balance do |soap| 
       soap.version = 2
       h =  {'params'=>[login_params.merge({'advanced'=>false})]}
       soap.body = h
@@ -74,11 +79,81 @@ class Voipms
   end
     
   def available_dids(rate_center='BALTIMORE',state='MD')
-    response = @client.get_dids_usa! do |soap| 
+    response = @client.request :get_dids_usa do |soap| 
       soap.version = 2
       soap.body = {'params'=>[login_params.merge({'state'=>state,'ratecenter'=>rate_center})]}
     end
     process_available_dids_response(response)
+  end
+
+
+  
+  def process_ratecenters_response(response)
+    r = response.to_hash[:get_rate_centers_usa_response]
+    items = r[:return][:item]
+    dids = []
+    items.each do |i| 
+      if i[:key] == 'ratecenters'
+        dids = i[:value][:item]
+        break
+      end
+    end
+    logger.debug(dids.inspect)
+    dids.map do |did|
+      o = OpenStruct.new(convert_stupid_to_hash(did[:item]))
+    end
+  rescue => e
+    logger.error("process_ratecenters_response: #{e.message}")
+    raise "Response problem"
+  end
+    
+  def ratecenters(state='MD')
+    response = @client.request :get_rate_centers_usa do |soap| 
+      soap.version = 2
+      soap.body = {'params'=>[login_params.merge({'state'=>state})]}
+    end
+    process_ratecenters_response(response)
+  end
+
+  def available_ratecenters(state='md')
+    rcs = ratecenters(state)
+    rcs.select do |rc|
+      rc.available == 'yes'
+    end
+  end
+  
+  def first_available_ratecenter(state='md')
+    rc = available_ratecenters
+    raise "No rate center avialable" if rc.blank?
+    rc[rand(rc.size)]
+  end
+  
+  
+  def process_states_response(response)
+    r = response.to_hash[:get_states_response]
+    items = r[:return][:item]
+    dids = []
+    items.each do |i| 
+      if i[:key] == 'states'
+        dids = i[:value][:item]
+        break
+      end
+    end
+    logger.debug(dids.inspect)
+    dids.map do |did|
+      o = OpenStruct.new(convert_stupid_to_hash(did[:item]))
+    end
+  rescue => e
+    logger.error("process_states_response: #{e.message}")
+    raise "Response problem"    
+  end
+  
+  def states
+    response = @client.request :get_states do |soap| 
+      soap.version = 2
+      soap.body = {'params'=>[login_params]}
+    end
+    process_states_response(response)
   end
   
   def process_order_did_response(response)
@@ -97,6 +172,9 @@ class Voipms
   end
   
   def order(ratecenter, state,did=nil)
+    if ratecenter.blank?
+      ratecenter = first_available_ratecenter(state)
+    end
     first_did = did.blank? ? available_dids(ratecenter,state).first : did
     raise "Unable to get DIDs" if first_did.blank?
     if order_did(first_did.did)

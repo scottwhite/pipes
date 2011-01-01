@@ -98,7 +98,7 @@ Spec::Runner.configure do |config|
   def setup_user
     @user = User.first
     if @user.blank?
-      @user = User.new(login: 'bobo', email: 'bobo@email.com', password: 'password10', password_confirmation: 'password10')
+      @user = User.new(login: 'bobo', email: 'bobo@email.com')
       @user.phones << UserPhone.new(number: '1234567890')
       @user.save!
     end

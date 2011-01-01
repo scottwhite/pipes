@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
+
+  def self.call_states
+    @states ||= lambda{ v = Voipms.new;v.states}.call
+  end
   
   private
   def require_user

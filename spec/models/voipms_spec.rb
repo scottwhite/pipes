@@ -7,17 +7,41 @@ describe Voipms, "doing it" do
       @client = Voipms.new
     end
     it "should get balance" do
-      response = @client.get_balance
+      response = @client.balance
       response.current_balance
     end
-    it "should get a valid DID" do
-      response = @client.available_dids
+    
+    it "should get a list of ratecenters" do
+      response = @client.ratecenters('md')
       response.should == 'blah'
     end
+
+    it "should get the available ratecenters" do
+      response = @client.available_ratecenters('md')
+      response.should_not be_blank
+    end
+
+    it "should get the first available ratecenter" do
+      response = @client.first_available_ratecenter('md')
+      response.ratecenter.should_not be_nil
+      response.available.should == 'yes'
+    end
+    
+    it "should get a valid DID" do
+      rc = @client.first_available_ratecenter('md')
+      response = @client.available_dids(rc.ratecenter)
+      response.should == 'blah'
+    end
+    
     it "should order a DID" do
-      r = @client.order("BALTIMORE","MD")
+      r = @client.order("ANNAPOLIS","MD")
       d = Did.last
       r.should == d
+    end
+    
+    it "should get a list of states" do
+      r = @client.states
+      r.should == 'blah'
     end
     
   end

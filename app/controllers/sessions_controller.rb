@@ -4,11 +4,18 @@ class SessionsController < ApplicationController
   
   # render new.html.erb
   def new
+    @states = self.class.call_states
   end
 
   def create
     logout_keeping_session!
     phone =params[:user_phone]
+    if params[:state].blank?
+      flash[:error]= 'State is required'
+      @states = self.class.call_states
+      render action: 'new'
+      return
+    end
     @user = User.find_or_initialize_by_email(params[:email])
     @user.phones.build(number: phone) unless @user.phones.exists?(number: phone)
     if @user.save

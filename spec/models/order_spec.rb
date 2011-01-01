@@ -11,7 +11,8 @@ describe Order, "doing it" do
   end
   
   it "should process an order" do
-    o = Order.create_for(@user)
+    Did.stub!(:available_by_region).and_return([])
+    o = Order.create_for(@user,{state: 'md', city: 'baltimore'})
     did = o.process({gateway_trans_id: 'blah', raw_status: 'Completed'})
     did.should_not be_nil
   end
