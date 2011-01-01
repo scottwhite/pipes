@@ -1,6 +1,6 @@
 class UserPhone < ActiveRecord::Base
   GOOD_NUMBER = /^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$/
-  has_many :dids_user_phones
+  has_many :dids_user_phones, dependent: :destroy
   has_many :dids, through: :dids_user_phones
   
   has_many :active_dids, through: :dids_user_phones,conditions: ["dids.active = ?", true]
@@ -16,8 +16,6 @@ class UserPhone < ActiveRecord::Base
     
   def order_and_assign(options={})
     options.merge(user_phone: self)
-    # options[:city] = 'Baltimore'   #TEMP!!!!!!
-    # options[:state] = 'md' #self.user.state_code || 'md'
     did = Did.order(options)
     did.usage_state = Did::IN_USE
     did.save!
