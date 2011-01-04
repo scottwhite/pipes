@@ -31,7 +31,6 @@ class Order < ActiveRecord::Base
   rescue => e
     logger.error("process: #{gateway.inspect}")
     logger.error("process: #{e.message}")
-    logger.error("process: #{e.backtrace}")
     self.status = ERROR
     self.save
   end

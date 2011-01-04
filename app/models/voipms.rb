@@ -69,7 +69,6 @@ class Voipms
         break
       end
     end
-    logger.debug(dids.inspect)
     dids.map do |did|
       o = OpenStruct.new(convert_stupid_to_hash(did[:item]))
     end
@@ -98,7 +97,6 @@ class Voipms
         break
       end
     end
-    logger.debug(dids.inspect)
     dids.map do |did|
       o = OpenStruct.new(convert_stupid_to_hash(did[:item]))
     end
@@ -139,7 +137,6 @@ class Voipms
         break
       end
     end
-    logger.debug(dids.inspect)
     dids.map do |did|
       o = OpenStruct.new(convert_stupid_to_hash(did[:item]))
     end

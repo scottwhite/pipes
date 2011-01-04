@@ -4,6 +4,9 @@ class OrdersController < ApplicationController
 
   def finialize
     did = @order.process({raw_status: params[:payment_status], gateway_trans_id: params[:txn_id]})
+    if did.blank?
+      render text: 'error, unable to process request',status: 500  && return
+    end
     Mailer.deliver_order_completed(did,@order) if did && @order.user.email?
     respond_to do |wants|
       wants.html{ render text: did.phone_number}

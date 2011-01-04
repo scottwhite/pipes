@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # include Authorization::AasmRoles
 
   has_many :did_request_holders
+  has_many :orders, dependent: :destroy
   has_many :phones, class_name: 'UserPhone', dependent: :destroy
   has_many :dids_user_phones, through: :phones
   has_many :active_dids, class_name: 'Did', finder_sql: %q{select dids.* from dids 
