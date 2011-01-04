@@ -121,7 +121,7 @@ class Voipms
   end
   
   def first_available_ratecenter(state='md')
-    rc = available_ratecenters
+    rc = available_ratecenters(state)
     raise "No rate center avialable" if rc.blank?
     rc[rand(rc.size)]
   end
