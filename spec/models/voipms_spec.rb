@@ -34,7 +34,7 @@ describe Voipms, "doing it" do
     end
     
     it "should order a DID" do
-      r = @client.order("ANNAPOLIS","MD")
+      r = @client.order(nil,"MD")
       d = Did.last
       r.should == d
     end

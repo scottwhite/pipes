@@ -74,7 +74,7 @@ class Voipms
       o = OpenStruct.new(convert_stupid_to_hash(did[:item]))
     end
   rescue => e
-    logger.error("process_balance_response: #{e.message}")
+    logger.error("process_available_dids_response: #{e.backtrace}")
     raise "Response problem"
   end
     
@@ -162,7 +162,7 @@ class Voipms
   end
   
   def order_did(did)
-    response = @client.order_did! do |soap|
+    response = @client.request :order_did do |soap|
       soap.version = 2
       test = RAILS_ENV != 'production'
       h =  {'params'=>[login_params.merge({'did'=>did, 'pop'=>8, 'routing'=>"account:#{ACCOUNT}", 'cnam'=>0, 'billing_type'=>1, 'dialtime'=>60,'test'=>test})]}
@@ -172,19 +172,27 @@ class Voipms
   end
   
   def order(ratecenter, state,did=nil)
+    count = (count)?count+1:0
+    logger.debug("order: count is #{count}")
     if ratecenter.blank?
       ratecenter = first_available_ratecenter(state).ratecenter
     end
     first_did = did.blank? ? available_dids(ratecenter,state).first : did
+    
     raise "Unable to get DIDs" if first_did.blank?
-    if order_did(first_did.did)
-      did_number = first_did.did
-      d = Did.new(phone_number: did_number,usage_state: Did::ACTIVE, state: state, city: ratecenter)
-      d.save!
-      d
-    end
+    raise "Unable to order" unless order_did(first_did.did)
+        
+    did_number = first_did.did
+    d = Did.new(phone_number: did_number,usage_state: Did::ACTIVE, state: state, city: ratecenter)
+    d.save!
+    d
   rescue => e
     logger.error("order: #{e.message}")
+    if count < 2
+      ratecenter = nil
+      logger.info("order: retrying")
+      retry 
+    end
   end  
   
   def login_info_from_file

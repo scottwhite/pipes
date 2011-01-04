@@ -5,7 +5,7 @@ describe Did, "doing it" do
     setup_user
   end
   it "should return avialable numbers for a region, currently city and state" do
-    avail = Did.available_by_region('baltimore','MD')
+    avail = Did.available_by_region('MD')
     avail.size.should == 4
   end
   
