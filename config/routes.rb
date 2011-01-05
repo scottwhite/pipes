@@ -16,6 +16,6 @@ ActionController::Routing::Routes.draw do |map|
   map.entry '/entry', :controller => :sessions, :action => :new, :conditions => {:method => :get}
 
 
-  map.root controller: :session, action: :new
+  map.root controller: :sessions, action: :new
   
 end
