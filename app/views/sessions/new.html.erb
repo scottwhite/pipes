@@ -4,7 +4,7 @@
 
 <p><%= label_tag 'Your Phone Number' %><br />
 <%= text_field_tag 'user_phone', @user_phone,  maxlength: 20, length: 30 %></p>
-<label for="user_phone_state">State</label>
+<label for="user_phone_state">State</label><br>
 <%=select_tag 'state', options_from_collection_for_select(@states,'state','description')%>
 <br>
 
