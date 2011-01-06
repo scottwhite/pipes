@@ -44,6 +44,11 @@ describe Voipms, "doing it" do
       r.should == 'blah'
     end
     
+    it "should search for a did by area code" do
+      r = @client.search_dids(443,618)
+      r.should == 'blah'
+    end
+    
   end
   
   it "should read login info from file" do

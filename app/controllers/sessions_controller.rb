@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       return
     end
     @user = User.find_or_initialize_by_email(params[:email])
-    @user.phones.build(number: phone) unless @user.phones.exists?(number: phone)
+    @user.phones.build(number: phone) unless @user.phones.exists?(number: UserPhone.convert_number(phone))
     if @user.save
       reset_session
       session[:current_order] = {phone: phone, state: params[:state], city: params[:city]}

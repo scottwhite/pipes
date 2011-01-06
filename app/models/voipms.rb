@@ -84,7 +84,35 @@ class Voipms
     end
     process_available_dids_response(response)
   end
-
+  
+  
+  def process_search_dids_response(response)
+    r = response.to_hash[:search_dids_usa_response]
+    items = r[:return][:item]
+    dids = []
+    items.each do |i| 
+      if i[:key] == 'dids'
+        dids = i[:value][:item]
+        break
+      end
+    end
+    dids.map do |did|
+      o = OpenStruct.new(convert_stupid_to_hash(did[:item]))
+    end
+  rescue => e
+    logger.error("process_available_dids_response: #{e.backtrace}")
+    raise "Response problem"
+  end
+  
+  def search_dids(area_code, prefix)
+    # search = prefix.blank? ? "#{area_code}#{prefix}" : area_code
+    search = "#{area_code}#{prefix}"
+    response = @client.request :search_dids_usa do |soap| 
+      soap.version = 2
+      soap.body = {'params'=>[login_params.merge({'type'=>'starts','query'=>search})]}
+    end
+    process_search_dids_response(response)
+  end
 
   
   def process_ratecenters_response(response)
