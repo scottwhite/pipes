@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       session[:current_order] = {phone: phone, state: params[:state], city: params[:city]}
       self.current_user = @user
       flash.discard
-      redirect_back_or_default("/")
+      redirect_back_or_default("/request_number/new")
     else
       flash[:error] = @user.errors.full_messages.join('<br>')
       # note_failed_signin
