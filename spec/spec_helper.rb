@@ -99,7 +99,7 @@ Spec::Runner.configure do |config|
     @user = User.first
     if @user.blank?
       @user = User.new(login: 'bobo', email: 'bobo@email.com')
-      @user.phones << UserPhone.new(number: '1234567890')
+      @user.phones << UserPhone.new(number: '4436188250')
       @user.save!
     end
     @user
