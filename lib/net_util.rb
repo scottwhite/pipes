@@ -40,7 +40,7 @@ module NetUtil
           response = nil
           logger.debug("send: hearders are #{header.inspect}")
           http = setup_http(server_opts)
-          response = http.start{|h_session|
+          response,data = http.start{|h_session|
             h_session.read_timeout=timeout
             h_session.get2(url,header)
           }
@@ -61,7 +61,7 @@ module NetUtil
           raise e
         end
         logger.debug("send: exit")
-        response
+        data
       end
 
       def post(path,data,server_opts={},header={},ignore_302s=false)
@@ -72,7 +72,7 @@ module NetUtil
         number_retries =convert_opt(server_opts[:number_retries])
         timeout = convert_opt(server_opts[:timeout])
         begin
-          count = (count)?+1:0
+          count = (count)?count+1:0
           response = nil
           http = setup_http(server_opts)
           init_header = {'Content-Type' => 'application/x-www-form-urlencoded'}
@@ -99,6 +99,32 @@ module NetUtil
         body
       end
 
+      def post_data(path,data,server_opts={},header={})
+        number_retries =convert_opt(server_opts[:number_retries])
+        timeout = convert_opt(server_opts[:timeout])
+        begin
+          count = (count)?+1:0
+          response = nil
+          http = setup_http(server_opts)
+          logger.debug("post_data: #{data}  #{header.inspect}")
+          response,body = http.request_post(path,data,header)
+          logger.debug("post_data: have response #{response.inspect} #{body}")
+          check_http_response(response)
+          logger.debug("post_data: have response #{response.content_type}")
+        rescue Exception => e
+          logger.error("post_data: #{e.message}")
+          if [Timeout::Error].include?(e.class)
+            logger.error("read timeout is set to #{timeout}")
+            if count < number_retries
+              logger.debug("post_data: retrying")
+              retry
+            end
+          end
+          logger.error(e)
+          raise e
+        end
+        body
+      end
       
       def hack_session_cookie(path,login_data,server_opts={},header={})
         data = nil

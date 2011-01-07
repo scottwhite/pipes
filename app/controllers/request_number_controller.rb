@@ -10,7 +10,8 @@ class RequestNumberController < ApplicationController
         wants.html { render action: "new" }
         wants.json  { render json: @dids.first }
       else
-        @order= Order.create_for(current_user, session[:current_order])
+        phone = current_user.phones.find_by_number(UserPhone.convert_number(@user_order[:phone]))
+        @order= Order.create_for(phone,@user_order)
         wants.html { render }
       end
     end

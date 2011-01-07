@@ -64,16 +64,6 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
-  def request_number(options={})
-    if(options[:number])
-      phone = UserPhone.convert_number(options[:number])
-      up = UserPhone.find_or_create_by_user_id_and_number(self.id, phone)
-    else
-      up = self.phones.first
-    end
-    up.order_and_assign(options)
-  end
-
   protected
     
   def make_activation_code

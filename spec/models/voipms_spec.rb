@@ -28,8 +28,8 @@ describe Voipms, "doing it" do
     end
     
     it "should get a valid DID" do
-      rc = @client.first_available_ratecenter('md')
-      response = @client.available_dids(rc.ratecenter)
+      # rc = @client.first_available_ratecenter('md')
+      response = @client.available_dids('GLENBURNIE')
       response.should == 'blah'
     end
     
@@ -45,7 +45,7 @@ describe Voipms, "doing it" do
     end
     
     it "should search for a did by area code" do
-      r = @client.search_dids(443,618)
+      r = @client.search_dids(410,6)
       r.should == 'blah'
     end
     
