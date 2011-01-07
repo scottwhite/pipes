@@ -10,17 +10,11 @@ class SessionsController < ApplicationController
   def create
     logout_keeping_session!
     phone =params[:user_phone]
-    if params[:state].blank?
-      flash[:error]= 'State is required'
-      @states = self.class.call_states
-      render action: 'new'
-      return
-    end
     @user = User.find_or_initialize_by_email(params[:email])
     @user.phones.build(number: phone) unless @user.phones.exists?(number: UserPhone.convert_number(phone))
     if @user.save
       reset_session
-      session[:current_order] = {phone: phone, state: params[:state], city: params[:city]}
+      session[:current_order] = {phone: phone}
       self.current_user = @user
       flash.discard
       redirect_back_or_default("/request_number/new")

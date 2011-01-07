@@ -2,9 +2,7 @@
 <%-if flash[:notice]-%>
 <%=link_to 'Send Pipes Number', mail_existing_request_number_path%>
 <%- else -%>
-<p> Your phone number : <%=@user_order[:phone]%><br>
-Requesting a Pipes number to connect to<br>
-For the State: <%=@user_order[:state].upcase%>
+<p> You are requesting a Pipes Number to connect to your phone number : <b><%=@user_order[:phone]%></b><br>
 </p>
 <p>If this is correct please click Pay Now button, if not <%=link_to 'go back', entry_path%></p>
 <%-end-%>
