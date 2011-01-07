@@ -5,6 +5,10 @@ class Did < ActiveRecord::Base
 
 
   has_one :dids_user_phone
+
+  named_scope :available_by_city, lambda{|state,city|
+    {conditions: {usage_state: ACTIVE, state: state.downcase, city: city.downcase}}
+    }
   
   named_scope :available_by_region, lambda{|state|
     {conditions: {usage_state: ACTIVE, state: state.downcase}}
@@ -19,10 +23,12 @@ class Did < ActiveRecord::Base
   
   def self.order(options={})
     raise "Need state" if options[:state].blank?
-    did = Did.available_by_region(options[:state]).first
+    did = Did.available_by_city(options[:state],options[:city]).first
     if did.blank?      
       cp = current_provider.new
       did = cp.order(options[:city],options[:state])
+      did = Did.available_by_state(options[:state]).first if did.blank?
+      did = cp.order(nil,options[:state]) if did.blank?
     end
    did
   end
