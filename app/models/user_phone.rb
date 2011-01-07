@@ -17,7 +17,7 @@ class UserPhone < ActiveRecord::Base
   def order_and_assign(options={})
     options.merge(user_phone: self)
     if options[:state].blank?
-      phone_info = CloudVox.search(self.number)
+      phone_info = CloudVox.state_rate_center(self.number)
       options[:city] = phone_info[:ratecenter]
       options[:state] = phone_info[:state]
     end
