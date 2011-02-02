@@ -21,6 +21,7 @@ class AddTriggerCallQueue < ActiveRecord::Migration
           caller = NEW.userfield,
           call_time = NEW.billsec,
           start_date = @start_date,
+          created_at = NOW(),
           time_left = @time_left;
         end;
     })
