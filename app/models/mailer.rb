@@ -20,7 +20,7 @@ class Mailer < ActionMailer::Base
   end
   
   def recent_call_with_stats(call_queue)
-    recipients user.email
+    recipients call_queue.email
     from PIPES
     subject 'Recent call to your Pipes number'
     content_type 'text/html'
