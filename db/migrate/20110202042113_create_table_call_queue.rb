@@ -5,7 +5,7 @@ class CreateTableCallQueue < ActiveRecord::Migration
       t.integer :time_left, null: false
       t.string :email, :calling, :caller, null: false
       t.boolean :processed, null: false, default: false
-      t.datetime :start_date, null: false
+      t.datetime :start_date, null: true
       t.timestamps
     end
   end

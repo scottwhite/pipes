@@ -18,7 +18,7 @@ class AddTriggerCallQueue < ActiveRecord::Migration
 
           insert into call_queue set email = @email,
           calling = NEW.dst,
-          caller = NEW.src,
+          caller = NEW.userfield,
           call_time = NEW.billsec,
           start_date = @start_date,
           time_left = @time_left;

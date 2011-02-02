@@ -13,7 +13,7 @@ namespace :numbers do
   desc "send out emails for who called"
   task :call_notification=>:environment do
     CallQueue.unprocessed.each do |cq|
-      cq.update_attribute(processed: true)
+      cq.update_attributes(processed: true)
       puts "updated value for #{cq.calling} to processed, sending email"
       Mailer.deliver_recent_call_with_stats(cq)
     end
