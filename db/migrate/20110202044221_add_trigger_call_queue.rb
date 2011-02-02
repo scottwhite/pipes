@@ -20,7 +20,7 @@ class AddTriggerCallQueue < ActiveRecord::Migration
           calling = NEW.dst,
           caller = NEW.src,
           call_time = NEW.billsec,
-          start_time = @start_time,
+          start_date = @start_time,
           time_left = @time_left;
         end;
     })
