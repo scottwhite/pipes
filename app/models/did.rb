@@ -1,7 +1,8 @@
 class Did < ActiveRecord::Base
   DISABLED = 0
-  ACTIVE =1
+  ACTIVE = 1
   IN_USE = 2
+  INTERNAL = 3
 
 
   has_one :dids_user_phone
@@ -16,7 +17,7 @@ class Did < ActiveRecord::Base
   
   named_scope :active, {conditions: {usage_state: ACTIVE}}
   named_scope :in_use, {conditions: {usage_state: IN_USE}}
-  
+  named_scope :internal, {conditions: {usage_state: INTERNAL}}
   def self.current_provider
     @current_provider ||= Voipms
   end
