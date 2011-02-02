@@ -1,0 +1,22 @@
+<html>
+<head>
+  <style>
+    p {
+      font-size: 1em;
+    },
+    .note{
+      font-size: 1em;
+    }
+    span.number {
+      font-weight: 'bold';
+    }
+  </style>
+</head>
+<body>
+  <p> Greetings! - Recent Call</p>
+  <p> A person just called your Pipe's number at <%=@call_queue.created_at%> from <span="number"><%=@call_queue.caller.to_phone_number%></span></p>
+  <p> The call lasted <%=@call_queue.call_time%></p>
+  <p> You have <%=@call_queue.time_left%> of talk time left till <%=@call_queue.start_time + 3.weeks%></p>
+  <p class="note">If you have any questions please feel free to contact us.</p>
+</body>
+</html>

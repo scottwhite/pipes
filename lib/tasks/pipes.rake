@@ -3,4 +3,17 @@ namespace :numbers do
   task :expire=>:environment do
     Did.update_expired
   end
+  
+  
+  desc "update inactive numbers to active after 1 week wait"
+  task :activate_waiting=>:environment do
+    Did.update_to_active
+  end
+  
+  desc "send out emails for who called"
+  task :call_notification=>:environment do
+    CallQueue.unprocessed.each do |cq|
+      Mailer.deliver_recent_call_with_stats(cq)
+    end
+  end
 end
