@@ -15,14 +15,15 @@ class AddTriggerCallQueue < ActiveRecord::Migration
           on up.user_id = users.id
           and up.id = @user_phone_id;
 
-
-          insert into call_queue set email = @email,
-          calling = NEW.dst,
-          caller = NEW.userfield,
-          call_time = NEW.billsec,
-          start_date = @start_date,
-          created_at = NOW(),
-          time_left = @time_left;
+          if @email != null then
+            insert into call_queue set email = @email,
+            calling = NEW.dst,
+            caller = NEW.userfield,
+            call_time = NEW.billsec,
+            start_date = @start_date,
+            created_at = NOW(),
+            time_left = @time_left;
+          end if;
         end;
     })
   end
