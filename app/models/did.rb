@@ -42,19 +42,20 @@ class Did < ActiveRecord::Base
     "#{m[1]} #{m[2]} #{m[3]}"
   end
   
-  def update_expired
-    self.execute(%Q{update dids
+  def self.update_expired
+    self.connection.execute(%Q{update dids
       inner join dids_user_phones dup
       on dup.did_id = dids.id
       and dids.usage_state = #{ACTIVE}
       set usage_state = 0,
-      updated_at = NOW()
+      dids.updated_at = NOW()
       where dup.current_usage >= 1200 or dup.created_at <= date_sub(NOW(), INTERVAL 3 WEEK)})
   end
   
-  def update_to_active
-    self.execute(%Q{update dids
-      set usage_state = #{ACTIVE}
+  def self.update_to_active
+    self.connection.execute(%Q{update dids
+      set usage_state = #{ACTIVE},
+      updated_at = NOW()
       where usage_state = #{DISABLED} 
       and updated_at <= date_sub(NOW(), INTERVAL 1 WEEK)})    
   end

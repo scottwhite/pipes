@@ -9,6 +9,15 @@ describe Did, "doing it" do
     avail.size.should == 4
   end
   
+  it "should update expired" do
+    Did.update_expired
+  end
+
+
+  it "should update to active" do
+    Did.update_to_active
+  end
+  
   it "should setup a number" do
     puts @user.inspect
     NetUtil::Request.stub!(:send).and_return('blah')
