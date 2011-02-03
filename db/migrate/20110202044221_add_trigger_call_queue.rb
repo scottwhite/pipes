@@ -3,6 +3,9 @@ class AddTriggerCallQueue < ActiveRecord::Migration
     self.execute(%Q{
       create trigger insert_call_queue after insert on cdr
         for each row begin
+          set @email = null;
+          set @start_date = null;
+          set @time_left = null;
           select (1200 - current_usage) as time_left, dids_user_phones.user_phone_id, dids_user_phones.created_at
           into @time_left, @user_phone_id, @start_date
           from dids_user_phones
