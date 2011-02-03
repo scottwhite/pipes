@@ -15,7 +15,7 @@ class AddTriggerCallQueue < ActiveRecord::Migration
           on up.user_id = users.id
           and up.id = @user_phone_id;
 
-          if @email != null then
+          if @email is not NULL then
             insert into call_queue set email = @email,
             calling = NEW.dst,
             caller = NEW.userfield,
