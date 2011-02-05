@@ -46,7 +46,7 @@ class Did < ActiveRecord::Base
     self.connection.execute(%Q{update dids
       inner join dids_user_phones dup
       on dup.did_id = dids.id
-      and dids.usage_state = #{ACTIVE}
+      and dids.usage_state = #{IN_USE}
       set usage_state = 0,
       dids.updated_at = NOW()
       where dup.current_usage >= 1200 or dup.created_at <= date_sub(NOW(), INTERVAL 3 WEEK)})
