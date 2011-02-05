@@ -3,7 +3,6 @@ body, p, div, h1, h2, h3, span{
   font-size-adjust:0.504; 
   font-weight:200; 
   font-style:normal;
-
 }
 body { 
   font-size: 1.5em;
@@ -27,12 +26,32 @@ body {
   font-size: 1em;
   text-align: center;
 }
+.legal{
+  position: relative;
+  min-height: 400px;
+  padding: 1em;
+  font-size: 1em;
+  text-align: center;
+}
+.legal p{
+  font-size: 0.8em;
+  text-align: justify;	
+}
+.legal p b{
+  font-weight: bold;
+}
+
 .content form{
   position: inherit;
-  font-size: 0.5em;
+  font-size: 0.8em;
   text-align:left;
-  
 }
+.content form input{
+  position: inherit;
+  font-size: 0.8em;
+  text-align:left;
+}
+
 div.footer{
   font-size: 1em;
   line-height: 0.75em;
@@ -76,4 +95,18 @@ div.error{
 }
 #user_phone{
 	width: 15em;
+}
+h3{
+	font-size: 0.9em;
+	color: #1977b0;
+	font-style: italic;
+}
+@media screen and (max-device-width: 480px){
+	body{
+	  -webkit-text-size-adjust:none;
+	}
+	.container{
+	  text-align: center;
+	  margin: 0px;
+	}
 }
