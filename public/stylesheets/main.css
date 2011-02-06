@@ -1,4 +1,4 @@
-body, p, div, h1, h2, h3, span{
+body, p, div, h1, h2, h3, span, ui{
   font-family:"VAG Rundschrift Light"; 
   font-size-adjust:0.504; 
   font-weight:200; 
@@ -109,4 +109,10 @@ h3{
 	  text-align: center;
 	  margin: 0px;
 	}
+}
+ul{
+	text-align: left;
+}
+li{
+	font-size: 0.8em;
 }
