@@ -23,9 +23,9 @@ class OrdersController < ApplicationController
   end
   
   def show
-    if params[:payment_status]=="Completed"
-      Order.find(params[:id] || params[:invoice])
-    else
+    # {"tx"=>"96C79327GK037281M", "st"=>"Completed", "amt"=>"3.00", "cc"=>"USD", "cm"=>"", "item_number"=>"order", 
+    # unless (params[:payment_status]=="Completed" || params[:st] == 'Completed') && (!params[:txn_id].blank? || !params[:tx].blank?)
+    unless params[:st] == 'Completed' && !params[:tx].blank?
       render action: 'fail'
     end
   end
