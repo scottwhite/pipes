@@ -50,7 +50,7 @@ class Did < ActiveRecord::Base
       set usage_state = 0,
       dup.expired=1,
       dids.updated_at = NOW()
-      where dup.current_usage >= 1200 or dup.created_at <= date_sub(NOW(), INTERVAL 3 WEEK)})
+      where dup.current_usage >= dup.time_allotted or dup.created_at <= date_sub(NOW(), INTERVAL 3 WEEK)})
   end
   
   def self.update_to_active
