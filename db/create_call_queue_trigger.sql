@@ -1,7 +1,9 @@
+DELIMITER ;;
 DROP TRIGGER IF EXISTS insert_call_queue;
 
 create trigger insert_call_queue after insert on cdr
   for each row begin
+  
     set @email = null;
     set @start_date = null;
     set @time_left = null;
@@ -15,7 +17,7 @@ create trigger insert_call_queue after insert on cdr
       set @source = NEW.userfield;
     end if;
     
-    select (1200 - current_usage) as time_left, dids_user_phones.user_phone_id, dids_user_phones.created_at, dids_user_phones.expired
+    select (time_allotted - current_usage) as time_left, dids_user_phones.user_phone_id, dids_user_phones.created_at, dids_user_phones.expired
     into @time_left, @user_phone_id, @start_date, @expired
     from dids_user_phones
     inner join dids on
