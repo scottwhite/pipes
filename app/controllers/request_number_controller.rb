@@ -5,15 +5,20 @@ class RequestNumberController < ApplicationController
     respond_to do |wants|
       @user_order = session[:current_order]
       if @did = check_for_existing
-        flash[:notice] = "Currently have a temporary number, would you like it re-sent?"
-        flash.discard
-        wants.html { render action: "new" }
+        wants.html { render action: "existing" }
         wants.json  { render json: @dids.first }
       else
         phone = current_user.phones.find_by_number(UserPhone.convert_number(@user_order[:phone]))
         @order= Order.create_for(phone,@user_order)
         wants.html { render }
       end
+    end
+  end
+  
+  def existing
+    if params[:token]
+      @did = User.did_from_token(params[:token])
+      @from_mailing = true 
     end
   end
   
