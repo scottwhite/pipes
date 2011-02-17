@@ -16,6 +16,8 @@ ActionController::Routing::Routes.draw do |map|
   map.entry '/entry', :controller => :sessions, :action => :new, :conditions => {:method => :get}
 
 
+  map.connect '/existing/:token', controller: :request_number, action: :existing
+
   map.root controller: :sessions, action: :new
   
 end

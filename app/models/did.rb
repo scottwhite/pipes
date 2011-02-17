@@ -42,6 +42,29 @@ class Did < ActiveRecord::Base
     "#{m[1]} #{m[2]} #{m[3]}"
   end
   
+  def time_left
+    return if self.dids_user_phone.blank?
+    CallQueue.format_seconds(self.dids_user_phone.time_allotted - self.dids_user_phone.current_usage)
+  end
+  
+  def expires_at
+    return if self.dids_user_phone.blank?
+    self.dids_user_phone.created_at + 3.weeks
+  end
+  
+  
+  def expired?
+    dup = self.dids_user_phone
+    return true if dup.blank?
+    dup.expired == true || dup.current_usage >= dup.time_allotted || dup.created_at + 3.weeks >= Time.now()
+  end
+  
+  def can_reup?
+    dup = self.dids_user_phone
+    return false if dup.blank?
+    dup.expired?  ? self.usage_state == DISABLED : true
+  end
+  
   def self.update_expired
     self.connection.execute(%Q{update dids
       inner join dids_user_phones dup
