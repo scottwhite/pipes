@@ -5,7 +5,7 @@ class RequestNumberController < ApplicationController
     respond_to do |wants|
       @user_order = session[:current_order]
       if @did = check_for_existing
-        wants.html { render action: "existing" }
+        wants.html { redirect_to existing_path(@did.dids_user_phone.id) }
         wants.json  { render json: @dids.first }
       else
         phone = current_user.phones.find_by_number(UserPhone.convert_number(@user_order[:phone]))
