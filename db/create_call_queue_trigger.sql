@@ -10,6 +10,7 @@ create trigger insert_call_queue after insert on cdr
     set @source = null;
     set @expired = null;
     set @queue_type = null;
+    set @dup_id = null;
     
     if NEW.lastapp = 'Hangup' then
       set @source = NEW.src;
@@ -17,13 +18,13 @@ create trigger insert_call_queue after insert on cdr
       set @source = NEW.userfield;
     end if;
     
-    select (time_allotted - current_usage) as time_left, dids_user_phones.user_phone_id, dids_user_phones.created_at, dids_user_phones.expired
-    into @time_left, @user_phone_id, @start_date, @expired
+    select (time_allotted - current_usage) as time_left, dids_user_phones.user_phone_id, dids_user_phones.created_at, dids_user_phones.expire_state, dids_user_phones.id
+    into @time_left, @user_phone_id, @start_date, @expired, @dup_id
     from dids_user_phones
     inner join dids on
     dids.id = dids_user_phones.did_id
     and dids.phone_number = NEW.dst
-    order by dids_user_phones.update_at desc
+    order by dids_user_phones.updated_at desc
     limit 1;
 
     if @expired = 1 then
@@ -45,6 +46,7 @@ create trigger insert_call_queue after insert on cdr
       call_time = NEW.billsec,
       start_date = @start_date,
       created_at = NOW(),
-      time_left = @time_left;
+      time_left = @time_left,
+      dids_user_phone_id = @dup_id;
     end if;
   end;

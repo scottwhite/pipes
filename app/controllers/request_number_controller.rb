@@ -9,17 +9,28 @@ class RequestNumberController < ApplicationController
         wants.json  { render json: @dids.first }
       else
         phone = current_user.phones.find_by_number(UserPhone.convert_number(@user_order[:phone]))
-        @order= Order.create_for(phone,@user_order)
+        @order= Order.create_for(phone,Product.pipes_number)
         wants.html { render }
       end
     end
   end
   
   def existing
-    if params[:token]
-      @did = User.did_from_token(params[:token])
-      @from_mailing = true 
+    if params[:id]
+      dup = DidsUserPhone.find(params[:id])
+      unless dup.user_phone.user_id == current_user.id
+        redirect_to(action: 'new')
+        return
+      end
+      @did = dup.did
+      if @did.expired? && !@did.can_reup?
+        render action: 'new' && return 
+      end
+      @reup_order = Order.reup_pipes(dup.user_phone)
+      @ext_order = Order.extend_pipes(dup.user_phone)
+      @from_mailing = true
     end
+    
   end
   
   def mail_existing
@@ -79,7 +90,7 @@ class RequestNumberController < ApplicationController
   private
   
   def check_for_existing
-    dids = current_user.currently_using_dids
+    dids = current_user.current_dids
     dids.first unless dids.blank?
   end  
 end

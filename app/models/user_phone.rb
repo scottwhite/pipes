@@ -22,11 +22,41 @@ class UserPhone < ActiveRecord::Base
       options[:state] = phone_info[:state]
     end
     did = Did.order(options)
+    
     did.usage_state = Did::IN_USE
     did.save!
+    if lu = did.last_used
+      # nuke if someone gets the same number by chance 2 cycles in a row
+      lu.delete if lu.number = self.number
+    end
     self.dids << did
     self.save!
+    dup = DidsUserPhone.find(:first, conditions: {expire_state: 0, did_id: did.id, user_phone_id: self.id})
+    dup.update_attributes(expiration_date: Time.now + 3.weeks)
     did
+  end
+  
+  
+  def reup(requested_did)
+    did = requested_did || current_did
+    did.update_attributes(usage_state: Did::IN_USE)
+    dup = did.dids_user_phone
+    raise "No mapping to re-up" if dup.blank?
+    dup.update_attributes(expire_state: DidsUserPhone::OPEN, expiration_date: dup.expiration_date + 3.weeks, time_alloted: dup.time_alloted + 1200)
+  end
+  
+  
+  def extend_time(time=30.mins,requested_did)
+    did = requested_did || current_did
+    dup = did.dids_user_phone
+    raise "No mapping to extend" if dup.blank?
+    dup.update_attributes(time_alloted: dup.time_alloted + time)
+  end
+  
+  def current_did
+    self.dids.select do |did|
+      did.can_reup?
+    end.first
   end
   
   def convert_number

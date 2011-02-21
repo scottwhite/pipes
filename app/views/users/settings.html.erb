@@ -1,0 +1,7 @@
+<div class="info">
+  <%-form_for :user, current_user, url: settings_users_path, html: {method: 'PUT', id: 'fuckyou'} do |f| -%>
+    <p><%=f.check_box :receive_notifications%><%=f.label :receive_notifications,'I would like to be notified whenever I get a call or when I should re-up my Pipes Number'%> </p>
+    <%=f.hidden :id%>
+    <%=f.submit%>
+  <%-end-%>
+</div>

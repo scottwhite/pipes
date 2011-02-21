@@ -6,7 +6,8 @@ class Did < ActiveRecord::Base
   INTERNAL = 4
 
 
-  has_one :dids_user_phone
+  has_one :dids_user_phone, :conditions=>["dids_user_phones.expire_state <> #{DidsUserPhone::DEAD}"]
+  has_one :last_used, class_name: 'DidsLastUsed'
 
   named_scope :available_by_city, lambda{|state,city|
     {conditions: {usage_state: ACTIVE, state: state.downcase, city: city.downcase}}
@@ -56,13 +57,13 @@ class Did < ActiveRecord::Base
   def expired?
     dup = self.dids_user_phone
     return true if dup.blank?
-    dup.expired == true || dup.current_usage >= dup.time_allotted || dup.created_at + 3.weeks >= Time.now()
+    dup.expired == true || dup.current_usage >= dup.time_allotted || dup.created_at + 3.weeks <= Time.now()
   end
   
   def can_reup?
     dup = self.dids_user_phone
     return false if dup.blank?
-    dup.expired?  ? self.usage_state == DISABLED : true
+    !dup.dead?
   end
   
   def self.update_expired
@@ -72,7 +73,8 @@ class Did < ActiveRecord::Base
       and dids.usage_state = #{IN_USE}
       set usage_state = 0,
       dup.expired=1,
-      dids.updated_at = NOW()
+      dids.updated_at = NOW(),
+      dup.updated_at = NOW()
       where dup.current_usage >= dup.time_allotted or dup.created_at <= date_sub(NOW(), INTERVAL 3 WEEK)})
   end
   
@@ -81,7 +83,7 @@ class Did < ActiveRecord::Base
       set usage_state = #{ACTIVE},
       updated_at = NOW()
       where usage_state = #{DISABLED} 
-      and updated_at <= date_sub(NOW(), INTERVAL 1 WEEK)})    
+      and updated_at <= date_sub(NOW(), INTERVAL 1 WEEK)})
   end
   
 end

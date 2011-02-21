@@ -20,6 +20,14 @@ class User < ActiveRecord::Base
                                         inner join user_phones up on up.user_id = #{id}
                                         and up.id = dup.user_phone_id
                                         and dids.usage_state = #{Did::IN_USE}}
+                                        
+  has_many :current_dids, class_name: 'Did', finder_sql:  %q{select dids.* from dids 
+                                                              inner join dids_user_phones dup on dup.did_id = dids.id
+                                                              inner join user_phones up on up.user_id = #{id}
+                                                              and up.id = dup.user_phone_id
+                                                              where (dup.expire_state <> 2)
+                                                              or (dup.expire_state = 0 and dids.usage_state = #{Did::IN_USE})}
+  
   has_many :orders
 
   # validates_presence_of     :login
@@ -40,7 +48,7 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :receive_notifications
 
 
 
@@ -63,7 +71,11 @@ class User < ActiveRecord::Base
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
   end
-
+  
+  def generate_token
+    make_activation_code
+  end
+  
   protected
     
   def make_activation_code

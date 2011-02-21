@@ -5,7 +5,7 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
-
+# 
 dids = [
   {
     phone_number: '4434589920',
@@ -55,3 +55,11 @@ dids.each do|did|
   d = Did.find_or_create_by_phone_number(did[:phone_number])
   d.update_attributes!(did)
 end
+
+
+{1=> {p: 3.00, n: 'new'}, 2=> {p: 1.00, n: '30 minute extension'}, 3=>{p: 2.00, n: 'Re-up'}}.each do |k,v|
+  p = Product.new(price: v[:p], name: v[:n])
+  p.id = k
+  p.save!
+end
+

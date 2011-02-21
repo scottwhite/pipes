@@ -2,6 +2,7 @@ class Order < ActiveRecord::Base
   attr_reader :raw_status
   belongs_to :user
   belongs_to :user_phone
+  belongs_to :product
   
   INITIAL = 0
   FAILED = 1
@@ -29,7 +30,8 @@ class Order < ActiveRecord::Base
     self.status = self.translate_status(gateway[:raw_status])
     self.gateway_trans_id = gateway[:gateway_trans_id]
     self.save!
-    self.user_phone.order_and_assign({state: self.state, city: self.city})  if (self.status == COMPLETED)
+    return unless self.status == COMPLETED
+    self.process_for_product
   rescue => e
     logger.error("process: #{gateway.inspect}")
     logger.error("process: #{e.message}")
@@ -37,8 +39,36 @@ class Order < ActiveRecord::Base
     self.save
   end
   
-  def self.create_for(phone, user_order={})
-    self.create(user: phone.user, user_phone_id: phone.id, state: user_order[:state], city: user_order[:city], status: INITIAL, amount: 3.00)
+  
+  def process_for_product
+    case self.product.id
+      when Product::PIPES_NUMBER then
+        self.user_phone.order_and_assign({state: self.state, city: self.city})  if (self.status == COMPLETED)
+      when Product::PIPES_REUP then
+        self.user_phone.reup 
+      when Procuct::PIPES_EXTEND then
+        self.user_phone.extend_time
+    end
+  end
+  
+  
+  def self.create_for(phone, product)
+    self.create(user: phone.user, user_phone_id: phone.id, status: INITIAL, amount: product.price, product_id: product.id)
+  end
+  
+  def self.pipes_number(phone)
+    product = Product.pipes_number
+    self.create_for(phone, product)
+  end
+  
+  def self.reup_pipes(phone)
+    product = Product.pipes_reup
+    self.create_for(phone, product)
+  end
+  
+  def self.extend_pipes(phone)
+    product = Product.pipes_extend
+    self.create_for(phone,product)
   end
 
   def self.verify(order_id)

@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.logout '/leave', :controller => 'sessions', :action => 'destroy'
   map.login '/order', :controller => 'sessions', :action => 'new'
-  map.resources :users, {:member=>{:suspend=>:put, :unsuspend=>:put, :purge=>:delete}}
+  map.resources :users, {:member=>{:suspend=>:put, :unsuspend=>:put, :purge=>:delete},:collection=>{:settings=>[:get,:put,:delete,:post]}}
 
   map.resource :sessions
   map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get}}
@@ -15,8 +15,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.entry '/entry', :controller => :sessions, :action => :new, :conditions => {:method => :get}
 
-
-  map.connect '/existing/:token', controller: :request_number, action: :existing
+  map.existing '/existing/:id', controller: :request_number, action: :existing
+  map.connect '/existing/:id', controller: :request_number, action: :existing
 
   map.root controller: :sessions, action: :new
   

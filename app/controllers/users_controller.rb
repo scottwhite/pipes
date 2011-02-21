@@ -43,6 +43,21 @@ class UsersController < ApplicationController
       redirect_back_or_default('/')
     end
   end
+  
+  def settings
+    current_user = User.find_by_activation_code(params[:token]) if params[:token]
+    if request.method.to_s == 'post' || request.method.to_s == 'put'
+      id = pararm.delete(:id)
+      current_user = User.find(id)
+      if current_user.update_attributes(params[:user])
+        flash[:notice] = 'Change has been saved'
+      else
+        flash[:error] = 'Unable to save changes'
+      end
+      flash.discard
+    end
+  end
+  
 
   def suspend
     @user.suspend! 
