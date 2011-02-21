@@ -8,6 +8,6 @@ CREATE VIEW `did_mappings` AS
     (dup.time_allotted - current_usage) as 'time_left'
     from `dids` `d` 
     join `dids_user_phones` `dup` on `dup`.`did_id` = `d`.`id`
-    and dup.expire_state = 0
+    and dup.expire_state = 0 and dup.expiration_date >= NOW()
     join `user_phones` `up` on `up`.`id` = `dup`.`user_phone_id`
-    where usage_state = 2;
+    where d.usage_state = 2;
