@@ -43,6 +43,7 @@ class UserPhone < ActiveRecord::Base
     dup = did.dids_user_phone
     raise "No mapping to re-up" if dup.blank?
     dup.update_attributes(expire_state: DidsUserPhone::OPEN, expiration_date: dup.expiration_date + 3.weeks, time_allotted: dup.time_allotted + 1200)
+    did
   end
   
   
@@ -53,6 +54,7 @@ class UserPhone < ActiveRecord::Base
     raise "No mapping to extend" if dup.blank?
     logger.debug("extend_time: #{time}")
     dup.update_attributes(time_allotted: dup.time_allotted + time)
+    did
   end
   
   def current_did
