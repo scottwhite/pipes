@@ -58,10 +58,9 @@ class User < ActiveRecord::Base
   # We really need a Dispatch Chain here or something.
   # This will also let us return a human error message.
   #
-  def self.authenticate(login, password)
-    return nil if login.blank? || password.blank?
-    u = find_in_state :first, :active, :conditions => {:email => login.downcase} # need to get the salt
-    u && u.authenticated?(password) ? u : nil
+  def self.authenticate(email, phone)
+    return nil if email.blank? || phone.blank?
+    self.from_email_and_phone_number(email, phone)
   end
 
   def login=(value)
@@ -74,6 +73,10 @@ class User < ActiveRecord::Base
   
   def generate_token
     make_activation_code
+  end
+  
+  def self.from_email_and_phone_number(email, number)
+    self.find(:first, :joins=>[:phones], conditions: ["users.email = ? and user_phones.number = ?", email, number])
   end
   
   protected
