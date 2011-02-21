@@ -23,10 +23,10 @@ class User < ActiveRecord::Base
                                         
   has_many :current_dids, class_name: 'Did', finder_sql:  %q{select dids.* from dids 
                                                               inner join dids_user_phones dup on dup.did_id = dids.id
-                                                              inner join user_phones up on up.user_id = #{id}
+                                                              inner join user_phones up 
+                                                              on up.user_id = #{id}
                                                               and up.id = dup.user_phone_id
-                                                              where (dup.expire_state <> 2)
-                                                              or (dup.expire_state = 0 and dids.usage_state = #{Did::IN_USE})}
+                                                              and dup.expire_state <> 2}
   
   has_many :orders
 

@@ -7,6 +7,25 @@ class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery  # See ActionController::RequestForgeryProtection for details
 
+  
+  rescue_from ActionController::UnknownAction do |error|
+    logger.debug(error.message)
+    logger.debug(error.backtrace.join("\n"))
+    error_responds_to(nil,'cannot-process-request',:not_found)
+  end
+    
+  rescue_from ActiveRecord::RecordNotFound do |error|
+    logger.error("WHAT THE ")
+    error_responds_to(error.message,'no-record',:not_found)
+  end
+  
+  rescue_from Exception do |error|
+    logger.error("unhandled exception: #{error.message}\n" + error.backtrace.join("\n"))
+    render(text: "An unknown error has occurred", status: 500)
+  end
+  
+
+
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
 
@@ -38,4 +57,16 @@ class ApplicationController < ActionController::Base
     mime = Mime::Type.lookup(content_type)
     mime.to_sym == :json
   end
+  
+  def error_responds_to(message, error_type="cannot-process-request", status= :bad_request)
+    if message.blank?
+      head status: status
+    else    
+      respond_to do |wants|
+        wants.json{ render json: {error: error_type, message: message}, status: status}
+        wants.xml{ render xml: {error: error_type, message: message}.to_xml(root: 'response'), status: status}
+      end
+    end
+  end
+  
 end

@@ -1,6 +1,12 @@
 class DidsController < ApplicationController
   before_filter :find_did, except: [:index]
   
+  rescue_from ActiveRecord::RecordNotFound do |error|
+    logger.error("WHAT THE ")
+    error_responds_to(error.message,'no-record',:not_found)
+  end
+  
+  
   def index
     dids = current_user.current_dids(include: :dids_phone_number)
     data = dids.map do |did|
@@ -27,7 +33,6 @@ class DidsController < ApplicationController
   private
   def find_did
     @did = Did.find(params[:id],:include=>[:dids_user_phone])
-    
   end
   
   def check_user_request
