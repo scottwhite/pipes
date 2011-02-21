@@ -46,7 +46,8 @@ class Order < ActiveRecord::Base
         self.user_phone.order_and_assign({state: self.state, city: self.city})  if (self.status == COMPLETED)
       when Product::PIPES_REUP then
         self.user_phone.reup 
-      when Procuct::PIPES_EXTEND then
+      when Product::PIPES_EXTEND then
+        logger.debug("process_for_product: #{self.inspect}")
         self.user_phone.extend_time
     end
   end

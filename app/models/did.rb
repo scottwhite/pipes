@@ -45,12 +45,12 @@ class Did < ActiveRecord::Base
   
   def time_left
     return if self.dids_user_phone.blank?
-    CallQueue.format_seconds(self.dids_user_phone.time_allotted - self.dids_user_phone.current_usage)
+    CallQueue.format_seconds(self.dids_user_phone.time_left)
   end
   
   def expires_at
     return if self.dids_user_phone.blank?
-    self.dids_user_phone.created_at + 3.weeks
+    self.dids_user_phone.expiration_date
   end
   
   

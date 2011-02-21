@@ -37,26 +37,29 @@ class UserPhone < ActiveRecord::Base
   end
   
   
-  def reup(requested_did)
+  def reup(requested_did=nil)
     did = requested_did || current_did
     did.update_attributes(usage_state: Did::IN_USE)
     dup = did.dids_user_phone
     raise "No mapping to re-up" if dup.blank?
-    dup.update_attributes(expire_state: DidsUserPhone::OPEN, expiration_date: dup.expiration_date + 3.weeks, time_alloted: dup.time_alloted + 1200)
+    dup.update_attributes(expire_state: DidsUserPhone::OPEN, expiration_date: dup.expiration_date + 3.weeks, time_allotted: dup.time_allotted + 1200)
   end
   
   
-  def extend_time(time=30.mins,requested_did)
+  def extend_time(time=1800,requested_did=nil)
+    logger.debug("extend_time: entry")
     did = requested_did || current_did
     dup = did.dids_user_phone
     raise "No mapping to extend" if dup.blank?
-    dup.update_attributes(time_alloted: dup.time_alloted + time)
+    logger.debug("extend_time: #{time}")
+    dup.update_attributes(time_allotted: dup.time_allotted + time)
   end
   
   def current_did
-    self.dids.select do |did|
-      did.can_reup?
+    dup = self.dids_user_phones.select do |dup|
+      !dup.dead?
     end.first
+    dup.did
   end
   
   def convert_number

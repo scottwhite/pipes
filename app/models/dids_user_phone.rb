@@ -7,6 +7,12 @@ class DidsUserPhone < ActiveRecord::Base
   EXPIRED = 1
   DEAD = 2
 
+
+
+  def time_left
+    self.time_allotted - self.current_usage
+  end
+  
   def expired?
     self.expired_date <= Time.now || self.expire_state == EXPIRED
   end
