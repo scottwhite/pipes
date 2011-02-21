@@ -57,7 +57,7 @@ class Did < ActiveRecord::Base
   def expired?
     dup = self.dids_user_phone
     return true if dup.blank?
-    dup.expired == true || dup.current_usage >= dup.time_allotted || dup.created_at + 3.weeks <= Time.now()
+    dup.expire_state > 0 || dup.current_usage >= dup.time_allotted || dup.expiration_date >= Time.now()
   end
   
   def can_reup?
