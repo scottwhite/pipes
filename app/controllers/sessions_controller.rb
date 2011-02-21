@@ -29,7 +29,17 @@ class SessionsController < ApplicationController
       render :action => 'new'
     end
   end
-
+  
+  def request_token
+    user = User.from_email_and_phone_number(params[:email], params[:number])
+    raise ActiveRecord::RecordNotFound.new("email: #{params[:email]} and number: #{params[:number]}") unless user
+    token = user.generate_token
+    user.save!
+    respond_to do |wants|
+      wants.json { render json: token}
+      wants.xml { render xm: token}
+    end
+  end
   def destroy
     logout_killing_session!
     flash[:notice] = "You have been logged out."

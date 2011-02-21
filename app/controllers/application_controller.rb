@@ -14,15 +14,14 @@ class ApplicationController < ActionController::Base
     error_responds_to(nil,'cannot-process-request',:not_found)
   end
     
-  rescue_from ActiveRecord::RecordNotFound do |error|
-    logger.error("WHAT THE ")
+  rescue_from 'ActiveRecord::RecordNotFound' do |error|
     error_responds_to(error.message,'no-record',:not_found)
   end
   
-  rescue_from Exception do |error|
-    logger.error("unhandled exception: #{error.message}\n" + error.backtrace.join("\n"))
-    render(text: "An unknown error has occurred", status: 500)
-  end
+  # rescue_from Exception do |error|
+  #   logger.error("unhandled exception: #{error.message}\n" + error.backtrace.join("\n"))
+  #   render(text: "An unknown error has occurred", status: 500)
+  # end
   
 
 
@@ -33,7 +32,19 @@ class ApplicationController < ActionController::Base
     @states ||= lambda{ v = Voipms.new;v.states}.call
   end
   
+  protected
+  def current_user
+    @current_user ||= (login_from_session || login_from_basic_auth || login_from_cookie || login_from_token) unless @current_user == false
+  end
+  
+  
   private
+  
+  def login_from_token
+    return nil if params[:token].blank?
+    User.find_by_activation_code(params[:token])
+  end
+  
   def require_user
     # if json_request?
     #   current_user = User.from_email_phone_number(params[:email], params[:number])

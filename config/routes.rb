@@ -3,7 +3,10 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/order', :controller => 'sessions', :action => 'new'
   map.resources :users, {:member=>{:suspend=>:put, :unsuspend=>:put, :purge=>:delete},:collection=>{:settings=>[:get,:put,:delete,:post]}}
 
-  map.resource :sessions
+  map.resource :sessions , {:collection=>{:request_token=>[:post,:get]}}
+  
+  map.request_token '/request_token', controller: 'sessions', action: 'request_token', method: [:get,:post]
+  
   map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get}}
   map.resources :orders, {:collection=>{:finialize=>:post}}
   

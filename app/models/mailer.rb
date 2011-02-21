@@ -23,7 +23,7 @@ class Mailer < ActionMailer::Base
   
   def recent_call_with_stats(call_queue)
     dup = DidsUserPhone.find(call_queue.dids_user_phone_id)
-    token = dup.user_phone.user.generate_token
+    token = setup_token(dup)
     
     recipients call_queue.email
     from PIPES
@@ -34,13 +34,20 @@ class Mailer < ActionMailer::Base
   
   def expired_notice(call_queue)
     dup = DidsUserPhone.find(call_queue.dids_user_phone_id)
-    token = dup.user_phone.user.generate_token
+    token = setup_token(dup)
     
     recipients call_queue.email
     from PIPES
     subject 'Recent call to your EXPIRED Pipes number'
     content_type 'text/html'
     body call_queue: call_queue, token: token, dup: dup
+  end
+  
+  def setup_token(dup)
+    user = dup.user_phone.user
+    token = user.generate_token
+    user.save!
+    token
   end
   
 end
