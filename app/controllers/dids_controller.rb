@@ -11,7 +11,7 @@ class DidsController < ApplicationController
     dids = current_user.current_dids(include: :dids_phone_number)
     data = dids.map do |did|
       dup = did.dids_user_phone
-      {dup_id: dup.id, did_id: did.id, time_left: dup.time_left, expiration_date: dup.expiration_date, number: did.phone_number}
+      {dup_id: dup.id, did_id: did.id, time_allotted: dup.time_allotted, time_left: dup.time_left, expiration_date: dup.expiration_date, number: did.phone_number}
     end
     
     respond_to do |wants|
