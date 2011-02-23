@@ -1,49 +1,68 @@
-<div class="info">
-  <%-if @did.expired? && @did.can_reup?%>
-  <p>Your Pipes Number has expired, however you can purchase the same number for another 3 weeks with 20 minutes total talk time.</p>
+<%=stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/start/jquery-ui.css'%>
+<%=javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js','http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js'%>
+<style>
+  .ui-widget{
+    font-size: 0.7em;
+  }
+  label, input { display:block; }
+  .text{margin-bottom: 15px;}
+  #statement .info{
+    font-size: 0.5em;
+  }  
+  #statement .price{
+    font-size: 1.25em;
+  }
+  fieldset { padding:0; border:0; margin-top:25px; }
+</style>
+<script>
+  Pipes = {existing:{}};
+  $(function(){
+    Pipes.existing.dialog = $('#dialog').dialog({
+      height: 325,
+      width: 400,
+      modal: true,
+      title: 'Verify',
+      autoShow: false,
+      buttons: {
+        'Confirm' : function(){
+          $.ajax({
+            url: '<%=existing_path(params[:did])%>',
+            data: {email: $('#email').val(), number: $('#user_phone').val()},
+            type: 'POST',
+            error: function(error){
+              $('#message').text("Unable to Verify");
+              
+            },
+            success: function(data,status){
+              $("#statement").html(data);
+              Pipes.existing.dialog.dialog('close');
+            }
+          });
+          
+        }
+      }
+    });
+    <%- unless current_user -%>
+    Pipes.existing.dialog.dialog('open');
+    <%- end -%>
+  });
+</script>
+<%- if current_user -%>
+<%=render(partial: 'existing_options')%>
+<%- else -%>
+<h2 id="statement">Need to verify this is your Pipes Number</h2>
+<%- end -%>
 
-  <!-- Re-up -->
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <input type="hidden" name="cmd" value="_s-xclick">
-  <input type="hidden" name="invoice" value="<%=@reup_order.id%>">
-  <input type="hidden" name="hosted_button_id" value="DF5WDUZ2RB7JG">
-  <span class="price">$2.00</span></b> <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-  <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-  </form>
-  </p>
+<div id="dialog" title="Create new user">
+  <p id="message" class="validateTips">All form fields are required.</p>
+
+  <form>
+  <fieldset>
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email" class="text ui-widget-content ui-corner-all" maxlength="100">
+    <label for="user_phone">Your Phone Number</label>
+    <input type="text" name="user_phone" id="user_phone" class="text ui-widget-content ui-corner-all" maxlength="20">
     
-  <%-elsif !@did.expired?-%>
-  <p>Currently have a Pipes Number that will expire on <%=@did.expires_at.strftime('%B %d, %Y')%> and has <%=@did.time_left%> left of talk time.</p>
-    <%-unless @from_mailing -%>
-    <p>Would you like it re-sent?<br>
-    <%=link_to 'Send Pipes Number', mail_existing_request_number_path%></p>
-
-    or
-    <%-end-%>
-  <p>You can add 30 more minutes to your current Pipes Number
-  
-  <!-- 30min extension -->
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <input type="hidden" name="cmd" value="_s-xclick">
-  <input type="hidden" name="invoice" value="<%=@ext_order.id%>">
-  <input type="hidden" name="hosted_button_id" value="JL2WZ8JXUB9H8">
-  <span class="price">$1.00</span><input type="image" src="https://www.paypal.com/en_US/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-  <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+  </fieldset>
   </form>
-  </p>
-
-  or
-  <p>You can extend your Pipes Number for another 3 weeks and an additional 20 minutes</p>
-
-
-  <!-- Re-up -->
-  <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-  <input type="hidden" name="cmd" value="_s-xclick">
-  <input type="hidden" name="invoice" value="<%=@reup_order.id%>">
-  <input type="hidden" name="hosted_button_id" value="DF5WDUZ2RB7JG">
-  <span class="price">$2.00</span><input type="image" src="https://www.paypal.com/en_US/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-  <img alt="" border="0" valign="middle" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-  </form>
-  </p>
-  <%-end-%>
 </div>

@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
   end
   
   def self.from_email_and_phone_number(email, number)
-    self.find(:first, :joins=>[:phones], conditions: ["users.email = ? and user_phones.number = ?", email, number])
+    self.find(:first, :joins=>[:phones], conditions: ["users.email = ? and user_phones.number = ?", email, UserPhone.convert_number(number)])
   end
   
   protected

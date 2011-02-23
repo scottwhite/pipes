@@ -3,6 +3,9 @@ class DidsUserPhone < ActiveRecord::Base
   belongs_to :did
   after_destroy :set_did_to_active
   
+  
+  named_scope :by_did_number, lambda{|number| {joins: [:did], conditions: ["dids.phone_number = ?", number]}}
+  
   OPEN = 0
   EXPIRED = 1
   DEAD = 2
@@ -25,5 +28,5 @@ class DidsUserPhone < ActiveRecord::Base
     self.did.usage_state = Did::ACTIVE
     self.did.save!
   end
-    
+
 end

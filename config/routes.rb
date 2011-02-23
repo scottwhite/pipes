@@ -20,8 +20,12 @@ ActionController::Routing::Routes.draw do |map|
   
   map.entry '/entry', :controller => :sessions, :action => :new, :conditions => {:method => :get}
 
-  map.existing '/existing/:id.:format', controller: :request_number, action: :existing
-  map.connect '/existing/:id.:format', controller: :request_number, action: :existing
+  map.connect '/:did.:format', controller: :request_number, action: :existing, did: /(\d{3}-\d{3}-\d{4}||\d{10})/, method: [:get,:post]
+  map.existing_did '/:did.:format', controller: :request_number, action: :existing, did: /(\d{3}-\d{3}\-d{4}||\d{10})/
+
+  map.existing '/existing/:id.:format', controller: :request_number, action: :existing_options
+  map.connect '/existing/:id.:format', controller: :request_number, action: :existing_options
+
 
   map.root controller: :sessions, action: :new
   

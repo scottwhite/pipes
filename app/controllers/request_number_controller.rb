@@ -1,5 +1,5 @@
 class RequestNumberController < ApplicationController
-  
+  skip_before_filter :require_user, only: [:existing, :existing_options]
   def new
     # new request for did
     respond_to do |wants|
@@ -11,26 +11,44 @@ class RequestNumberController < ApplicationController
         phone = current_user.phones.find_by_number(UserPhone.convert_number(@user_order[:phone]))
         @order= Order.create_for(phone,Product.pipes_number)
         wants.html { render }
+        wants.json  { render json: @order}
       end
     end
   end
   
   def existing
-    if params[:id]
-      dup = DidsUserPhone.find(params[:id])
-      unless dup.user_phone.user_id == current_user.id
+    if params[:id] || params[:did]
+      
+      @dup = DidsUserPhone.find(params[:id]) if params[:id]
+      @dup = DidsUserPhone.by_did_number(UserPhone.convert_number(params[:did])).first
+      unless current_user.blank? || dup.user_phone.user_id == current_user.id 
         redirect_to(action: 'new')
         return
       end
-      @did = dup.did
+      @did = @dup.did
       if @did.expired? && !@did.can_reup?
         render action: 'new' && return 
       end
       @from_mailing = true
+      @reup_order = Order.reup_pipes(@dup.user_phone)
+      @ext_order = Order.extend_pipes(@dup.user_phone)
     end
+  end
+  
+  def existing_options
+    current_user = User.from_email_and_phone_number(params[:email],params[:number])
+    raise ActiveRecord::RecordNotFound.new("nope") if current_user.blank?
+    dup = DidsUserPhone.by_did_number(UserPhone.convert_number(params[:id])).first
+    raise ActiveRecord::RecordNotFound.new("nope") unless dup
+    unless dup.user_phone.user_id == current_user.id 
+      render(json: 'Not allowed', status: 403)
+      return
+    end
+    @did = dup.did
     @reup_order = Order.reup_pipes(dup.user_phone)
     @ext_order = Order.extend_pipes(dup.user_phone)
-    
+    @from_mailing = true
+    render(template: 'request_number/_existing_options',layout: false)
   end
   
   def mail_existing
@@ -91,6 +109,8 @@ class RequestNumberController < ApplicationController
   
   def check_for_existing
     dids = current_user.current_dids
-    dids.first unless dids.blank?
+    unless dids.blank?
+      dids.first
+    end
   end  
 end

@@ -29,7 +29,7 @@ class Mailer < ActionMailer::Base
     from PIPES
     subject 'Recent call to your Pipes number'
     content_type 'text/html'
-    body call_queue: call_queue, token: token, dup: dup
+    body call_queue: call_queue, token: token, dup: dup, did: dup.did
   end
   
   def expired_notice(call_queue)

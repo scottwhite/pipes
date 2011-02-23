@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
     
   rescue_from 'ActiveRecord::RecordNotFound' do |error|
     error_responds_to(error.message,'no-record',:not_found)
+    return false
   end
   
   # rescue_from Exception do |error|
