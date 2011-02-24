@@ -1,4 +1,4 @@
-<%=stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/start/jquery-ui.css'%>
+<%=stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/cupertino/jquery-ui.css'%>
 <%=javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js','http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js'%>
 <style>
   .ui-widget{
@@ -23,6 +23,9 @@
       modal: true,
       title: 'Verify',
       autoShow: false,
+      resizable: false,
+      position: 'center',
+      draggable: false,
       buttons: {
         'Confirm' : function(){
           $.ajax({
