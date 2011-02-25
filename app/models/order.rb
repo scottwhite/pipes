@@ -77,5 +77,9 @@ class Order < ActiveRecord::Base
     raise "Order already processed" unless o.status == INITIAL
     o
   end
+  
+  def self.nuke_unused(time=48.hours.ago)
+    delete_all(["status = #{INITIAL} and created_at > ?",48.hours.ago])
+  end
     
 end

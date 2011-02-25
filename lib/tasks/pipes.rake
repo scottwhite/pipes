@@ -22,3 +22,11 @@ namespace :numbers do
     end
   end
 end
+
+namespace :orders do
+  desc "nuke orders that are older than 48hrs and still a status of initialized"
+  task :activate_waiting=>:environment do
+    Order.nuke_unused
+  end
+  
+end
