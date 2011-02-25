@@ -1,17 +1,33 @@
 class RequestNumberController < ApplicationController
-  skip_before_filter :require_user, only: [:existing, :existing_options]
+  skip_before_filter :require_user, only: [:new, :existing, :existing_options]
+
   def new
     # new request for did
     respond_to do |wants|
-      @user_order = session[:current_order]
-      if @did = check_for_existing
-        wants.html { redirect_to existing_path(@did.dids_user_phone.id) }
-        wants.json  { render json: @dids.first }
-      else
-        phone = current_user.phones.find_by_number(UserPhone.convert_number(@user_order[:phone]))
-        @order= Order.create_for(phone,Product.pipes_number)
-        wants.html { render }
-        wants.json  { render json: @order}
+      if current_user
+        @user_order = session[:current_order]
+        if @did = check_for_existing
+          wants.html { redirect_to existing_path(@did.dids_user_phone.id) }
+          wants.json  { render json: @did }
+        else
+          phone = current_user.phones.find_by_number(UserPhone.convert_number(@user_order[:phone]))
+          @order= Order.create_for(phone,Product.pipes_number)
+          wants.html { render }
+          wants.json  { render json: @order}
+        end
+      elsif params[:format] == 'json'
+        authenticate_with_http_basic do |email,phone|
+          user = User.from_email_and_phone_number(email, phone)
+          if user.blank?
+            user = User.find_or_initialize_by_email(email)
+            user.phones.build(number: phone) unless user.phones.exists?(number: UserPhone.convert_number(phone))
+            user.save!
+          end
+          logger.debug(user.inspect)
+          p = user.phones.find_by_number(UserPhone.convert_number(phone))
+          order= Order.create_for(p,Product.pipes_number)
+          wants.json  { render json: order}
+        end
       end
     end
   end

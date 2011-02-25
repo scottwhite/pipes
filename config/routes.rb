@@ -7,6 +7,10 @@ ActionController::Routing::Routes.draw do |map|
   
   map.request_token '/request_token', controller: 'sessions', action: 'request_token', method: [:get,:post]
   
+  
+  map.connect '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
+  map.request_number '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
+  
   map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get, :existing_options=>[:get,:post]}}
   map.resources :orders, {:collection=>{:finialize=>:post}}
   

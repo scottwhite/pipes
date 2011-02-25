@@ -28,4 +28,7 @@ describe Order, "doing it" do
     o.product.should == Product.pipes_reup
   end
     
+  it "should stale orders" do
+    Order.nuke_unused
+  end
 end
