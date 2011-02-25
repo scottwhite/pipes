@@ -20,7 +20,7 @@ class RequestNumberController < ApplicationController
     if params[:id] || params[:did]
       
       @dup = DidsUserPhone.find(params[:id]) if params[:id]
-      @dup = DidsUserPhone.by_did_number(UserPhone.convert_number(params[:did])).first
+      @dup = DidsUserPhone.by_did_number(UserPhone.convert_number(params[:did])).first if params[:did]
       unless current_user.blank? || @dup.user_phone.user_id == current_user.id 
         redirect_to(action: 'new')
         return

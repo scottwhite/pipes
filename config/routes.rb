@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.request_token '/request_token', controller: 'sessions', action: 'request_token', method: [:get,:post]
   
-  map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get}}
+  map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get, :existing_options=>[:get,:post]}}
   map.resources :orders, {:collection=>{:finialize=>:post}}
   
   map.resources :dids
@@ -21,8 +21,8 @@ ActionController::Routing::Routes.draw do |map|
   map.entry '/entry', :controller => :sessions, :action => :new, :conditions => {:method => :get}
 
 
-  map.existing '/existing/:id.:format', controller: :request_number, action: :existing_options
-  map.connect '/existing/:id.:format', controller: :request_number, action: :existing_options
+  map.existing '/existing/:id.:format', controller: :request_number, action: :existing
+  map.connect '/existing/:id.:format', controller: :request_number, action: :existing
 
   map.root controller: :sessions, action: :new
   map.connect '/', controller: :sessions, action: :new, method: [:get]

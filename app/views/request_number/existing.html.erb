@@ -22,7 +22,7 @@
       width: 400,
       modal: true,
       title: 'Verify',
-      autoShow: false,
+      autoOpen: false,
       resizable: false,
       position: 'center',
       draggable: false,
@@ -45,11 +45,12 @@
         }
       }
     });
-    <%- unless current_user -%>
+<%- unless current_user -%>
     Pipes.existing.dialog.dialog('open');
-    <%- end -%>
+<%- end -%>    
   });
 </script>
+
 <%- if current_user -%>
 <%=render(partial: 'existing_options')%>
 <%- else -%>
