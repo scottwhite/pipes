@@ -1,10 +1,16 @@
-<% form_tag sessions_path do -%>
+<div id="information">
+  With a Pipes Number you get a temporary phone number that you can give to people/companies that you aren't comfortable with (or just don't want to) giving your real phone number to.
+  <p> Your Pipes Number is good for <b>a time period of 3 weeks</b> from date of purchase with a <b>total of 20 minutes talk time</b> reserved.</p>
+  <p> Additional information is provided in our <a href="/faq.html">FAQ</a></p>
+</div>
+
+<% form_tag sessions_path, id: 'request_number' do -%>
+<span class="info">To purchase a Pipes Number please give us the following information (<a href="faq.html">Why?</a>)</span>
 <p><%= label_tag 'email' %><br />
-<%= text_field_tag 'email', @email, maxlength: 100, length: 200 %></p>
+<%= text_field_tag 'email', @email, maxlength: 100, length: 150 %></p>
 
 <p><%= label_tag 'Your Phone Number' %><br />
 <%= text_field_tag 'user_phone', @user_phone,  maxlength: 20, length: 30 %></p>
-<br>
 
 <p><%= submit_tag 'Request Number' %></p>
 

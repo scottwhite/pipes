@@ -9,9 +9,7 @@ body {
   color: black;
 }
 .container{
-  min-width: 300px;
-  max-width:1024px;
-  min-height:300px;
+  width: 700px;
   margin: 50px;
   text-align: center;
 }
@@ -21,9 +19,34 @@ body {
 .content{
   position: relative;
   min-height: 400px;
-  padding: 1em;
   font-size: 1em;
   text-align: center;
+}
+#request_number{
+	float: right;
+	width: 330px;
+	height:250px;
+	padding: 5px;
+	font-size: 0.7em;
+	color: #ffffff;
+	background-color: rgba(25,118,255,0.42);
+	border: 3px solid #1977b0;
+	-webkit-border-radius: 10px 10px 10px 10px;	
+}
+#request_number a{
+	color: #ffffff;
+}
+#information{
+	float: left;
+	width: 330px;
+	height: 250px;
+	font-size: 0.7em;
+	color: #000000;
+	background-color: rgba(250,119,67,0.47);
+	padding: 5px;
+	text-align: left;
+	border: 3px solid #FA7743;
+	-webkit-border-radius: 10px 10px 10px 10px;		
 }
 .legal{
   position: relative;
@@ -47,7 +70,6 @@ body {
 }
 .content form input{
   position: inherit;
-  font-size: 0.8em;
   text-align:left;
 }
 
