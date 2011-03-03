@@ -29,7 +29,7 @@
       buttons: {
         'Confirm' : function(){
           $.ajax({
-            url: '<%=existing_path(params[:did])%>',
+            url: '<%=existing_options_path(params[:did])%>',
             data: {email: $('#email').val(), number: $('#user_phone').val()},
             type: 'POST',
             error: function(error){

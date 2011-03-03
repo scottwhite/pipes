@@ -11,7 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
   map.request_number '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
   
-  map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get, :existing_options=>[:get,:post]}}
+  map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get}}
   map.resources :orders, {:collection=>{:finialize=>:post}}
   
   map.resources :dids
@@ -24,6 +24,9 @@ ActionController::Routing::Routes.draw do |map|
   
   map.entry '/entry', :controller => :sessions, :action => :new, :conditions => {:method => :get}
 
+
+  map.existing_options '/existing_options/:id.:format', controller: :request_number, action: :existing_options
+  map.connect '/existing_options/:id.:format', controller: :request_number, action: :existing_options
 
   map.existing '/existing/:id.:format', controller: :request_number, action: :existing
   map.connect '/existing/:id.:format', controller: :request_number, action: :existing
