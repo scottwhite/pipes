@@ -1,7 +1,7 @@
 body, p, div, h1, h2, h3, span, ui{
   font-family:"VAG Rundschrift Light", arial; 
   font-size-adjust:0.504; 
-  font-weight:200; 
+  /*font-weight:200;*/ 
   font-style:normal;
 }
 body { 
@@ -45,6 +45,9 @@ span.pipes-orange{
 	-webkit-border-radius: 10px 10px 10px 10px;	
 	-webkit-box-shadow: 25px 25px 0px #D8742D;
 	left: -20px;
+}
+#email{
+	width: 200px;
 }
 #request_number a{
 	color: #ffffff;
@@ -135,9 +138,6 @@ div.error{
 	list-style-type: square;
 	font-size: .8em;
 	list-style-position: inside;
-}
-#email{
-	width: 20em;
 }
 #user_phone{
 	width: 15em;
