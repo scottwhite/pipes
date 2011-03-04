@@ -10,14 +10,15 @@
 </head>
 <body>
 <div class="container">
-  <a href="/"><img src="/images/pipes.png"></a>
-  <h3>Temporary numbers for temporary connections</h3>
+  <a href="/"><img id="logo" src="/images/pipes.svg"></a>
+  <h3 id="tagline">temporary numbers for temporary connections</h3>
   <div class="content">
     <%=render(partial: 'shared/messages')%>
     <%=yield%>
 
   </div>
-  <div class="footer"><div class="links"><a href="/about">About</a><a href="/legal.html">Legal</a><a href="/privacy.html">Privacy Policy</a><a href="/contact.html">Contact</a></div><span class="copyright">pipes, Inc. copyright 2011</span></div>
+  <hr class="footer">
+  <div class="footer"><div class="links"><a href="/about">About</a><a href="/disclaimer.html">Disclaimer</a><a href="/contact.html">Contact</a></div><span class="copyright">pipes, Inc. copyright 2011</span></div>
 </div>
 </body>
 </html>
