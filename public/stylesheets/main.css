@@ -1,7 +1,7 @@
 body, p, div, h1, h2, h3, span, ui{
   font-family:"VAG Rundschrift Light", arial; 
   font-size-adjust:0.504; 
-  /*font-weight:200;*/ 
+  font-weight:200; 
   font-style:normal;
 }
 body { 
