@@ -1,7 +1,5 @@
 <html>
 <head>
-</head>
-<body>
   <style>
     
     p {
@@ -34,9 +32,14 @@
     }
     
   </style>
-  <a href="http://pipes.io"><img id="logo" src="http://pipes.io/images/pipes.svg"></a>
-  <div id="tagline">temporary numbers<br>for temporary connections</div>
+  
+</head>
+<body>
+  <div style="font-size: 1.5em;font-family: arial;color: #325c93;">
+  <a href="http://pipes.io"><img id="logo" style="position: relative;width: 275px;left: -15px;" src="http://pipes.io/images/pipes.svg"></a>
+  <div id="tagline" style="font-size: 0.60em;position: relative;left: 285px;top: -65px;">temporary numbers<br>for temporary connections</div>
   <%=yield%>
-    <p class="note">If you have any questions please feel free to <a href="pipes.io/contact.html">contact us</a>.</p>
+    <p class="note" style="font-size: 0.8em;">If you have any questions please feel free to <a href="pipes.io/contact.html">contact us</a>.</p>
+  </div>
 </body>
 </html>
