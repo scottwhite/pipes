@@ -9,6 +9,8 @@ body {
   color: #325c93;
 }
 #logo{
+	position: relative;
+	left: -15px;
 	width: 275px;
 }
 h3{
