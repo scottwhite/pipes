@@ -6,12 +6,15 @@
 <title>Pipes</title>
 <link rel="stylesheet" href="http://f.fontdeck.com/s/css/D8Fz3XWt+VC0VDejQHe7Mks5Qzc/www.pipes.io/1657.css" type="text/css" />
 <link rel="stylesheet" href="http://f.fontdeck.com/s/css/D8Fz3XWt+VC0VDejQHe7Mks5Qzc/pipes.io/1657.css" type="text/css" />
+<link rel="apple-touch-icon" href="/images/iphone_pipes_icon.png"/>
 <%=stylesheet_link_tag 'main'%>
 </head>
 <body>
 <div class="container">
-  <a href="/"><img id="logo" src="/images/pipes.svg"></a>
-  <h3 id="tagline">temporary numbers for temporary connections</h3>
+  
+  <a href="/">
+    <img id="logo" src="/images/pipes.svg"></a>
+  <div id="tagline">temporary numbers<br>for temporary connections</div>
   <div class="content">
     <%=render(partial: 'shared/messages')%>
     <%=yield%>

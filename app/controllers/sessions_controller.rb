@@ -8,12 +8,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    logout_keeping_session!
+    logout_killing_session! unless session[:user_id].nil?
     phone =params[:user_phone]
     @user = User.find_or_initialize_by_email(params[:email])
     @user.phones.build(number: phone) unless @user.phones.exists?(number: UserPhone.convert_number(phone))
     if @user.save
-      reset_session
+      # reset_session
       session[:current_order] = {phone: phone}
       self.current_user = @user
       flash.discard

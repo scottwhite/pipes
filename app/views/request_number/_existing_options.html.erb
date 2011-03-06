@@ -1,6 +1,10 @@
-<div class="info">
+
   <%-if @did.expired? && @did.can_reup?%>
-  <p>Your Pipes Number has expired, however you can purchase the same number for another 3 weeks with 20 minutes total talk time.</p>
+  <div id="expired-info">
+  <p>Your Pipes Number has expired</p>
+  </div>
+  <div id="request-options" class="expired">
+  However you can purchase the same number for another 3 weeks with 20 minutes total talk time.</p>
 
   <!-- Re-up -->
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -11,16 +15,18 @@
   <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
   </form>
   </p>
-    
+  </div>
   <%-elsif !@did.expired?-%>
-  <p>Currently have a Pipes Number that will expire on <%=@did.expires_at.strftime('%B %d, %Y')%> and has <%=@did.time_left%> left of talk time.</p>
+  <div id="existing-info">
+  <p>Currently have a Pipes Number that will expire on:<br> <span class="pipes-orange"><%=@did.expires_at.strftime('%B %d, %Y')%> and has <%=@did.time_left%> left of talk time.<span class="pipes-orange"></p>
     <%-unless @from_mailing -%>
     <p>Would you like it re-sent?<br>
     <%=link_to 'Send Pipes Number', mail_existing_request_number_path%></p>
 
-    or
     <%-end-%>
-  <p>You can add 30 more minutes to your current Pipes Number
+  </div>
+  <div id="request-options">
+  You can add 30 more minutes to your current Pipes Number<br>
   
   <!-- 30min extension -->
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -31,10 +37,7 @@
   <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
   </form>
   </p>
-
-  or
   <p>You can extend your Pipes Number for another 3 weeks and an additional 20 minutes</p>
-
 
   <!-- Re-up -->
   <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -45,5 +48,6 @@
   <img alt="" border="0" valign="middle" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
   </form>
   </p>
+  </div>
+  
   <%-end-%>
-</div>

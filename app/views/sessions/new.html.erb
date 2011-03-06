@@ -1,5 +1,5 @@
 <div id="information">
-  <p class="title-p">Pipes, inc. was founded to solve a simple need:<br>
+  <p class="title-p">pipes, inc. was founded to solve a simple need:<br>
   <span class="pipes-orange">Keep your phone number private.</span></p>
   <p>We provide temporary numbers that route to your existing phone to use in situations where you don't want to give out your direct line.</p>
   <p>Use a pipes number for your temporary communications and keep your real number to yourself.</p>
@@ -11,7 +11,7 @@
 <% form_tag sessions_path, id: 'request_number' do -%>
 <span class="info">To purchase a Pipes Number please give us the following information (<a href="faq.html">Why?</a>)</span>
 <p><%= label_tag 'email' %><br />
-<%= text_field_tag 'email', @email, maxlength: 100, length: 150 %></p>
+<%= text_field_tag 'email', @email, maxlength: 100 %></p>
 
 <p><%= label_tag 'Your Phone Number' %><br />
 <%= text_field_tag 'user_phone', @user_phone,  maxlength: 20, length: 30 %></p>

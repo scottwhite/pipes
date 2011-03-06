@@ -45,7 +45,7 @@ class RequestNumberController < ApplicationController
       if @did.expired? && !@did.can_reup?
         render action: 'new' && return 
       end
-      @from_mailing = true
+      @from_mailing = params[:id].blank?
       @reup_order = Order.reup_pipes(@dup.user_phone)
       @ext_order = Order.extend_pipes(@dup.user_phone)
     end
