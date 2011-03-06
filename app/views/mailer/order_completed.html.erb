@@ -1,28 +1,11 @@
-<html>
-<head>
-  <style>
-    p {
-      font-size: 1em;
-    },
-    .note{
-      font-size: 0.8em;
-    }
-    span.number {
-      font-weight: 'bold';
-    }
-  </style>
-</head>
-<body>
   <p> Thank You!</p>
   <%-if @order.product_id == Product::PIPES_NUMBER -%>
-  <p> Your order has been processed, your Pipes Number is <span="number"><%=@did.friendly_phone_number%></span></p>
+  <p> Your order has been processed, your Pipes Number is <span="number pipes-orange"><%=@did.friendly_phone_number%></span></p>
   <p class="note">Remember you have 20 minutes total talk time for a total of 3 weeks</p>
   <%-elsif @order.product_id == Product::PIPES_REUP -%>
-  <p> Your order has been processed, your Pipes Number (<span="number"><%=@did.friendly_phone_number%></span>)<br>
+  <p> Your order has been processed, your Pipes Number (<span="number pipes-orange"><%=@did.friendly_phone_number%></span>)<br>
     now has a total talk time of <%=@did.time_left%> which expires on <%=@did.expires_at.strftime('%B %d, %Y')%>
     </p>
   <%-elsif @order.product_id == Product::PIPES_EXTEND -%>
   <p> You have added 30 minutes, for a total talk time of <%=@did.time_left%> which expires on <%=@did.expires_at.strftime('%B %d, %Y')%>.</p>
   <%-end-%>
-</body>
-</html>

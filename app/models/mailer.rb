@@ -1,6 +1,7 @@
 class Mailer < ActionMailer::Base
   PIPES = 'support@pipes.io'
   ActionMailer::Base.delivery_method = :sendmail
+  layout 'email'
   
   def order_completed(did,order)
     user = order.user
