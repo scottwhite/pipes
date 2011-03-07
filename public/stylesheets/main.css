@@ -19,7 +19,7 @@ h3{
 #tagline{
 	font-size: 0.60em;
 	position: relative;
-	left: 285px;
+	left: 265px;
 	top: -65px;
 }
 .container{
@@ -134,6 +134,11 @@ div#request-options{
   font-size: 1em;
   min-height: 300px;
   text-align: center;
+  top: -35px;
+}
+.legal ul{
+	margin: 0px;
+	padding-left: 1em;
 }
 .legal p{
   font-size: 0.8em;

@@ -18,10 +18,10 @@
   </div>
   <%-elsif !@did.expired?-%>
   <div id="existing-info">
-  <p>Currently have a Pipes Number that will expire on:<br> <span class="pipes-orange"><%=@did.expires_at.strftime('%B %d, %Y')%> and has <%=@did.time_left%> left of talk time.<span class="pipes-orange"></p>
+  <p>Currently have a Pipes Number that will expire on:<br> <span class="pipes-orange"><%=@did.expires_at.strftime('%B %d, %Y')%> and has <%=@did.time_left%> of talk time remaining.<span class="pipes-orange"></p>
     <%-unless @from_mailing -%>
-    <p>Would you like it re-sent?<br>
-    <%=link_to 'Send Pipes Number', mail_existing_request_number_path%></p>
+    <p>Forgot your number, need it re-sent?<br>
+    <%=link_to 'Click here to email Pipes Number', mail_existing_request_number_path%></p>
 
     <%-end-%>
   </div>
