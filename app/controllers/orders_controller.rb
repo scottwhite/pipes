@@ -3,7 +3,10 @@ class OrdersController < ApplicationController
   before_filter :verify, only: [:finialize]
 
   def finialize
-    render text: "whatever", status: 403 if params[:test_ipn] && RAILS_ENV== 'production'
+    if params[:test_ipn] && is_production?
+      render text: "whatever", status: 403 
+      return
+    end
     did = @order.process({raw_status: params[:payment_status], gateway_trans_id: params[:txn_id]})
     if did.blank?
       render text: 'error, unable to process request',status: 500  && return
