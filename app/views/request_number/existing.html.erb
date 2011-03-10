@@ -1,3 +1,6 @@
+<%- if current_user -%>
+<%=render(partial: 'existing_options')%>
+<%- else -%>
 <%=stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/cupertino/jquery-ui.css'%>
 <%=javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js','http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js'%>
 <style>
@@ -51,13 +54,8 @@
   });
 </script>
 
-<%- if current_user -%>
-<%=render(partial: 'existing_options')%>
-<%- else -%>
 <h2 id="statement">Need to verify this is your Pipes Number</h2>
-<%- end -%>
-
-<div id="dialog" title="Create new user">
+<div id="dialog" title="Validate">
   <p id="message" class="validateTips">All form fields are required.</p>
 
   <form>
@@ -70,3 +68,4 @@
   </fieldset>
   </form>
 </div>
+<%- end -%>
