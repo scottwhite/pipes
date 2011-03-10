@@ -55,6 +55,12 @@ span.pipes-orange{
 div#request_number{
 	height: 250px;
 }
+
+div#request_number form input{
+	margin-right: 15px;
+	vertical-align:bottom;
+}
+
 #email{
 	width: 200px;
 }
