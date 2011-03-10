@@ -108,6 +108,7 @@ div#request-options{
 	position: relative;
 	top: -15px;
 	text-align: left;
+	margin-bottom: 10px;
 }
 #existing-info p.title-p{
 	font-size: 1.1em;
