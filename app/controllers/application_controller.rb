@@ -34,6 +34,9 @@ class ApplicationController < ActionController::Base
   end
   
   protected
+  def is_production?
+    RAILS_ENV=='production'
+  end
   def current_user
     @current_user ||= (login_from_session || login_from_basic_auth || login_from_cookie || login_from_token) unless @current_user == false
   end
