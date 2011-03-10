@@ -94,13 +94,13 @@ div#request_number{
 	box-shadow: 25px 25px 0px #D8742D;
 }
 div#request-options{
-	height: 200px;
+	height: 180px;
 }
 #request-options a{
 	color: #ffffff;
 }
 #existing-info{
-	width: 400px;
+	width: 500px;
 	height: 100px;
 	font-size: 0.7em;
 	color: #325c93;
