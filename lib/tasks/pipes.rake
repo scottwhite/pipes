@@ -14,7 +14,7 @@ namespace :numbers do
   task :call_notification=>:environment do
     CallQueue.unprocessed.each do |cq|
       cq.update_attributes(processed: true)
-      if q.queue_type == 1
+      if cq.queue_type == 1
         Mailer.deliver_recent_call_with_stats(cq)
       else
         Mailer.deliver_expired_notice(cq)
