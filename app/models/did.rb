@@ -21,22 +21,23 @@ class Did < ActiveRecord::Base
   named_scope :in_use, {conditions: {usage_state: IN_USE}}
   named_scope :internal, {conditions: {usage_state: INTERNAL}}
   def self.current_provider
-    @current_provider ||= Voipms
+    # @current_provider ||= Voipms
+    @current_provider ||= TwilioProvider
   end
   
   def self.order(options={})
-    raise "Need state" if options[:state].blank?
+    # raise "Need state" if options[:state].blank?
     did = Did.available_by_city(options[:state],options[:city]).first
     did = Did.active.first if did.blank?
     if did.blank?
       cp = current_provider.new
-      did = cp.order(options[:city],options[:state])
-      did = cp.order(nil,options[:state]) if did.blank?
+      # did = cp.order(options[:city],options[:state])
+      # did = cp.order(nil,options[:state]) if did.blank?
+      did = cp.order(options[:user_phone].number)
     end
    did
   end
-  
-  
+    
   def friendly_phone_number
     return if phone_number.blank?
     m= phone_number.match(/(\d{3})(\d{3})(\d{4})/)

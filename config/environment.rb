@@ -24,6 +24,7 @@ Rails::Initializer.run do |config|
   config.gem 'aasm', version: '2.1.5'
   config.gem 'nokogiri'
   config.gem 'savon', version: '0.8.1'
+  config.gem 'twilio', version: '3.0.1'
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

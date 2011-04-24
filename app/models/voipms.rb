@@ -208,7 +208,7 @@ class Voipms
     raise "Unable to order" unless order_did(first_did.did)
         
     did_number = first_did.did
-    d = Did.new(phone_number: did_number,usage_state: Did::ACTIVE, state: state, city: ratecenter)
+    d = Did.new(phone_number: did_number,usage_state: Did::ACTIVE, state: state, city: ratecenter,provider: 'voipms')
     d.save!
     d
   rescue => e
