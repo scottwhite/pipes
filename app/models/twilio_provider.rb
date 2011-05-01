@@ -1,13 +1,22 @@
 class TwilioProvider
   SID = 'AC584a27ef4e2a013398ad27b5bcdb16a3'
   AUTH_TOKEN = '5602b73423d50848001fb55d719c6c8a'
-
+  
+  PIPES_PROCESS_URL = 'http://process.pipes.io/incoming'
+  
+  
+  attr_accessor :did_id, :did, :sid
+  
   def logger
     RAILS_DEFAULT_LOGGER
   end  
   
   def initialize
     self.class.connect
+  end
+  
+  def did
+    @did || Did.find(:first, conditions:{provider: 'twilio', provider_id: @sid}) if @sid
   end
   
   def order_did(did)
@@ -21,9 +30,26 @@ class TwilioProvider
   def parse_response(response)
     response['TwilioResponse']
   end
+  
+  def voice_url(id)
+    id = id || self.did.id unless self.did.blank?
+    "#{PIPES_PROCESS_URL}/#{id}"
+  end
 
   def get_did(sid)
     response = Twilio::IncomingPhoneNumber.get(sid)
+    r = parse_response(response.parsed_response)
+    logger.info(r.inspect)
+    r
+  end
+  
+  def set_voice_url(sid, id=nil)
+    @sid = sid
+    self.update(sid, :VoiceUrl=>self.voice_url(id))
+  end
+  
+  def update(sid,options={})
+    response = Twilio::IncomingPhoneNumber.update(sid,options)
     r = parse_response(response.parsed_response)
     logger.info(r.inspect)
     r
@@ -44,6 +70,7 @@ class TwilioProvider
     did_number = convert_number(first_did['PhoneNumber'])
     d = Did.new(phone_number: did_number,usage_state: Did::ACTIVE, state: first_did['Region'], city: first_did['RateCenter'], provider: 'twilio', provider_id: order['Sid'])
     d.save!
+    self.set_voice_url(order['Sid'],d.id)
     d
   rescue => e
     logger.error("order: #{e.message}")
@@ -72,7 +99,5 @@ class TwilioProvider
     @connection ||= Twilio.connect(SID,AUTH_TOKEN)
   end
   
-  
-    # {"FriendlyName"=>"(410) 514-6004", "PhoneNumber"=>"+14105146004", "Lata"=>"236", "RateCenter"=>"SEVERN", "Latitude"=>"39.070000", "Longitude"=>"-76.630000", "Region"=>"MD", "PostalCode"=>"21032", "IsoCountry"=>"US", "Distance"=>"6.23711898475397"},
-  
 end
+
