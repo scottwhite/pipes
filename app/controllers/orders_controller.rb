@@ -11,7 +11,13 @@ class OrdersController < ApplicationController
     if did.blank?
       render text: 'error, unable to process request',status: 500  && return
     end
-    Mailer.deliver_order_completed(did,@order) if did && @order.user.email?
+    begin
+      Mailer.deliver_order_completed(did,@order) if did && @order.user.email?
+    rescue => e
+      logger.error("Email barfed, need ot notify user of process status: #{order.inspect}\n #{did.inspect}")
+      render text: 'hmmmm'
+      return
+    end
     respond_to do |wants|
       wants.html{ render text: did.phone_number}
       wants.json{ render json: did.phone_number}
