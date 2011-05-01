@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password
 
   def self.call_states
-    @states ||= lambda{ v = Voipms.new;v.states}.call
+    # @states ||= lambda{ v = Voipms.new;v.states}.call
   end
   
   protected
