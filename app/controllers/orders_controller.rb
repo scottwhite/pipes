@@ -9,12 +9,13 @@ class OrdersController < ApplicationController
     end
     did = @order.process({raw_status: params[:payment_status], gateway_trans_id: params[:txn_id]})
     if did.blank?
-      render text: 'error, unable to process request',status: 500  && return
+      logger.error("finialize: unable to process order: #{@order.inspect}")
+      render text: 'error, unable to process request',status: 200  && return
     end
     begin
       Mailer.deliver_order_completed(did,@order) if did && @order.user.email?
     rescue => e
-      logger.error("Email barfed, need ot notify user of process status: #{order.inspect}\n #{did.inspect}")
+      logger.error("Email barfed, need ot notify user of process status: #{@order.inspect}\n #{did.inspect}")
       render text: 'hmmmm'
       return
     end
