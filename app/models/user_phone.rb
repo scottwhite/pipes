@@ -15,7 +15,7 @@ class UserPhone < ActiveRecord::Base
   before_save :convert_number
     
   def order_and_assign(options={})
-    options.merge(user_phone: self)
+    options.merge!(user_phone: self)
     if options[:state].blank?
       phone_info = CloudVox.state_rate_center(self.number)
       options[:city] = phone_info[:ratecenter]
