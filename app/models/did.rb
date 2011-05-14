@@ -10,6 +10,7 @@ class Did < ActiveRecord::Base
   has_one :last_used, class_name: 'DidsLastUsed'
 
   named_scope :available_by_city, lambda{|state,city|
+    return {} if(state.blank? && city.blank?)
     {conditions: {usage_state: ACTIVE, state: state.downcase, city: city.downcase}}
     }
   
