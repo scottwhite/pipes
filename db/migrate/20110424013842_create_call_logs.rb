@@ -2,7 +2,7 @@ class CreateCallLogs < ActiveRecord::Migration
   def self.up
     connection.execute(%Q{CREATE TABLE `call_logs` (
       id  mediumint unsigned not null auto_increment,
-      `call_date` datetime NOT NULL default '0000-00-00 00:00:00',
+      `call_date` timestamp NOT NULL,
       `call_sid` varchar(200) NOT NULL,
       `calling_number` varchar(80) NOT NULL default '',
       `target_number` varchar(80) NOT NULL default '',
