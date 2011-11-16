@@ -38,13 +38,14 @@ class RequestNumberController < ApplicationController
       
       @dup = DidsUserPhone.find(params[:id]) if params[:id]
       @dup = DidsUserPhone.by_did_number(UserPhone.convert_number(params[:did])).first if params[:did]
-      unless current_user.blank? || @dup.user_phone.user_id == current_user.id 
+      if current_user.blank? || @dup.user_phone.user_id != current_user.id 
         redirect_to(action: 'new')
         return
       end
       @did = @dup.did
       unless @did.can_reup?
-        render action: 'new' && return 
+        redirect_to(action: 'new')
+        return 
       end
       @from_mailing = params[:id].blank?
       @reup_order = Order.reup_pipes(@dup.user_phone)
