@@ -17,7 +17,7 @@ class DidsUserPhone < ActiveRecord::Base
   end
   
   def expired?
-    self.expired_date <= Time.now || self.expire_state == EXPIRED
+    self.expiration_date <= Time.now || self.expire_state == EXPIRED
   end
   
   def dead?

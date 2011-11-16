@@ -22,11 +22,14 @@ class Mailer < ActionMailer::Base
     body user: user, did: did, token: token
   end
   
-  def recent_call_with_stats(call_queue)
-    dup = DidsUserPhone.find(call_queue.dids_user_phone_id)
+  def recent_call_with_stats(call_data)
+    user = User.find_by_user_id(call_data['user_id'])
+    return if user.blank?
+    dup = DidsUserPhone.find(call_data['user_id'])
+
     token = setup_token(dup)
     
-    recipients call_queue.email
+    recipients call_data.email
     from PIPES
     subject 'Recent call to your Pipes number'
     content_type 'text/html'
