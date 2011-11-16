@@ -42,7 +42,7 @@ class RequestNumberController < ApplicationController
         return
       end
       @did = @dup.did
-      if @did.expired? && !@did.can_reup?
+      unless @did.can_reup?
         render action: 'new' && return 
       end
       @from_mailing = params[:id].blank?
