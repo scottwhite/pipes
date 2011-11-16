@@ -65,7 +65,7 @@ class Did < ActiveRecord::Base
   def can_reup?
     dup = self.dids_user_phone
     return false if dup.blank?
-    dup.expiration_date + 1.week < Time.now
+    dup.expiration_date + 1.week > Time.now
   end
   
   def self.update_expired
@@ -86,6 +86,18 @@ class Did < ActiveRecord::Base
       updated_at = NOW()
       where usage_state = #{DISABLED} 
       and updated_at <= date_sub(NOW(), INTERVAL 1 WEEK)})
+  end
+
+  def self.clear_expired_numbers
+    self.connection.execute(%Q{update dids
+      delete from dids_user_phones dup
+      on dup.did_id = dids.id
+      and dids.usage_state = #{IN_USE}
+      set usage_state = 0,
+      dup.expire_state = 1,
+      dids.updated_at = NOW(),
+      dup.updated_at = NOW()
+      where dup.expire_state = 0 and (dup.current_usage >= dup.time_allotted or dup.expiration_date < NOW())})
   end
   
 end

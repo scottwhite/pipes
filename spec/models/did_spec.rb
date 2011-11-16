@@ -8,6 +8,13 @@ describe Did, "doing it" do
     avail = Did.available_by_region('MD')
     avail.size.should == 4
   end
+
+  it "should check if can reup" do
+    dup = mock_model(DidsUserPhone,{expiration_date: 4.weeks.ago})
+    did = Did.new
+    did.stub(:dids_user_phone).and_return(dup)
+    did.can_reup?.should == false
+  end
   
   it "should update expired" do
     Did.update_expired
