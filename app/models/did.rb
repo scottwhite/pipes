@@ -65,7 +65,7 @@ class Did < ActiveRecord::Base
   def can_reup?
     dup = self.dids_user_phone
     return false if dup.blank?
-    !dup.dead?
+    dup.expiration_date + 1.week < Time.now
   end
   
   def self.update_expired
