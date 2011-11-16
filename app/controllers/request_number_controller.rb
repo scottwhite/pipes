@@ -6,7 +6,8 @@ class RequestNumberController < ApplicationController
     respond_to do |wants|
       if current_user
         @user_order = session[:current_order]
-        if @did = check_for_existing
+        @did = check_for_existing
+        if @did && @did.can_reup?
           wants.html { redirect_to existing_path(@did.dids_user_phone.id) }
           wants.json  { render json: @did }
         else
