@@ -8,7 +8,7 @@
 <%-end-%>
 <%if RAILS_ENV=='production'-%>
 
-<%-if @did.blank? -%>
+
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="invoice" value="<%=@order.id%>">
@@ -17,10 +17,9 @@
 <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
 
-<%-end-%>
 
 <%-else-%>
-<%-if @did.blank? -%>
+
 TEST
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_s-xclick">
@@ -29,6 +28,6 @@ TEST
 <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_paynow_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-<%-end-%>
+
 <%-end-%>
 </div>
