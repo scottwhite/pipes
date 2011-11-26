@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
                                                               inner join user_phones up 
                                                               on up.user_id = #{id}
                                                               and up.id = dup.user_phone_id
-                                                              and dup.expire_state <> 2}
+                                                              and dup.expiration_date > now()}
   
   has_many :orders
 
