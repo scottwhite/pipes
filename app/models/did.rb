@@ -27,16 +27,8 @@ class Did < ActiveRecord::Base
   end
   
   def self.order(options={})
-    # raise "Need state" if options[:state].blank?
-    did = Did.available_by_city(options[:state],options[:city]).first
-    did = Did.active.first if did.blank?
-    if did.blank?
-      cp = current_provider.new
-      # did = cp.order(options[:city],options[:state])
-      # did = cp.order(nil,options[:state]) if did.blank?
-      did = cp.order(options[:user_phone].number)
-    end
-   did
+    cp = current_provider.new
+    cp.order(options[:user_phone].number)
   end
     
   def friendly_phone_number

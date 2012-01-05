@@ -16,11 +16,6 @@ class UserPhone < ActiveRecord::Base
     
   def order_and_assign(options={})
     options.merge!(user_phone: self)
-    if options[:state].blank?
-      phone_info = CloudVox.state_rate_center(self.number)
-      options[:city] = phone_info[:ratecenter]
-      options[:state] = phone_info[:state]
-    end
     did = Did.order(options)
     
     did.usage_state = Did::IN_USE
@@ -34,8 +29,7 @@ class UserPhone < ActiveRecord::Base
     dup = DidsUserPhone.find(:first, conditions: {expire_state: 0, did_id: did.id, user_phone_id: self.id})
     dup.update_attributes(expiration_date: Time.now + 3.weeks)
     did
-  end
-  
+  end  
   
   def reup(requested_did=nil)
     did = requested_did || current_did
@@ -45,7 +39,6 @@ class UserPhone < ActiveRecord::Base
     dup.update_attributes(expire_state: DidsUserPhone::OPEN, expiration_date: dup.expiration_date + 3.weeks, time_allotted: dup.time_allotted + 1200)
     did
   end
-  
   
   def extend_time(time=1800,requested_did=nil)
     logger.debug("extend_time: entry")
