@@ -61,7 +61,7 @@ class TwilioProvider
   def order(number)
     count = (count)?count+1:0
     logger.debug("order: count is #{count}")
-    first_did = did.blank? ? available_dids(number).first
+    first_did = available_dids(number).first
     
     raise "Unable to get DIDs" if first_did.blank?
     raise "Unable to order" unless order = order_did(first_did.phone_number)
