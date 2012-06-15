@@ -7,6 +7,8 @@ ActionController::Routing::Routes.draw do |map|
   
   map.request_token '/request_token', controller: 'sessions', action: 'request_token', method: [:get,:post]
   
+map.request_token '/client_token', controller: 'sessions', action: 'twilio_token', method: [:get,:post]
+
   
   map.connect '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
   map.request_number '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]

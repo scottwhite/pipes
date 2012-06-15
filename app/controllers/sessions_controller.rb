@@ -46,6 +46,12 @@ class SessionsController < ApplicationController
     redirect_back_or_default('/')
   end
 
+  def twilio_token
+      user = User.from_email_and_phone_number(params[:email], params[:number])
+      t = TwilioProvider.new
+      render json: t.generate_capability_token(user.email, params[:number] )
+  end
+
 protected
   # Track failed login attempts
   def note_failed_signin

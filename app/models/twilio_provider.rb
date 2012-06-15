@@ -1,7 +1,7 @@
 class TwilioProvider
   SID = 'AC584a27ef4e2a013398ad27b5bcdb16a3'
   AUTH_TOKEN = '5602b73423d50848001fb55d719c6c8a'
-  
+  APP_SID = 'APaebf287000ce4318bee561df1b85f693'
   PIPES_PROCESS_URL = 'http://process.pipes.io/incoming'
   
   
@@ -17,9 +17,11 @@ class TwilioProvider
   end
 
 
-  def generate_capability_token
-
-
+  def generate_capability_token(username,phone)
+    capability = Twilio::Util::Capability.new SID, AUTH_TOKEN
+    capability.allow_client_outgoing  APP_SID
+    capability.allow_client_incoming phone
+    capability.generate
   end
   
   def did
