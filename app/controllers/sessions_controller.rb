@@ -31,15 +31,24 @@ class SessionsController < ApplicationController
   end
   
   def request_token
-    user = User.from_email_and_phone_number(params[:email], params[:number])
-    raise ActiveRecord::RecordNotFound.new("email: #{params[:email]} and number: #{params[:number]}") unless user
-    token = user.generate_token
-    user.save!
-    respond_to do |wants|
-      wants.json { render json: token}
-      wants.xml { render xm: token}
+    user = User.find_or_initialize_by_email(params[:email])
+    phone =params[:number]
+    user.phones.build(number: phone) unless user.phones.exists?(number: UserPhone.convert_number(phone))
+    if user.activation_code?
+      token = user.activation_code
+    else
+      token = user.generate_token
+    end
+    if user.save
+      render json: token
+      return
+    else
+      message = user.errors.full_messages
+      render json: message, status: 400
+      return
     end
   end
+
   def destroy
     logout_killing_session!
     flash[:notice] = "You have been logged out."
