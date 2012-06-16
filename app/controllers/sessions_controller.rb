@@ -56,7 +56,7 @@ class SessionsController < ApplicationController
   end
 
   def twilio_token
-      user = User.from_email_and_phone_number(params[:email], params[:number])
+      user = User.find_by_activation_code(params[:token])
       if user.blank?
         render json: 'Nothing to do', status: 400
       end
