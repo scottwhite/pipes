@@ -17,10 +17,12 @@ class TwilioProvider
   end
 
 
-  def generate_capability_token(username,phone)
+  def generate_capability_token(user)
+    dids = user.current_dids
+    raise "No numbers to route" if dids.blank?
     capability = Twilio::Util::Capability.new SID, AUTH_TOKEN
     capability.allow_client_outgoing  APP_SID
-    capability.allow_client_incoming phone
+    capability.allow_client_incoming dids.first.id
     capability.generate
   end
   

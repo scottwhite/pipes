@@ -48,8 +48,18 @@ class SessionsController < ApplicationController
 
   def twilio_token
       user = User.from_email_and_phone_number(params[:email], params[:number])
+      if user.blank?
+        render json: 'Nothing to do', status: 400
+      end
       t = TwilioProvider.new
-      render json: t.generate_capability_token(user.email, params[:number] )
+      begin
+      token = t.generate_capability_token(user)
+      status = 200
+      rescue => e
+        status = 400
+        token = e.message
+      end
+      render json: token, status: status
   end
 
 protected
