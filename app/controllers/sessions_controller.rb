@@ -34,11 +34,10 @@ class SessionsController < ApplicationController
     user = User.find_or_initialize_by_email(params[:email])
     phone =params[:number]
     user.phones.build(number: phone) unless user.phones.exists?(number: UserPhone.convert_number(phone))
-    if user.activation_code?
-      token = user.activation_code
-    else
-      token = user.generate_token
+    unless user.activation_code?
+      user.activation_code
     end
+    token = user.activation_code
     if user.save
       render json: token
       return
