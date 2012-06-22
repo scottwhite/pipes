@@ -1,3 +1,5 @@
+require 'capistrano/ext/multistage'
+
 set :application, "pipes"
 set :repository, "git@github.com:scottwhite/pipes.git"
 set :scm, "git"
@@ -11,9 +13,6 @@ set :copy_exclude, ["config/deploy.rb","lib/tasks/rspec.rake", "doc", "spec"]
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
-role :web, "web01.pipes.io"
-role :app, "web01.pipes.io"
-role :db,  "web01.pipes.io", :primary => true
 set :deploy_to,"/var/www/#{application}"
 set :user, 'pipes'
 set :use_sudo, false
