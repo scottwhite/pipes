@@ -13,6 +13,9 @@ class OrdersController < ApplicationController
       render text: 'error, unable to process request',status: 200  && return
     end
     begin
+      # save request_token
+      user = @order.user
+      user.generate_token unless user.activation_code?
       Mailer.deliver_order_completed(did,@order) if did && @order.user.email?
     rescue => e
       logger.error("Email barfed, need ot notify user of process status: #{@order.inspect}\n #{did.inspect}")

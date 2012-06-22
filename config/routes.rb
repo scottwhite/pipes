@@ -4,26 +4,28 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, {:member=>{:suspend=>:put, :unsuspend=>:put, :purge=>:delete},:collection=>{:settings=>[:get,:put,:delete,:post]}}
 
   map.resource :sessions , {:collection=>{:request_token=>[:post,:get]}}
-  
-  map.request_token '/request_token', controller: 'sessions', action: 'request_token', method: [:get,:post]
-  
-map.request_token '/client_token/:token', controller: 'sessions', action: 'twilio_token', method: [:get,:post]
 
-  
+  map.request_token '/call_history', controller: 'dids', action: 'history', method: [:get,:post]
+
+  map.request_token '/request_token', controller: 'sessions', action: 'request_token', method: [:get,:post]
+
+  map.request_token '/client_token/:token', controller: 'sessions', action: 'twilio_token', method: [:get,:post]
+
+
   map.connect '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
   map.request_number '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
-  
+
   map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get}}
   map.resources :orders, {:collection=>{:finialize=>:post}}
-  
+
   map.resources :dids
-  
+
   map.success '/success/:id', :controller=> :orders, :action=>:show, :conditions => {:method => :get}
-  
-  
+
+
   # map.login '/login', :controller => :session, :action => :new, :conditions => {:method => :get}
   # map.logout '/logout', :controller => :session, :action => :destroy, :conditions => {:method => :get}
-  
+
   map.entry '/entry', :controller => :sessions, :action => :new, :conditions => {:method => :get}
 
 

@@ -73,6 +73,7 @@ class User < ActiveRecord::Base
   
   def generate_token
     make_activation_code
+    save
   end
   
   def self.from_email_and_phone_number(email, number)

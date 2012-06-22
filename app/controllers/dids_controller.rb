@@ -2,7 +2,6 @@ class DidsController < ApplicationController
   before_filter :find_did, except: [:index]
   
   rescue_from ActiveRecord::RecordNotFound do |error|
-    logger.error("WHAT THE ")
     error_responds_to(error.message,'no-record',:not_found)
   end
   
