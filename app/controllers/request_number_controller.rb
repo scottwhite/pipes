@@ -7,6 +7,7 @@ class RequestNumberController < ApplicationController
       if params[:format] == 'json'
         email = params[:email]
         phone = params[:phone]
+        raise "No bacon" if email.blank? || phone.blank?
         user = User.from_email_and_phone_number(email, phone)
         if user.blank?
           user = User.find_or_initialize_by_email(email)

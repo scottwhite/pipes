@@ -18,6 +18,12 @@ class ApplicationController < ActionController::Base
     error_responds_to(error.message,'no-record',:not_found)
     return false
   end
+
+  rescue_from 'RuntimeError' do |error|
+    render text: "Error #{error.message}"
+    return
+  end
+
   
   # rescue_from Exception do |error|
   #   logger.error("unhandled exception: #{error.message}\n" + error.backtrace.join("\n"))

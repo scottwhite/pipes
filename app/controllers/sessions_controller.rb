@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
     end
   end
   
-  def request_token
+  def xrequest_token
     user = User.find_or_initialize_by_email(params[:email])
     phone =params[:number]
     user.phones.build(number: phone) unless user.phones.exists?(number: UserPhone.convert_number(phone))
