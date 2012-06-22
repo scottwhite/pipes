@@ -46,8 +46,8 @@ class ApplicationController < ActionController::Base
   private
   
   def login_from_token
-    return nil if params[:token].blank?
-    User.find_by_activation_code(params[:token])
+    # return nil if params[:token].blank?
+    User.find_by_activation_code(params[:token] || params[:t])
   end
   
   def require_user
