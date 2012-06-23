@@ -30,16 +30,17 @@ class SessionsController < ApplicationController
     end
   end
   
-  def xrequest_token
+  def request_token
     user = User.find_or_initialize_by_email(params[:email])
-    phone =params[:number]
+    phone =params[:phone]
     user.phones.build(number: phone) unless user.phones.exists?(number: UserPhone.convert_number(phone))
     unless user.activation_code?
       user.activation_code
     end
     token = user.activation_code
     if user.save
-      render json: token
+      Mailer.deliver_user_token(user)
+       head :ok
       return
     else
       message = user.errors.full_messages

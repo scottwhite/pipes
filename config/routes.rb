@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.request_token '/call_history.:format', controller: 'dids', action: 'history', method: [:get,:post]
 
-  # map.request_token '/request_token', controller: 'sessions', action: 'request_token', method: [:get,:post]
+  map.request_token '/request_token', controller: 'sessions', action: 'request_token', method: [:get,:post]
 
   map.request_token '/client_token/:token', controller: 'sessions', action: 'twilio_token', method: [:get,:post]
 

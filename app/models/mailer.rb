@@ -13,6 +13,14 @@ class Mailer < ActionMailer::Base
     body user: user, did: did, order: order, dup: dup
   end
   
+  def user_token(user)
+    recipients user.email
+    from PIPES
+    subject 'Pipes - Authentication link'
+    content_type 'text/html'
+    body user: user
+  end
+
   def existing_did(did,user)
     token = user.generate_token
     recipients user.email
