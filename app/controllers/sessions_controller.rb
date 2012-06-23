@@ -31,11 +31,13 @@ class SessionsController < ApplicationController
   end
   
   def request_token
-    user = User.find_or_initialize_by_email(params[:email])
-    phone =params[:phone]
+    email = params[:email]
+    phone = params[:phone]
+    raise "No bacon" if email.blank? || phone.blank?
+    user = User.find_or_initialize_by_email(email)
     user.phones.build(number: phone) unless user.phones.exists?(number: UserPhone.convert_number(phone))
     unless user.activation_code?
-      user.activation_code
+      user.make_activation_code
     end
     token = user.activation_code
     if user.save
