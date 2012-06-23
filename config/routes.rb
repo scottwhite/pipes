@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :sessions , {:collection=>{:request_token=>[:post,:get]}}
 
-  map.request_token '/call_history', controller: 'dids', action: 'history', method: [:get,:post]
+  map.request_token '/call_history.:format', controller: 'dids', action: 'history', method: [:get,:post]
 
   # map.request_token '/request_token', controller: 'sessions', action: 'request_token', method: [:get,:post]
 

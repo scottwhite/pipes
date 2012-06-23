@@ -1,5 +1,5 @@
 class DidsController < ApplicationController
-  before_filter :find_did, except: [:index]
+  before_filter :find_did, except: [:index, :history]
   
   rescue_from ActiveRecord::RecordNotFound do |error|
     error_responds_to(error.message,'no-record',:not_found)
@@ -27,6 +27,17 @@ class DidsController < ApplicationController
       wants.html {render text: did}
       wants.json {render json: data}
     end    
+  end
+
+  # need to figure out hwo to show stuff on website with token
+  def history
+    dids = current_user.current_dids(include: :dids_phone_number)
+    number = if(dids.first)
+      dids.first.phone_number
+    else
+      0
+    end
+    render json: CallLog.by_pipes_number(number)
   end
     
   private
