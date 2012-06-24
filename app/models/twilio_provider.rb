@@ -2,7 +2,6 @@ class TwilioProvider
   SID = 'AC584a27ef4e2a013398ad27b5bcdb16a3'
   AUTH_TOKEN = '5602b73423d50848001fb55d719c6c8a'
   APP_SID = 'APaebf287000ce4318bee561df1b85f693'
-  PIPES_PROCESS_URL = 'http://process.pipes.io/incoming'
   
   
   attr_accessor :did_id, :did, :sid, :account

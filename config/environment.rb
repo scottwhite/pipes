@@ -47,5 +47,7 @@ Rails::Initializer.run do |config|
   
   # known issue https://rails.lighthouseapp.com/projects/8994/tickets/74-problem-with-tests-and-custom-mysql-fulltext-indexes
   config.active_record.schema_format = :sql
+
+  PIPES_PROCESS_URL = 'http://process.pipes.io/incoming'
   
 end
