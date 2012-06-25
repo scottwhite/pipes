@@ -31,13 +31,13 @@ class DidsController < ApplicationController
 
   # need to figure out hwo to show stuff on website with token
   def history
-    dids = current_user.current_dids(include: :dids_phone_number)
-    number = if(dids.first)
-      dids.first.phone_number
+    dup = current_user.current_dup
+    if(number = dup.first)
+        render json: CallLog.by_pipes_number(number)
     else
-      0
+      render json:[]
     end
-    render json: CallLog.by_pipes_number(number)
+    
   end
     
   private

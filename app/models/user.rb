@@ -27,6 +27,13 @@ class User < ActiveRecord::Base
                                                               on up.user_id = #{id}
                                                               and up.id = dup.user_phone_id
                                                               and dup.expiration_date > now()}
+
+has_many :current_dup, class_name: 'DidsUserPhone', finder_sql:  %q{select dup.* from dids_user_phones dup
+                                                              inner join user_phones up 
+                                                              on up.user_id = #{id}
+                                                              and up.id = dup.user_phone_id
+                                                              and dup.expire_state = 0
+                                                              and dup.expiration_date > now()}                                    
   
   has_many :orders
 
