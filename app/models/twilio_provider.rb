@@ -40,7 +40,12 @@ class TwilioProvider
   
   def voice_url(id)
     id = id || self.did.id unless self.did.blank?
-    "#{PIPES_PROCESS_URL}/#{id}"
+    "#{PIPES_PROCESS_URL}/incoming/#{id}"
+  end
+
+  def callback_url(id)
+    id = id || self.did.id unless self.did.blank?
+    "#{PIPES_PROCESS_URL}/status/#{id}"
   end
 
   def get_did(sid)
@@ -49,7 +54,7 @@ class TwilioProvider
   
   def set_voice_url(sid, id=nil)
     @sid = sid
-    self.update(sid, :voice_url=>self.voice_url(id))
+    self.update(sid, :voice_url=>self.voice_url(id),:status_callback=> self.callback_url(id))
   end
   
   def update(sid,options={})
