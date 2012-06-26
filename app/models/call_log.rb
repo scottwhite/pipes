@@ -9,13 +9,15 @@ class CallLog < ActiveRecord::Base
     called_from = tw.account.calls.list(from: number,start_date: dup.created_at, end_date:dup.expiration_date, page_size:100)
     called_to = tw.account.calls.list(to: number,start_date: dup.created_at, end_date:dup.expiration_date, page_size:100)
 
-    data = {calls:[]}
+    data = {calls:[], total:0}
+    return data if called_from.blank? && called_to.blank?
     called_from.each do |cf|
       data[:calls] <<  load_it_up(cf)
     end
     called_to.each do |cf|
       data[:calls]<< load_it_up(cf)
     end
+    data[:calls].sort!
     data[:total] = called_from.total  + called_to.total
     data
   end
@@ -33,7 +35,7 @@ class CallLog < ActiveRecord::Base
       end
     class << h
       def <=>   (other)
-          h[:date_updated] <=> other[:date_updated]
+          other[:date_updated] <=> self[:date_updated] 
       end
     end
     h
