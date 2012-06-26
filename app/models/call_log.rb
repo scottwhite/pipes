@@ -25,7 +25,7 @@ class CallLog < ActiveRecord::Base
     meths = [:to, :from, :date_created, :date_updated, :status, :start_time, :end_time, :duration, :direction]
     h = meths.inject({}) do |h,m| 
         v = tw_call.__send__(m)
-        if(m=~/date_|_time/)
+        if(m=~/date_|_time/ && !v.blank?)
           v = Time.parse(v)
         end
         h[m] = v
