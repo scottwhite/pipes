@@ -28,8 +28,9 @@ class CallLog < ActiveRecord::Base
     h = meths.inject({}) do |h,m| 
         v = tw_call.__send__(m)
         if(m=~/date_|_time/ && !v.blank?)
+          h["#{m}_rfc822"] =  v
           v = Time.parse(v)
-          h["#{m}_label"] =  v.strftime("%m/%d/%Y %H:%M")
+
         end
         h[m] = v
         h
