@@ -29,6 +29,7 @@ class CallLog < ActiveRecord::Base
         v = tw_call.__send__(m)
         if(m=~/date_|_time/ && !v.blank?)
           v = Time.parse(v)
+          h["#{m}_label"] =  v.strftime("%m/%d/%Y %H:%M")
         end
         h[m] = v
         h
