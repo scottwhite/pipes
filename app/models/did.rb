@@ -61,6 +61,7 @@ class Did < ActiveRecord::Base
   end
   
   def self.update_expired
+    one_week = 1.week.from_now.to_s(:db)
     self.connection.execute(%Q{update dids
       inner join dids_user_phones dup
       on dup.did_id = dids.id
@@ -69,7 +70,26 @@ class Did < ActiveRecord::Base
       dup.expire_state = 1,
       dids.updated_at = NOW(),
       dup.updated_at = NOW()
-      where dup.expire_state = 0 and (dup.current_usage >= dup.time_allotted or dup.expiration_date < NOW())})
+      where dup.expire_state = 0 and (dup.current_usage >= dup.time_allotted or dup.expiration_date < #{one_wek})})
+  end
+
+  def self.release_expired
+    dids = Did.all(conditions:{usage_state: 0})
+    return if dids.blank?
+    check_it = dids.inject({})do |h,v|
+      h[v.phone_number] = v.id
+      h
+    end
+    provider = self.current_provider.new
+    number_list = provider.account.incoming_phone_numbers.list
+    number_list.each do |number| 
+      n = number.phone_number.gsub(/\+1/,'')
+      if check_it[n]
+        number.delete
+
+      end
+    end
+    
   end
   
   def self.update_to_active

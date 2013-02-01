@@ -3,7 +3,11 @@ namespace :numbers do
   task :expire=>:environment do
     Did.update_expired
   end
-  
+
+  desc "release expired  numbers"
+  task :release=>:environment do
+    Did.release_expired
+  end
   
   desc "update inactive numbers to active after 1 week wait"
   task :activate_waiting=>:environment do
