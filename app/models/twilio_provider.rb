@@ -40,12 +40,12 @@ class TwilioProvider
   
   def voice_url(id)
     id = id || self.did.id unless self.did.blank?
-    "#{PIPES_PROCESS_URL}/incoming/#{id}"
+    "#{PIPES_PROCESS_URL}/incoming"
   end
 
   def callback_url(id)
     id = id || self.did.id unless self.did.blank?
-    "#{PIPES_PROCESS_URL}/status/#{id}"
+    "#{PIPES_PROCESS_URL}/status"
   end
 
   def get_did(sid)
