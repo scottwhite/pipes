@@ -50,7 +50,7 @@ class PlivoProvider
 
   def get_did(sid)
     @account.incoming_phone_numbers.get(sid)
-    response = @connection.get_number({'number': sid})
+    response = @connection.get_number({'number'=> sid})
     rn = RentedNumber.new(response.last['objects'].first)
     rn.connection = @connection
   end
