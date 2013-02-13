@@ -51,10 +51,10 @@ dids = [
   }
 ]
 
-dids.each do|did|
-  d = Did.find_or_create_by_phone_number(did[:phone_number])
-  d.update_attributes!(did)
-end
+# dids.each do|did|
+#   d = Did.find_or_create_by_phone_number(did[:phone_number])
+#   d.update_attributes!(did)
+# end
 
 
 {1=> {p: 3.00, n: 'new'}, 2=> {p: 1.00, n: '30 minute extension'}, 3=>{p: 2.00, n: 'Re-up'}}.each do |k,v|
