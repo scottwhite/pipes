@@ -89,7 +89,7 @@ class TwilioProvider
   end  
     
   def available_dids(number)
-    @account.available_phone_numbers.get('US').local.list(area_code: number.slice(0,2))
+    @account.available_phone_numbers.get('US').local.list(area_code: number.slice(0,3))
   end
   
   

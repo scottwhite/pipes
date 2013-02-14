@@ -24,8 +24,10 @@ class OrdersController < ApplicationController
       user.generate_token unless user.activation_code?
       Mailer.deliver_order_completed(did,@order) if did && @order.user.email?
     rescue => e
+      logger.error(e.message)
       logger.error("Email barfed, need ot notify user of process status: #{@order.inspect}\n #{did.inspect}")
-      render text: 'hmmmm'
+      logger.error(e.backtrace.join('\n'))
+      head :ok
       return
     end
     head :ok

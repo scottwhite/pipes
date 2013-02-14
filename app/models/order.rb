@@ -16,7 +16,7 @@ class Order < ActiveRecord::Base
   end
   
   def translate_status(status)
-    case status.lcase
+    case status.downcase
     when 'completed' then
       COMPLETED
     when 'failed' then
@@ -37,6 +37,7 @@ class Order < ActiveRecord::Base
     logger.error("process: #{e.message}")
     self.status = ERROR
     self.save
+    false
   end
   
   
