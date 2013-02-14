@@ -10,7 +10,9 @@ class OrdersController < ApplicationController
     did = @order.process({raw_status: params[:payment_status], gateway_trans_id: params[:txn_id]})
     if did.blank?
       logger.error("finialize: unable to process order: #{@order.inspect}")
-      render text: 'error, unable to process request',status: 200  && return
+      # todo: email us or something
+      head :ok
+      return
     end
     begin
       # save request_token
