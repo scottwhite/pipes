@@ -19,6 +19,7 @@
   <%-elsif !@did.expired?-%>
   <div id="existing-info">
   <p>You current Pipes Number will expire on:<br> <span class="pipes-orange"><%=@did.expires_at.strftime('%B %d, %Y')%> and has <%=@did.time_left%> of talk time remaining.<span class="pipes-orange"></p>
+
     <%-unless @from_mailing -%>
     <p>Forgot your number, need it re-sent?<br>
     <%=link_to 'Click here to email Pipes Number', mail_existing_request_number_path%></p>
@@ -45,5 +46,7 @@
     <img alt="" border="0" valign="middle" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
     </form>
   </div>
-  
+  <div id="request-dial">
+    <p>Want to dail from the your browser (support is not universal), click <a href="/dial"> here to start</a></p>
+  </div>
   <%-end-%>
