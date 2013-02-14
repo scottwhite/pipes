@@ -5,10 +5,9 @@ class CreateTokens < ActiveRecord::Migration
       did_id  mediumint unsigned not null,
       token varchar(200) NOT NULL,
       `created_at` timestamp NOT NULL,
-      KEY `token` (`token`),
       PRIMARY KEY (id)
     )})
-
+    add_index :request_tokens, [:did_id, :token]
   end
 
   def self.down
