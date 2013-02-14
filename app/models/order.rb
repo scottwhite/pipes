@@ -16,10 +16,10 @@ class Order < ActiveRecord::Base
   end
   
   def translate_status(status)
-    case status
-    when 'Completed' then
+    case status.lcase
+    when 'completed' then
       COMPLETED
-    when 'Failed' then
+    when 'failed' then
       FAILED
     else
       UNKNOWN
