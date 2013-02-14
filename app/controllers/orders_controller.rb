@@ -7,7 +7,10 @@ class OrdersController < ApplicationController
       render text: "whatever", status: 403 
       return
     end
-    status = params[:payment_status] || params[:status]
+    status = params[:payment_status]
+    if params[:payment_status].blank?
+      status = params[:status]
+    end
     did = @order.process({raw_status: status , gateway_trans_id: params[:txn_id]})
     if did.blank?
       logger.error("finialize: unable to process order: #{@order.inspect}")
