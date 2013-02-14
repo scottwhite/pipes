@@ -235,3 +235,13 @@ li{
 	font-weight: bold;
 	vertical-align: top;
 }
+
+#request-dial{
+    position: relative;
+    top: 20px;
+    font-size: 0.7em;
+}
+.notice{
+    color: red;
+    font-style: italic;
+}

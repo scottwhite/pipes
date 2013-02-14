@@ -64,4 +64,11 @@ class UserPhone < ActiveRecord::Base
   def self.convert_number(number)
     number.gsub(/[\.,\-,\s,\(,\)]/,'')
   end
+
+  def friendly_phone_number
+    return if number.blank?
+    m= number.match(/(\d{3})(\d{3})(\d{4})/)
+    "#{m[1]} #{m[2]} #{m[3]}"
+  end
+  
 end

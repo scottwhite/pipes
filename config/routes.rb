@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.request_number '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
 
   map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get}}
-  map.resources :orders, {:collection=>{:finialize=>:post}}
+  map.resources :orders, {:collection=>{:finialize=>:post}, member: {finialize: :post}}
 
   map.resources :dids
 
@@ -42,6 +42,7 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/:did.:format', controller: :request_number, action: :existing, did: /(\d{3}-\d{3}-\d{4}||\d{10})/, method: [:get,:post]
   map.existing_did '/:did.:format', controller: :request_number, action: :existing, did: /(\d{3}-\d{3}\-d{4}||\d{10})/
 
+  map.resources :dial, {:collection=>{:token=>:get}}
 
 
   
