@@ -22,10 +22,10 @@ class OrdersController < ApplicationController
       render text: 'hmmmm'
       return
     end
-    respond_to do |wants|
-      wants.html{ render text: did.phone_number}
-      wants.json{ render json: did.phone_number}
-    end
+    head :ok
+  rescue => e
+    logger.error(e.message)
+    head :bad_request
   end
     
   def destroy
