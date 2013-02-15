@@ -307,7 +307,8 @@ function Device(token, options) {
         dtmf9: "sounds/dtmf-9.mp3", dtmf0: "sounds/dtmf-0.mp3",
         dtmfs: "sounds/dtmf-star.mp3", dtmfh: "sounds/dtmf-hash.mp3"
     };
-    var base = typeof TWILIO_ROOT === "undefined" ? "" : TWILIO_ROOT;
+    // var base = typeof TWILIO_ROOT === "undefined" ? "" : TWILIO_ROOT;
+    var base='//static.twilio.com/libs/twiliojs/1.1/'
     for (var name in urls) {
         var sound = this.options["soundFactory"]();
         sound.load(base + urls[name]);

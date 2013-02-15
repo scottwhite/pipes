@@ -245,3 +245,16 @@ li{
     color: red;
     font-style: italic;
 }
+#webdial{
+    margin-top: 20px;
+}
+#webdial > button{
+    font-size: 1.0em;
+}
+#webdial > input{
+    width: 300px;
+    font-size:1.0em;
+}
+#webdial > p{
+    font-size: 0.75em;
+}

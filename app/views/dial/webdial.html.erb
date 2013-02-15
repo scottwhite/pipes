@@ -1,7 +1,5 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript"src="/javascripts/twilio.js"></script>
-<link href="//static0.twilio.com/packages/quickstart/client.css"
-      type="text/css" rel="stylesheet" />
     <script type="text/javascript">
   
     /* Create the Client with a Capability Token */
@@ -38,13 +36,13 @@
 
 
 <div id="log">
-BACON!!!
+Waiting.....
 </div>
-    <input type="text" id="number" name="number"
-      placeholder="Enter a phone number to call"/>
-<button class="call" onclick="call();">
-      Call
-    </button>
- <button class="hangup" onclick="hangup();">
-        Hangup
-    </button>
+<div id="webdial">
+<input id="number" name="number" placeholder="Enter a phone number" maxlength="11"/>
+<button class="call" onclick="call();">Call</button>
+<button class="hangup" onclick="hangup();">Hangup</button>
+<p><span class="pipes-orange"> You currently have <%=(dup.time_left)%> left on your pipes number</span></p>
+</div>
+
+
