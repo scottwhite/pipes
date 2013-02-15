@@ -4,6 +4,8 @@ class TwilioProvider
   APP_SID = 'APaebf287000ce4318bee561df1b85f693'
   
   
+  PIPES_TWILIO_NUMBER = '+14435690608'
+
   attr_accessor :did_id, :did, :sid, :account
   
   def logger
@@ -96,6 +98,11 @@ class TwilioProvider
   def first_available_did(number)
     dids = available_dids(number)
     dids.first
+  end
+
+  def send_sms(number,message)
+    n = self.convert_number(number);
+    @account.sms.messages.create(:from => PIPES_TWILIO_NUMBER, :to => n, :body => message)
   end
   
   def self.connect

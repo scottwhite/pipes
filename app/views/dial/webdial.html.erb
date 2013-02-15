@@ -1,0 +1,50 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript"src="/javascripts/twilio.js"></script>
+<link href="//static0.twilio.com/packages/quickstart/client.css"
+      type="text/css" rel="stylesheet" />
+    <script type="text/javascript">
+  
+    /* Create the Client with a Capability Token */
+    Twilio.Device.setup("<%= token %>", {debug: true});
+ 
+    /* Let us know when the client is ready. */
+    Twilio.Device.ready(function (device) {
+        $("#log").text("Ready");
+    });
+ 
+    /* Report any errors on the screen */
+    Twilio.Device.error(function (error) {
+        $("#log").text("Error: " + error.message);
+    });
+ 
+    Twilio.Device.connect(function (conn) {
+        $("#log").text("Successfully established call");
+    });
+ 
+    /* Connect to Twilio when we call this function. */
+    function call() {
+        Twilio.Device.connect();
+    }
+    /* A function to end a connection to Twilio. */
+    function hangup() {
+        Twilio.Device.disconnectAll();
+    }
+    function call() {
+        // get the phone number to connect the call to
+        params = {"PhoneNumber": $("#number").val()};
+        Twilio.Device.connect(params);
+      }
+    </script>
+
+
+<div id="log">
+BACON!!!
+</div>
+    <input type="text" id="number" name="number"
+      placeholder="Enter a phone number to call"/>
+<button class="call" onclick="call();">
+      Call
+    </button>
+ <button class="hangup" onclick="hangup();">
+        Hangup
+    </button>

@@ -1,4 +1,5 @@
 require 'digest/sha1'
+require 'securerandom'
 
 class User < ActiveRecord::Base
   include Authentication
@@ -91,6 +92,35 @@ has_many :current_dup, class_name: 'DidsUserPhone', finder_sql:  %q{select dup.*
       self.deleted_at = nil
       self.activation_code = self.class.make_token
   end
-  
 
+  def create_request_token
+    token = SecureRandom.urlsafe_base64(6)
+    did = self.currently_using_dids.last
+    self.connection.execute("insert into request_tokens (did_id, token) values (#{did.id},'#{token}')")
+    token
+  end  
+
+  def send_request_token
+    p = self.current_provider.new
+    dup = self.current_dup.last
+    up = dup.user_phone
+    token = self.create_request_token
+    p.send_sms(up.number,"pipes token: #{token}")
+  end
+
+  def find_request_token(token)
+    did =  self.currently_using_dids.last
+    self.connection.select_one("select * from request_tokens where did_id = #{did.id} and token = #{self.connection.quote(token)}")
+  end
+
+  def remove_request_token(token)
+    did =  self.currently_using_dids.last
+    self.connection.execute("delete from request_tokens where did_id = #{did.id} and token = #{self.connection.quote(token)}")
+  end
+
+  def current_provider
+    # @current_provider ||= Voipms
+    @current_provider ||= TwilioProvider
+  end
+  
 end
