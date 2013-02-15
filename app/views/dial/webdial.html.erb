@@ -18,6 +18,11 @@
     Twilio.Device.connect(function (conn) {
         $("#log").text("Successfully established call");
     });
+
+    Twilio.Device.disconnect(function (conn) {
+        $("#log").text("Disconnected");
+        update_time_left();
+    });
  
     /* Connect to Twilio when we call this function. */
     function call() {
@@ -26,12 +31,18 @@
     /* A function to end a connection to Twilio. */
     function hangup() {
         Twilio.Device.disconnectAll();
+        update_time_left();
     }
     function call() {
         // get the phone number to connect the call to
         params = {"PhoneNumber": $("#number").val()};
         Twilio.Device.connect(params);
       }
+    var update_time_left= function(){
+        $.getJSON('/dids/<%=dup.id%>',function(data){
+                $('#time-left').text(data.time_left);
+            });
+    }
     </script>
 
 
@@ -42,7 +53,7 @@ Waiting.....
 <input id="number" name="number" placeholder="Enter a phone number" maxlength="11"/>
 <button class="call" onclick="call();">Call</button>
 <button class="hangup" onclick="hangup();">Hangup</button>
-<p><span class="pipes-orange"> You currently have <%=(dup.time_left)%> left on your pipes number</span></p>
+<p><span class="pipes-orange"> You currently have <span id="time-left"><%=(dup.time_left)%></span> left on your pipes number</span></p>
 </div>
 
 

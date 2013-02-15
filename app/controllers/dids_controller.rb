@@ -26,10 +26,10 @@ class DidsController < ApplicationController
   
   def show
     dup = @did.dids_user_phone
-    data = {time_left: dup.time_left, expiration_date: dup.expiration_date, number: @did.phone_number} unless dup.blank?
+    data = {time_left: @did.time_left, expiration_date: dup.expiration_date, number: @did.phone_number} unless dup.blank?
     
     respond_to do |wants|
-      wants.html {render text: did}
+      wants.html {render text: data}
       wants.json {render json: data}
     end    
   end
