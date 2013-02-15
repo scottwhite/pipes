@@ -9,12 +9,14 @@ class DialController < ApplicationController
         current_user.remove_request_token(params[:token])
         t = TwilioProvider.new
         begin
+          did =current_user.current_dids.first
+          dup = did.dup
           token = t.generate_capability_token(current_user)
         rescue => e
           console.log(e.message)
           redirect_to :index
         end
-        render template: '/dial/webdial.html', locals: {token: token}
+        render template: '/dial/webdial.html', locals: {token: token, dup: dup}
         return
       end
     else
