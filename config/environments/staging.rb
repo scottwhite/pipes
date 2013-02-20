@@ -17,4 +17,4 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = true
 
 
-PIPES_PROCESS_URL = 'http://process.test.pipes.io'
+PIPES_PROCESS_URL = 'http://process-test.pipes.io'
