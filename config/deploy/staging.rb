@@ -1,3 +1,3 @@
-role :web, "test.pipes.io"
-role :app, "test.pipes.io"
-role :db,  "test.pipes.io", :primary => true
+role :web, "staging.pipes.io"
+role :app, "staging.pipes.io"
+role :db,  "staging.pipes.io", :primary => true
