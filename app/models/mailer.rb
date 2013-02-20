@@ -10,8 +10,6 @@ class Mailer < ActionMailer::Base
       :user_name => "AKIAJVKGOU4JDKMBYXPQ",
       :password => "ApscaI3hfM98oQu7UfAn9isf6H3CSpvG6exm/3j4n53q",
       :authentication => :login,
-      :enable_starttls_auto => true,
-      :port               => "25",
       :domain             => "pipes.io"
   }
   layout 'email'
