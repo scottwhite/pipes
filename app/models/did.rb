@@ -70,7 +70,7 @@ class Did < ActiveRecord::Base
       dup.expire_state = 1,
       dids.updated_at = NOW(),
       dup.updated_at = NOW()
-      where dup.expire_state = 0 and (dup.current_usage >= dup.time_allotted or dup.expiration_date < #{one_wek})})
+      where dup.expire_state = 0 and (dup.current_usage >= dup.time_allotted or dup.expiration_date < #{one_week})})
   end
 
   def self.release_expired
