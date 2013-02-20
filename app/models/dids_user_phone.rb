@@ -1,8 +1,6 @@
 class DidsUserPhone < ActiveRecord::Base
   belongs_to :user_phone
-  belongs_to :did
-  after_destroy :set_did_to_active
-  
+  belongs_to :did  
   
   named_scope :by_did_number, lambda{|number| {joins: [:did], conditions: ["dids.phone_number = ?", number]}}
   

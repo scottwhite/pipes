@@ -6,7 +6,7 @@ class Did < ActiveRecord::Base
   INTERNAL = 4
 
 
-  has_one :dids_user_phone, :conditions=>["dids_user_phones.expire_state <> #{DidsUserPhone::DEAD}"]
+  has_one :dids_user_phone, dependent: :destroy, :conditions=>["dids_user_phones.expire_state <> #{DidsUserPhone::DEAD}"]
   has_one :last_used, class_name: 'DidsLastUsed'
 
   named_scope :available_by_city, lambda{|state,city|
@@ -84,12 +84,15 @@ class Did < ActiveRecord::Base
     number_list = provider.account.incoming_phone_numbers.list
     number_list.each do |number| 
       n = number.phone_number.gsub(/\+1/,'')
+      logger.debug(n)
       if check_it[n]
         number.delete
-
+        Did.destroy(check_it[n])
       end
     end
-    
+  rescue => e 
+    logger.error("unable to release: #{n}")
+    logger.error(e.message)
   end
   
   def self.update_to_active
