@@ -1,6 +1,19 @@
 class Mailer < ActionMailer::Base
   PIPES = 'support@pipes.io'
-  ActionMailer::Base.delivery_method = :sendmail
+  # ActionMailer::Base.delivery_method = :sendmail
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = false
+  ActionMailer::Base.default_charset = "utf-8"
+  ActionMailer::Base.smtp_settings = {
+      :address => "email-smtp.us-east-1.amazonaws.com",
+      :user_name => "AKIAJVKGOU4JDKMBYXPQ",
+      :password => "ApscaI3hfM98oQu7UfAn9isf6H3CSpvG6exm/3j4n53q",
+      :authentication => :login,
+      :enable_starttls_auto => true,
+      :port               => "25",
+      :domain             => "pipes.io"
+  }
   layout 'email'
   
   def order_completed(did,order)
