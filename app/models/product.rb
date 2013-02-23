@@ -20,11 +20,11 @@ class Product < ActiveRecord::Base
   end
 
   def self.requiring_number
-    self.find(:all, :conditions => ['requires_existing = 1'])
+    self.find(:all, :conditions => ['requires_existing = 1 AND active = 1'])
   end
 
   def self.not_requiring_number
-    self.find(:all, :conditions => ['requires_existing = 0'])
+    self.find(:all, :conditions => ['requires_existing = 0 AND active = 1'])
   end
 
 end
