@@ -18,4 +18,13 @@ class Product < ActiveRecord::Base
   def self.pipes_reup
     self.find(PIPES_REUP)
   end
+
+  def self.requiring_number
+    self.find(:all, :conditions => ['requires_existing = 1'])
+  end
+
+  def self.not_requiring_number
+    self.find(:all, :conditions => ['requires_existing = 0'])
+  end
+
 end

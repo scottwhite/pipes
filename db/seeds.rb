@@ -57,8 +57,12 @@ dids = [
 # end
 
 
-{1=> {p: 3.00, n: 'new'}, 2=> {p: 1.00, n: '30 minute extension'}, 3=>{p: 2.00, n: 'Re-up'}}.each do |k,v|
-  p = Product.new(price: v[:p], name: v[:n])
+{
+  1=> {p: 3.00, n: 'new', i: 'pipesnumber', a:false}, 
+  2=> {p: 1.00, n: '30 minute extension', i:'pipesextension', a:true}, 
+  3=>{p: 2.00, n: 'Re-up', i:'pipesminutes', a:true}
+}.each do |k,v|
+  p = Product.new(price: v[:p], name: v[:n], ios_product_id: v[:i], requires_existing: v[:a])
   p.id = k
   p.save!
 end
