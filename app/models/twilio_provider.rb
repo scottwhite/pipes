@@ -6,7 +6,7 @@ class TwilioProvider
   
   PIPES_TWILIO_NUMBER = '+14105146084'
 
-  attr_accessor :did_id, :did, :sid, :account
+  attr_accessor :did_id, :did, :sid, :account, :connection
   
   def logger
     RAILS_DEFAULT_LOGGER
@@ -105,6 +105,10 @@ class TwilioProvider
     @account.sms.messages.create(:from => PIPES_TWILIO_NUMBER, :to => n, :body => message)
   end
   
+  def call_details(sid)
+    @connection.calls.get(sid)
+  end
+
   def self.connect
     @connection ||= Twilio::REST::Client.new(SID,AUTH_TOKEN)
   end
