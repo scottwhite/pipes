@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.request_token '/client_token/:token', controller: 'sessions', action: 'twilio_token', method: [:get,:post]
 
   map.request_token '/available_products.:format', controller: 'in_app_purchase', action: 'available_products', method: [:get,:post]
+  map.request_token '/verify_purchase.:format', controller: 'in_app_purchase', action: 'verify_purchase', method: [:get,:post]
 
   map.connect '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
   map.request_number '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
