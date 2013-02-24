@@ -19,12 +19,12 @@ class Product < ActiveRecord::Base
     self.find(PIPES_REUP)
   end
 
-  def self.requiring_number
-    self.find(:all, :conditions => ['requires_existing = 1 AND active = 1'])
+  def self.requiring_number(source_type)
+    self.find(:all, :conditions => ['requires_existing = 1 AND active = 1 AND source = ?', source_type])
   end
 
-  def self.not_requiring_number
-    self.find(:all, :conditions => ['requires_existing = 0 AND active = 1'])
+  def self.not_requiring_number(source_type)
+    self.find(:all, :conditions => ['requires_existing = 0 AND active = 1 AND source = ?', source_type])
   end
 
 end

@@ -6,9 +6,9 @@ class InAppPurchaseController < ApplicationController
   def available_products
     dup = current_user.current_dup
     if(number = dup.first)
-      render json: Product.requiring_number
+      render json: Product.requiring_number(params[:source])
     else
-      render json: Product.not_requiring_number
+      render json: Product.not_requiring_number(params[:source])
     end
   end
 
@@ -29,6 +29,7 @@ class InAppPurchaseController < ApplicationController
     if resp.code == '200'
       json_resp = JSON.parse(resp.body)
       if json_resp['status'] == 0
+        # did = @order.process({raw_status: status , gateway_trans_id: params[:txn_id]})
         valid = true
       end
     end
