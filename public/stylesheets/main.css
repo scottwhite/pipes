@@ -12,6 +12,7 @@ body {
 	position: relative;
 	left: -15px;
 	width: 275px;
+    border: 0;
 }
 h3{
 	font-size: 0.9em;
@@ -212,7 +213,7 @@ div.error{
 	list-style-position: inside;
 }
 #user_phone{
-	width: 15em;
+    width: 200px;
 }
 
 @media screen and (max-device-width: 480px){
