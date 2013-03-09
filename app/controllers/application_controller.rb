@@ -53,6 +53,7 @@ class ApplicationController < ActionController::Base
   
   def login_from_token
     # return nil if params[:token].blank?
+    return false unless(params[:token] || params[:t])
     User.find_by_activation_code(params[:token] || params[:t])
   end
   
@@ -60,6 +61,7 @@ class ApplicationController < ActionController::Base
     # if json_request?
     #   current_user = User.from_email_phone_number(params[:email], params[:number])
     # end
+    logger.debug(current_user)
     unless current_user
       # authenticate_with_http_basic do |email,number|
       #   current_user = User.from_email_phone_number(params[:email], params[:number])

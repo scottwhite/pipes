@@ -1,3 +1,6 @@
+require 'digest/sha1'
+require 'securerandom'
+
 class Order < ActiveRecord::Base
   attr_reader :raw_status
   belongs_to :user
@@ -52,6 +55,13 @@ class Order < ActiveRecord::Base
         self.user_phone.extend_time
     end
   end
+
+  def generate_gateway_token
+    token = SecureRandom.urlsafe_base64(18)
+    self.gateway_trans_id = token
+    token
+  end  
+
   
   
   def self.create_for(phone, product)

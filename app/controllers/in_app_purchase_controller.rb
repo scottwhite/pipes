@@ -1,7 +1,3 @@
-require 'net/http'
-require 'net/https'
-require 'uri'
-
 class InAppPurchaseController < ApplicationController
   def available_products
     dup = current_user.current_dup
@@ -25,7 +21,7 @@ class InAppPurchaseController < ApplicationController
     valid = false
     json_request = {'receipt-data' => b64_receipt}.to_json
     resp = http.post(url.path, json_request.to_s, {'Content-Type' => 'application/x-www-form-urlencoded'})
-    Rails.logger.info("RESP: #{resp}")
+    logger.info("RESP: #{resp}")
     if resp.code == '200'
       json_resp = JSON.parse(resp.body)
       if json_resp['status'] == 0
@@ -37,4 +33,28 @@ class InAppPurchaseController < ApplicationController
     render json: {:response => resp.code, :success => valid}
   end
 
+
+  def create_order
+    dup = current_user.current_dup
+    pid = params[:product_id]
+    if(request.body)
+      data = JSON.parse(request.body.read)
+      logger.debug(data)
+      pid = data["product_id"]
+    end
+    
+    p = Product.first(conditions: {source_product_id: pid})
+    unless p
+      render json: {message:'no bacon for you'}, status: 400
+      return
+    end
+    o = Order.new
+    o.user = current_user
+    o.status = Order::INITIAL
+    o.product_id = p.id
+    o.generate_gateway_token
+    o.amount = p.price
+    o.save!
+    render json: o
+  end
 end
