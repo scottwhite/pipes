@@ -122,5 +122,9 @@ has_many :current_dup, class_name: 'DidsUserPhone', finder_sql:  %q{select dup.*
     # @current_provider ||= Voipms
     @current_provider ||= TwilioProvider
   end
+
+  def first_did
+    current_dids.first unless current_dids.blank?
+  end
   
 end

@@ -27,4 +27,23 @@ class Product < ActiveRecord::Base
     self.find(:all, :conditions => ['requires_existing = 0 AND active = 1 AND source = ?', source_type])
   end
 
+  def can_order?(did)
+    if(self.product_type== PIPES_NUMBER)
+      return true
+    end
+    if([PIPES_EXTEND, PIPES_REUP].include?(self.product_type) && !did)
+      return false
+    end
+
+    if(self.product_type == PIPES_REUP)
+      if did.expired?
+        return false unless did.can_reup?
+      end
+    end
+    if(self.product_type == PIPES_EXTEND)
+      return false if did.expired?
+    end
+    true
+  end
+
 end

@@ -38,15 +38,21 @@ class InAppPurchaseController < ApplicationController
   def create_order
     dup = current_user.current_dup
     pid = params[:product_id]
+    pipes_number = params[:number]
     if(request.body)
       data = JSON.parse(request.body.read)
       logger.debug(data)
-      pid = data["product_id"]
+      pid = data["product_id"] || pid
+      pipes_number = data["number"] || pipes_number
     end
     
     p = Product.first(conditions: {source_product_id: pid})
     unless p
       render json: {message:'no bacon for you'}, status: 400
+      return
+    end
+    unless p.can_order?(current_user.first_did)
+      render json: {message:'Invalid product request'}, status: 400
       return
     end
     o = Order.new
@@ -55,6 +61,7 @@ class InAppPurchaseController < ApplicationController
     o.product_id = p.id
     o.generate_gateway_token
     o.amount = p.price
+    o.pipes_number = pipes_number || current_user.first_did.phone_number
     o.save!
     render json: o
   end
