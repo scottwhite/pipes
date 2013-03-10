@@ -92,6 +92,12 @@ class InAppPurchaseController < ApplicationController
       render json: {message:'order has gone horribly wrong'}, status: 400
       return      
     end
-    render json: {time_left: did.time_left, expiration_date: did.expires_at, number: did.phone_number}
+    dup = did.dids_user_phone
+    render json: {dup_id: dup.id, did_id: did.id, expired: did.expired?, 
+        can_reup: did.can_reup? , 
+        time_allotted: dup.time_allotted, 
+        time_left: dup.time_left, 
+        expiration_date: dup.expiration_date, 
+        number: did.phone_number}
   end
 end
