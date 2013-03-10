@@ -3,20 +3,20 @@ class Product < ActiveRecord::Base
   
   # Not sure might go to a code instead for system gigs
   
-  PIPES_NUMBER = 1
-  PIPES_EXTEND = 2
-  PIPES_REUP = 3
+  PIPES_NUMBER = "PIPES_NUMBER"
+  PIPES_EXTEND = "PIPES_EXTEND"
+  PIPES_REUP = "REUP_20MINS"
   
   def self.pipes_number
-    self.find(PIPES_NUMBER)
+    self.find(conditions: {product_type: PIPES_NUMBER})
   end
   
   def self.pipes_extend
-    self.find(PIPES_EXTEND)
+    self.find(conditions: {product_type: PIPES_EXTEND})
   end
   
   def self.pipes_reup
-    self.find(PIPES_REUP)
+    self.find(conditions: {product_type: PIPES_REUP})
   end
 
   def self.requiring_number(source_type)

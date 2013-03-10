@@ -43,16 +43,33 @@ class Order < ActiveRecord::Base
     false
   end
   
+  def process_in_app
+    self.status = COMPLETED
+    self.save!
+    return unless self.status == COMPLETED
+    self.process_for_product
+  rescue => e
+    logger.error("process: #{e.message}")
+    self.status = ERROR
+    self.save
+    false
+  end
   
   def process_for_product
-    case self.product.id
+    case self.product.product_type
       when Product::PIPES_NUMBER then
         self.user_phone.order_and_assign({state: self.state, city: self.city})  if (self.status == COMPLETED)
       when Product::PIPES_REUP then
-        self.user_phone.reup 
+        # todo logic to check for did in order if no did user current one from user
+        dids = self.user.current_dids
+        return false if dids.blank?
+        dids.first.reup
       when Product::PIPES_EXTEND then
         logger.debug("process_for_product: #{self.inspect}")
-        self.user_phone.extend_time
+        # todo logic to check for did in order if no did user current one from user
+        dids = self.user.current_dids
+        return false if dids.blank?
+        dids.first.extend_time
     end
   end
 
@@ -62,7 +79,9 @@ class Order < ActiveRecord::Base
     token
   end  
 
-  
+  def processed?
+    (self.status == COMPLETED || self.status == ERROR)
+  end
   
   def self.create_for(phone, product)
     self.create(user: phone.user, user_phone_id: phone.id, status: INITIAL, amount: product.price, product_id: product.id)

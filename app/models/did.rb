@@ -59,6 +59,28 @@ class Did < ActiveRecord::Base
     return false if dup.blank?
     dup.expiration_date + 1.week > Time.now
   end
+
+  def reup
+    if self.expired?
+      return false unless self.can_reup?
+    end
+    self.update_attributes(usage_state: Did::IN_USE)
+    dup = self.dids_user_phone
+    raise "No mapping to re-up" if dup.blank?
+    dup.update_attributes(expire_state: DidsUserPhone::OPEN, expiration_date: dup.expiration_date + 3.weeks, time_allotted: dup.time_allotted + 1200)
+    self
+  end
+  
+  def extend_time(time=1800)
+    return false if self.expired?
+    logger.debug("extend_time: entry")
+    dup = self.dids_user_phone
+    raise "No mapping to extend" if dup.blank?
+    logger.debug("extend_time: #{time}")
+    dup.update_attributes(time_allotted: dup.time_allotted + time)
+    self
+  end
+  
   
   def self.update_expired
     one_week = 1.week.from_now.to_s(:db)

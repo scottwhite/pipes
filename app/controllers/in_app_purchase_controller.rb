@@ -8,7 +8,8 @@ class InAppPurchaseController < ApplicationController
     end
   end
 
-  def verify_purchase
+
+  def verify_apple_purchase
 
     b64_receipt = params[:receipt]
     url = URI.parse("https://sandbox.itunes.apple.com/verifyReceipt")
@@ -56,5 +57,34 @@ class InAppPurchaseController < ApplicationController
     o.amount = p.price
     o.save!
     render json: o
+  end
+
+# POST, trans_id
+  def finalize_order
+    trans_id = params[:trans_id]
+    if(request.body)
+      data = JSON.parse(request.body.read)
+      logger.debug(data)
+      trans_id = data["trans_id"]
+    end
+    unless trans_id
+      render json: {message:'seriously? No bacon for you'}, status: 400
+      return
+    end
+    order = Order.find_by_gateway_trans_id(trans_id)
+    if order.blank? || order.user != current_user
+      render json: {message:'order not found'}, status: 400
+      return
+    end
+    if(order.processed?)
+      render json: {message:'order already completed'}, status: 400
+      return      
+    end
+    did = order.process_in_app();
+    unless(did)
+      render json: {message:'order has gone horribly wrong'}, status: 400
+      return      
+    end
+    render json: {time_left: did.time_left, expiration_date: did.expires_at, number: did.phone_number}
   end
 end
