@@ -5,20 +5,22 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :sessions , {:collection=>{:request_token=>[:post,:get]}}
 
-  map.request_token '/call_history.:format', controller: 'dids', action: 'history', method: [:get,:post]
+  map.call_history '/call_history.:format', controller: 'dids', action: 'history', method: [:get,:post]
 
   map.request_token '/request_token', controller: 'sessions', action: 'request_token', method: [:get,:post]
 
-  map.request_token '/client_token/:token', controller: 'sessions', action: 'twilio_token', method: [:get,:post]
+  map.request_client_token '/client_token/:token', controller: 'sessions', action: 'twilio_token', method: [:get,:post]
 
-  map.request_token '/inapp/:source/available.:format', controller: 'in_app_purchase', action: 'available_products', method: [:get,:post]
-  map.request_token '/verify_purchase.:format', controller: 'in_app_purchase', action: 'verify_purchase', method: [:get,:post]
+  map.available_products '/inapp/:source/available.:format', controller: 'in_app_purchase', action: 'available_products', method: [:get,:post]
+  map.create_order '/inapp/order', controller: :in_app_purchase, action: 'create_order', method: [:post]
+
+  map.verify_purchase '/verify_purchase.:format', controller: 'in_app_purchase', action: 'verify_purchase', method: [:get,:post]
 
   map.connect '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
   map.request_number '/request_number.:format', controller: 'request_number', action: 'new', method: [:get]
 
   map.resources :request_number, {:member=>{:success=>:get}, :collection=>{:mail_existing=>:get}}
-  map.resources :orders, {:collection=>{:finialize=>:post}, member: {finialize: :post}}
+  map.resources :orders, {:collection=>{:finialize=>:post}, member: {finialize: :post}, }
 
   map.resources :dids
 
